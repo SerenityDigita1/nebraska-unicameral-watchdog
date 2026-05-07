@@ -6,49 +6,9 @@ and to support a future run for office.
 
 ---
 
-## Quick start (do this first)
+## the goal of this tool
 
-1. **Put this folder in VS Code**
-   Open VS Code → File → Open Folder → select this folder
-
-2. **Install dependencies**
-   Open the terminal (Ctrl+` or View → Terminal) and run:
-   ```
-   npm install
-   ```
-
-3. **Add your Anthropic API key**
-   - Get a free key at https://console.anthropic.com
-   - Open `.env.local`
-   - Replace `your_api_key_here` with your actual key
-   - Save the file
-
-4. **Start the dev server**
-   ```
-   npm run dev
-   ```
-   Then open http://localhost:3000 in your browser.
-   The bill translator will work immediately.
-
----
-
-## Deploy to Vercel (go live in 5 minutes)
-
-1. Push this folder to a GitHub repo
-2. Go to https://vercel.com → New Project → import your repo
-3. In Vercel project settings → Environment Variables → add:
-   - Key: `ANTHROPIC_API_KEY`
-   - Value: your API key from console.anthropic.com
-4. Deploy — Vercel gives you a live URL instantly
-5. Point changemytrajectory.com to it in your domain registrar's DNS settings
-   (Vercel has a step-by-step guide for this)
-
----
-
-## Using Claude Code to build on this
-
-Once you have Claude Code installed (`npm install -g @anthropic-ai/claude-code`),
-open this folder in your terminal and run `claude`. Then try prompts like:
+Try prompts like:
 
 - "Add a live feed that pulls today's bills from nebraskalegislature.gov"
 - "Build an About page where I can write about why I'm running for office"
