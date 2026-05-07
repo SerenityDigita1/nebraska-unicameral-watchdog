@@ -104,6 +104,84 @@ const DONORS = [
   { name: "Green Plains",                            amount: "$121,052"   },
 ];
 
+const VOTER_MANDATES = [
+  {
+    id: "Initiative 436",
+    title: "Paid Sick Leave",
+    passed: "Passed by voters Nov. 2024",
+    what: "Required employers to provide up to 56 hours/year of paid sick leave. Effective Oct. 1, 2025.",
+    outcome: "gutted",
+    outcomeLabel: "Gutted by legislature",
+    what_happened: "LB 415 quietly raised the employer threshold from 0 to 11+ employees and added sweeping exemptions for agricultural workers, seasonal workers, and workers under 16. 140,000 Nebraskans lost the protections they voted for.",
+    bill: "LB 415",
+    source: "Nebraska Appleseed",
+  },
+  {
+    id: "Initiatives 437 & 438",
+    title: "Medical Cannabis",
+    passed: "Passed 67–71% Nov. 2024",
+    what: "Established a medical cannabis program. Commission required to begin issuing registrations by Oct. 1, 2025.",
+    outcome: "blocked",
+    outcomeLabel: "Blocked by filibuster",
+    what_happened: "A regulation bill failed to get out of committee in April, then failed to overcome a filibuster in May led by Sen. Jared Storm. Gov. Pillen and AG Mike Hilgers actively encouraged senators not to vote. The law voters passed sits unimplemented.",
+    bill: null,
+    source: "Nebraska Public Media",
+  },
+  {
+    id: "Initiative 433",
+    title: "Minimum Wage Increase",
+    passed: "Passed 58% in 2022",
+    what: "Gradual increase to $15/hour by Jan. 1, 2026. Currently at $13.50/hour and on schedule.",
+    outcome: "threatened",
+    outcomeLabel: "Threatened — survived",
+    what_happened: "LB 258 advanced 32–17 in April 2025 with amendments that would have weakened the increase. Opponents rallied and the effort stalled — but it signals the legislature is willing to revisit voter-approved wage law.",
+    bill: "LB 258",
+    source: "Nebraska Examiner",
+  },
+];
+
+const SESSION_VETOES = [
+  {
+    id: "LB 319",
+    title: "SNAP benefits for people with drug convictions",
+    vote: "Passed 32–17",
+    what: "Would have extended food assistance eligibility to people with 3+ drug felony convictions who had completed their sentence or were in treatment — not while incarcerated.",
+    veto_reason: "Gov. Pillen called it a 'loophole for habitual offenders.' Override failed 24–24 (needed 30).",
+    impact: "People who served their time and are in recovery remain cut off from food assistance.",
+    source: "Nebraska Examiner",
+  },
+  {
+    id: "LB 287",
+    title: "Bed bug inspections in Omaha public housing",
+    vote: "Passed 34–15",
+    what: "Required pest inspections every 6 months in Omaha Housing Authority towers where low-income residents had been suffering severe bed bug infestations.",
+    veto_reason: "Gov. Pillen called it 'needless duplicative government mandates.' Override failed 24–24.",
+    impact: "Low-income residents in publicly subsidized housing have no new inspection requirements.",
+    source: "Nebraska Examiner",
+  },
+];
+
+const SESSION_WINS = [
+  {
+    id: "LB 168",
+    title: "340B Drug Discount Protection",
+    what: "Protected rural hospitals' access to the federal 340B drug discount program. Rural hospital pharmacists were losing ~40% of their savings from manufacturer restrictions.",
+    why: "Rural hospitals operate on margins as thin as 1.4%. This kept many from closing.",
+  },
+  {
+    id: "LB 140",
+    title: "Cell phones out of schools",
+    what: "Required all Nebraska schools to enact policies limiting cell phone use. Took effect before the 2025–26 school year.",
+    why: "One of the few bills with broad bipartisan support and a clear benefit to kids and teachers.",
+  },
+  {
+    id: "LB 383",
+    title: "Social media parental controls",
+    what: "Requires platforms to give parents tools to restrict their minor children's social media accounts. Passed 46–3.",
+    why: "Strong public support and one of the session's clearest wins for Nebraska families.",
+  },
+];
+
 const STATUS_CONFIG = {
   committee: { bar: "bg-blue-500", pill: "bg-blue-50 text-blue-700 ring-1 ring-blue-200" },
   vote:      { bar: "bg-amber-400", pill: "bg-amber-50 text-amber-700 ring-1 ring-amber-200" },
@@ -171,13 +249,14 @@ function StatCard({ num, label }) {
 }
 
 export default function NebraskaWatchdog() {
-  const [activeTab, setActiveTab] = useState("bills");
+  const [activeTab, setActiveTab] = useState("session");
   const [billInput, setBillInput] = useState("");
   const [translating, setTranslating] = useState(false);
   const [translation, setTranslation] = useState("");
   const [error, setError] = useState("");
 
   const tabs = [
+    { id: "session",   label: "2025 Session" },
     { id: "bills",     label: "Bills & Debates" },
     { id: "translate", label: "Translate a Bill" },
     { id: "vetoes",    label: "Governor's Desk" },
@@ -259,6 +338,132 @@ export default function NebraskaWatchdog() {
 
       {/* Content */}
       <main className="max-w-4xl mx-auto px-6 py-8">
+
+        {/* Session Recap Tab */}
+        {activeTab === "session" && (
+          <div>
+
+            {/* Lede */}
+            <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-6">
+              <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">109th Legislature · Jan 8 – Jun 2, 2025</p>
+              <p className="text-white font-semibold text-base leading-snug mb-2">
+                Nebraska voters showed up in November 2024. The legislature spent the next 5 months undoing it.
+              </p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                Voters passed paid sick leave, medical cannabis, and a minimum wage increase. The 109th Legislature gutted sick leave protections for 140,000 workers, blocked cannabis implementation entirely, and took a run at the minimum wage. Meanwhile, the state handed $1.5 billion in corporate tax incentives to businesses over the next four years. The governor vetoed food aid for people with drug convictions. He also vetoed bed bug inspections for public housing residents. That's the 2025 session.
+              </p>
+            </div>
+
+            {/* The People Voted */}
+            <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">The People Voted. Here's What Happened.</h2>
+            <div className="space-y-4 mb-8">
+              {VOTER_MANDATES.map((m) => {
+                const outcomeStyles = {
+                  gutted:    { bar: "bg-red-500",    pill: "bg-red-50 text-red-700 ring-1 ring-red-200",    icon: "✕" },
+                  blocked:   { bar: "bg-red-500",    pill: "bg-red-50 text-red-700 ring-1 ring-red-200",    icon: "✕" },
+                  threatened:{ bar: "bg-amber-400",  pill: "bg-amber-50 text-amber-700 ring-1 ring-amber-200", icon: "⚠" },
+                };
+                const style = outcomeStyles[m.outcome];
+                return (
+                  <div key={m.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className={`h-1 w-full ${style.bar}`} />
+                    <div className="p-5">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <div className="flex items-start gap-2.5">
+                          <span className="text-xs font-bold text-white bg-[#c8102e] px-2.5 py-1 rounded-lg shrink-0 mt-0.5">{m.id}</span>
+                          <div>
+                            <h3 className="text-sm font-bold text-gray-900">{m.title}</h3>
+                            <p className="text-xs text-gray-400 mt-0.5">{m.passed}</p>
+                          </div>
+                        </div>
+                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${style.pill}`}>
+                          {style.icon} {m.outcomeLabel}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-500 mb-3 leading-relaxed border-b border-gray-100 pb-3">
+                        <strong className="text-gray-700">What voters approved:</strong> {m.what}
+                      </p>
+                      <div className="bg-red-50 rounded-xl p-3.5 border-l-2 border-red-300">
+                        <p className="text-xs font-semibold text-red-600 uppercase tracking-widest mb-1.5">What actually happened</p>
+                        <p className="text-sm text-gray-800 leading-relaxed">{m.what_happened}</p>
+                      </div>
+                      {m.bill && (
+                        <p className="text-xs text-gray-400 mt-2.5">Bill: <span className="font-semibold text-gray-600">{m.bill}</span> · Source: {m.source}</p>
+                      )}
+                      {!m.bill && (
+                        <p className="text-xs text-gray-400 mt-2.5">Source: {m.source}</p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Vetoed */}
+            <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">Vetoed by the Governor</h2>
+            <div className="space-y-4 mb-8">
+              {SESSION_VETOES.map((v) => (
+                <div key={v.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                  <div className="h-1 w-full bg-red-500" />
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <div className="flex items-start gap-2.5">
+                        <span className="text-xs font-bold text-white bg-[#c8102e] px-2.5 py-1 rounded-lg shrink-0 mt-0.5">{v.id}</span>
+                        <h3 className="text-sm font-bold text-gray-900">{v.title}</h3>
+                      </div>
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 bg-red-50 text-red-700 ring-1 ring-red-200">Vetoed</span>
+                    </div>
+                    <p className="text-xs text-gray-500 mb-1">{v.vote} · Override failed 24–24</p>
+                    <p className="text-sm text-gray-600 mb-3 leading-relaxed">{v.what}</p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      <div className="bg-gray-50 rounded-xl p-3 border-l-2 border-gray-300">
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Governor's reasoning</p>
+                        <p className="text-sm text-gray-700 leading-relaxed">{v.veto_reason}</p>
+                      </div>
+                      <div className="bg-red-50 rounded-xl p-3 border-l-2 border-red-300">
+                        <p className="text-xs font-semibold text-red-600 uppercase tracking-widest mb-1">Real impact</p>
+                        <p className="text-sm text-gray-800 leading-relaxed">{v.impact}</p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-2.5">Source: {v.source}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Corporate stat callout */}
+            <div className="bg-[#0a0e1a] rounded-2xl p-5 mb-8">
+              <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Meanwhile</p>
+              <p className="text-3xl font-bold text-white mb-1">$1.5 Billion</p>
+              <p className="text-white/60 text-sm leading-relaxed mb-3">
+                In business tax incentives the Nebraska state auditor flagged as available to corporations over the next four fiscal years — the same session that denied food aid to people in recovery and blocked inspections for bed bug-infested public housing.
+              </p>
+              <p className="text-white/40 text-xs">Source: Nebraska Examiner, April 2025 · Gov. Pillen acknowledged the need to make incentives "more people-focused and less company-focused"</p>
+            </div>
+
+            {/* Wins */}
+            <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">What Actually Passed for Regular Nebraskans</h2>
+            <div className="space-y-3 mb-6">
+              {SESSION_WINS.map((w) => (
+                <div key={w.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                  <div className="h-1 w-full bg-emerald-500" />
+                  <div className="p-5">
+                    <div className="flex items-start gap-2.5 mb-2">
+                      <span className="text-xs font-bold text-white bg-emerald-600 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">{w.id}</span>
+                      <h3 className="text-sm font-bold text-gray-900">{w.title}</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 leading-relaxed mb-2">{w.what}</p>
+                    <p className="text-xs text-gray-400 italic">{w.why}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-xs text-gray-400 text-center pb-2">
+              Sources: Nebraska Examiner · Nebraska Public Media · Ballotpedia · Nebraska Appleseed
+            </p>
+          </div>
+        )}
 
         {/* Bills Tab */}
         {activeTab === "bills" && (
