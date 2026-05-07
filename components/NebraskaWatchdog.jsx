@@ -119,57 +119,68 @@ const DONORS = [
   },
 ];
 
-const STATUS_STYLES = {
-  committee: "bg-blue-50 text-blue-700 border border-blue-200",
-  vote: "bg-amber-50 text-amber-700 border border-amber-200",
-  veto: "bg-red-50 text-red-700 border border-red-200",
-  signed: "bg-green-50 text-green-700 border border-green-200",
-  partial: "bg-orange-50 text-orange-700 border border-orange-200",
+const STATUS_CONFIG = {
+  committee: { bar: "bg-blue-500", pill: "bg-blue-50 text-blue-700 ring-1 ring-blue-200" },
+  vote:      { bar: "bg-amber-400", pill: "bg-amber-50 text-amber-700 ring-1 ring-amber-200" },
+  veto:      { bar: "bg-red-500",  pill: "bg-red-50 text-red-700 ring-1 ring-red-200" },
+  signed:    { bar: "bg-emerald-500", pill: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200" },
+  partial:   { bar: "bg-orange-400", pill: "bg-orange-50 text-orange-700 ring-1 ring-orange-200" },
 };
 
 function BillCard({ bill }) {
+  const cfg = STATUS_CONFIG[bill.status] || STATUS_CONFIG.committee;
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 mb-3">
-      <div className="flex gap-3 items-start">
-        <span className="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full whitespace-nowrap mt-0.5 shrink-0">
-          {bill.id}
-        </span>
-        <div className="flex-1 min-w-0">
-          <div className="flex justify-between items-start gap-2 flex-wrap">
-            <h3 className="text-sm font-medium text-gray-900">{bill.title}</h3>
-            <span
-              className={`text-xs px-2.5 py-0.5 rounded-full shrink-0 ${STATUS_STYLES[bill.status]}`}
-            >
-              {bill.statusLabel}
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4 hover:shadow-md transition-shadow">
+      <div className={`h-1 w-full ${cfg.bar}`} />
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <div className="flex items-start gap-2.5 flex-1 min-w-0">
+            <span className="text-xs font-bold tracking-wide text-white bg-[#c8102e] px-2.5 py-1 rounded-lg shrink-0 mt-0.5">
+              {bill.id}
             </span>
+            <h3 className="text-sm font-semibold text-gray-900 leading-snug">
+              {bill.title}
+            </h3>
           </div>
-          <p className="text-xs text-gray-500 mt-0.5">
-            {bill.senator} · {bill.committee}
-          </p>
-          <p className="text-sm text-gray-600 mt-2 leading-relaxed border-t border-gray-100 pt-2">
-            <strong className="text-gray-800 font-medium">Plain English:</strong>{" "}
-            {bill.plain}
-          </p>
-          <div className="flex gap-4 mt-2 flex-wrap">
-            {bill.url && (
-              <a
-                href={bill.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs text-blue-600 hover:underline"
-              >
-                View full bill ↗
-              </a>
-            )}
-            <button
-              onClick={() => window.open(`https://claude.ai/new?q=${encodeURIComponent(bill.askPrompt)}`, '_blank')}
-              className="text-xs text-blue-600 hover:underline text-left"
+          <span className={`text-xs font-medium px-2.5 py-1 rounded-full shrink-0 ${cfg.pill}`}>
+            {bill.statusLabel}
+          </span>
+        </div>
+        <p className="text-xs text-gray-400 mb-3">
+          {bill.senator} · {bill.committee}
+        </p>
+        <div className="bg-gray-50 rounded-xl p-3.5 border-l-2 border-gray-300">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Plain English</p>
+          <p className="text-sm text-gray-700 leading-relaxed">{bill.plain}</p>
+        </div>
+        <div className="flex gap-5 mt-3.5">
+          {bill.url && (
+            <a
+              href={bill.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-medium text-[#c8102e] hover:underline"
             >
-              Ask Claude more about this ↗
-            </button>
-          </div>
+              View full bill ↗
+            </a>
+          )}
+          <button
+            onClick={() => window.open(`https://claude.ai/new?q=${encodeURIComponent(bill.askPrompt)}`, "_blank")}
+            className="text-xs font-medium text-gray-500 hover:text-[#c8102e] transition-colors text-left"
+          >
+            Ask Claude about this ↗
+          </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function StatCard({ num, label }) {
+  return (
+    <div className="bg-white/10 rounded-2xl p-4 text-center backdrop-blur-sm border border-white/10">
+      <div className="text-3xl font-bold text-white tracking-tight">{num}</div>
+      <div className="text-xs text-white/60 mt-1 leading-tight">{label}</div>
     </div>
   );
 }
@@ -182,10 +193,10 @@ export default function NebraskaWatchdog() {
   const [error, setError] = useState("");
 
   const tabs = [
-    { id: "bills", label: "Bills & debates" },
-    { id: "translate", label: "Translate a bill" },
-    { id: "vetoes", label: "Governor's desk" },
-    { id: "money", label: "Follow the money" },
+    { id: "bills",     label: "Bills & Debates" },
+    { id: "translate", label: "Translate a Bill" },
+    { id: "vetoes",    label: "Governor's Desk" },
+    { id: "money",     label: "Follow the Money" },
   ];
 
   async function translateBill() {
@@ -202,271 +213,308 @@ export default function NebraskaWatchdog() {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setTranslation(data.translation);
-    } catch (e) {
+    } catch {
       setError("Translation failed — check your API key and try again.");
     }
     setTranslating(false);
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 font-sans">
-      {/* Header */}
-      <div className="mb-6 pb-4 border-b border-gray-200">
-        <div className="flex items-center gap-3 mb-1">
-          <div className="w-9 h-9 rounded-lg bg-blue-700 flex items-center justify-center text-white text-lg">
-            🏛
+    <div className="min-h-screen bg-[#f4f5f7]">
+
+      {/* Hero Header */}
+      <header className="bg-[#0a0e1a] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#c8102e]/20 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-6 pt-10 pb-8 relative">
+          <div className="flex items-center gap-3 mb-5">
+            <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase bg-[#c8102e]/10 border border-[#c8102e]/30 px-3 py-1.5 rounded-full">
+              Watchdog
+            </span>
+            <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
+              109th Legislature
+            </span>
           </div>
-          <h1 className="text-xl font-medium text-gray-900">
-            Nebraska Watchdog
+          <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-2">
+            Nebraska Unicameral<br />
+            <span className="text-[#c8102e]">Watchdog</span>
           </h1>
-          <span className="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">
-            109th Legislature
-          </span>
+          <p className="text-white/50 text-sm max-w-md leading-relaxed mb-8">
+            Tracking your unicameral — bills, vetoes, and campaign money
+            translated into plain Nebraska English.
+          </p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <StatCard num="109" label="Bills introduced" />
+            <StatCard num="23"  label="Passed this session" />
+            <StatCard num="4"   label="Vetoed by governor" />
+            <StatCard num="49"  label="Senators" />
+          </div>
         </div>
-        <p className="text-sm text-gray-500">
-          Tracking your unicameral — translated into plain Nebraska English
-        </p>
-      </div>
 
-      {/* Tabs */}
-      <div className="flex gap-1 border-b border-gray-200 mb-6">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 text-sm border-b-2 -mb-px transition-colors ${
-              activeTab === tab.id
-                ? "border-blue-600 text-blue-600 font-medium"
-                : "border-transparent text-gray-500 hover:text-gray-800"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Bills Tab */}
-      {activeTab === "bills" && (
-        <div>
-          <div className="grid grid-cols-4 gap-2 mb-6">
-            {[
-              { num: "109", label: "Bills introduced" },
-              { num: "23", label: "Passed this session" },
-              { num: "4", label: "Vetoed by governor" },
-              { num: "49", label: "Senators (unicameral)" },
-            ].map((m) => (
-              <div
-                key={m.label}
-                className="bg-gray-50 rounded-lg p-3 text-center"
+        {/* Tab Bar */}
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex gap-1 border-b border-white/10 mt-6">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-3 text-sm font-medium border-b-2 -mb-px transition-all ${
+                  activeTab === tab.id
+                    ? "border-[#c8102e] text-white"
+                    : "border-transparent text-white/40 hover:text-white/70"
+                }`}
               >
-                <div className="text-2xl font-medium text-gray-900">
-                  {m.num}
-                </div>
-                <div className="text-xs text-gray-500 mt-0.5">{m.label}</div>
-              </div>
+                {tab.label}
+              </button>
             ))}
           </div>
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
-            Recent activity — 109th Legislature
-          </p>
-          {BILLS.map((b) => (
-            <BillCard key={b.id} bill={b} />
-          ))}
-          <p className="text-center mt-4">
-            <a
-              href="https://nebraskalegislature.gov/bills/search_by_date.php?Legislature=109"
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-blue-600 hover:underline"
-            >
-              View all 109th Legislature bills on nebraskalegislature.gov ↗
-            </a>
-          </p>
         </div>
-      )}
+      </header>
 
-      {/* Translate Tab */}
-      {activeTab === "translate" && (
-        <div>
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
-            Paste any bill text or summary
-          </p>
-          <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 mb-4">
-            <textarea
-              value={billInput}
-              onChange={(e) => setBillInput(e.target.value)}
-              rows={5}
-              placeholder="Paste bill text, a summary, or just a bill number and what you know about it. Claude will break it down into plain English, explain who it helps and hurts, and flag any concerns."
-              className="w-full text-sm p-3 rounded-lg border border-gray-300 bg-white text-gray-900 resize-y focus:outline-none focus:border-blue-500 leading-relaxed"
-            />
-            <div className="flex items-center gap-3 mt-3 flex-wrap">
-              <button
-                onClick={translateBill}
-                disabled={translating || !billInput.trim()}
-                className="px-4 py-2 bg-blue-700 text-white text-sm rounded-lg hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+      {/* Content */}
+      <main className="max-w-4xl mx-auto px-6 py-8">
+
+        {/* Bills Tab */}
+        {activeTab === "bills" && (
+          <div>
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+                Recent Activity
+              </h2>
+              <a
+                href="https://nebraskalegislature.gov/bills/search_by_date.php?Legislature=109"
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-medium text-[#c8102e] hover:underline"
               >
-                {translating ? "Translating…" : "✦ Translate for Nebraskans"}
-              </button>
-              <span className="text-xs text-gray-400">Powered by Claude AI</span>
+                All bills on Legislature.ne.gov ↗
+              </a>
             </div>
+            {BILLS.map((b) => (
+              <BillCard key={b.id} bill={b} />
+            ))}
+          </div>
+        )}
+
+        {/* Translate Tab */}
+        {activeTab === "translate" && (
+          <div className="max-w-2xl">
+            <div className="mb-6">
+              <h2 className="text-lg font-bold text-gray-900 mb-1">Translate a Bill</h2>
+              <p className="text-sm text-gray-500">
+                Paste any bill text or summary — Claude will break it down into plain English,
+                explain who it helps and hurts, and flag any concerns.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-4">
+              <textarea
+                value={billInput}
+                onChange={(e) => setBillInput(e.target.value)}
+                rows={6}
+                placeholder="Paste bill text, a summary, or just a bill number and what you know about it…"
+                className="w-full text-sm p-4 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 resize-y focus:outline-none focus:border-[#c8102e] focus:ring-2 focus:ring-[#c8102e]/10 leading-relaxed transition-all"
+              />
+              <div className="flex items-center gap-4 mt-4">
+                <button
+                  onClick={translateBill}
+                  disabled={translating || !billInput.trim()}
+                  className="px-5 py-2.5 bg-[#c8102e] text-white text-sm font-semibold rounded-xl hover:bg-[#a50d26] disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm"
+                >
+                  {translating ? "Translating…" : "✦ Translate for Nebraskans"}
+                </button>
+                <span className="text-xs text-gray-400">Powered by Claude AI</span>
+              </div>
+            </div>
+
             {translation && (
-              <div className="mt-4 p-3 bg-white border border-blue-200 border-l-4 border-l-blue-600 rounded-lg">
-                <p className="text-xs font-medium text-blue-600 uppercase tracking-wide mb-2">
-                  Plain English translation
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 border-l-4 border-l-[#c8102e]">
+                <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-3">
+                  Plain English Translation
                 </p>
                 <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-line">
                   {translation}
                 </p>
               </div>
             )}
+
             {error && (
-              <p className="mt-3 text-sm text-red-600">{error}</p>
+              <div className="bg-red-50 border border-red-200 rounded-xl p-4 mt-4">
+                <p className="text-sm text-red-700">{error}</p>
+              </div>
             )}
-          </div>
-          <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-            <p className="text-sm font-medium text-gray-800 mb-2">
-              How to get bill text
-            </p>
-            <p className="text-sm text-gray-500 leading-relaxed">
-              Go to{" "}
-              <a
-                href="https://nebraskalegislature.gov/bills/search_by_number.php"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                nebraskalegislature.gov
-              </a>
-              , search by bill number, then copy the "Statement of Intent" or
-              full text and paste it here.
-            </p>
-          </div>
-        </div>
-      )}
 
-      {/* Vetoes Tab */}
-      {activeTab === "vetoes" && (
-        <div>
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
-            Governor Pillen's desk — recent actions
-          </p>
-          {VETOES.map((v) => (
-            <div
-              key={v.id}
-              className="bg-white border border-gray-200 rounded-xl p-4 mb-3"
-            >
-              <div className="flex gap-3 items-start">
-                <span className="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full whitespace-nowrap mt-0.5 shrink-0">
-                  {v.id}
-                </span>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start gap-2 flex-wrap">
-                    <h3 className="text-sm font-medium text-gray-900">
-                      {v.title}
-                    </h3>
-                    <span
-                      className={`text-xs px-2.5 py-0.5 rounded-full shrink-0 ${STATUS_STYLES[v.actionType]}`}
-                    >
-                      {v.action}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-0.5">{v.note}</p>
-                  <p className="text-sm text-gray-600 mt-2 leading-relaxed border-t border-gray-100 pt-2">
-                    <strong className="text-gray-800 font-medium">
-                      Plain English:
-                    </strong>{" "}
-                    {v.plain}
-                  </p>
-                  <button
-                    onClick={() => window.open(`https://claude.ai/new?q=${encodeURIComponent(v.askPrompt)}`, '_blank')}
-                    className="text-xs text-blue-600 hover:underline mt-2"
-                  >
-                    Ask Claude about this ↗
-                  </button>
-                </div>
-              </div>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mt-4">
+              <p className="text-sm font-semibold text-gray-800 mb-2">How to get bill text</p>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Go to{" "}
+                <a
+                  href="https://nebraskalegislature.gov/bills/search_by_number.php"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#c8102e] hover:underline font-medium"
+                >
+                  nebraskalegislature.gov
+                </a>
+                , search by bill number, then copy the "Statement of Intent" or full text and paste it here.
+              </p>
             </div>
-          ))}
-          <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 mt-2">
-            <p className="text-xs text-gray-500 leading-relaxed">
-              <strong className="text-gray-700">Nebraska's line-item veto:</strong>{" "}
-              Unlike most states, Nebraska's governor can veto individual
-              spending lines within a bill — not just reject the whole thing.
-              This is a significant and often underreported power.
-            </p>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Money Tab */}
-      {activeTab === "money" && (
-        <div>
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
-            Follow the money — campaign finance snapshot
-          </p>
-          <div className="bg-white border border-gray-200 rounded-xl p-4 mb-4">
-            <p className="text-sm text-gray-500 leading-relaxed">
-              Data sourced from the{" "}
+        {/* Vetoes Tab */}
+        {activeTab === "vetoes" && (
+          <div>
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-xs font-bold tracking-[0.15em] text-gray-400 uppercase">
+                Governor Pillen's Desk
+              </h2>
+            </div>
+
+            {VETOES.map((v) => {
+              const cfg = STATUS_CONFIG[v.actionType] || STATUS_CONFIG.veto;
+              return (
+                <div key={v.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4 hover:shadow-md transition-shadow">
+                  <div className={`h-1 w-full ${cfg.bar}`} />
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-xs font-bold tracking-wide text-white bg-[#c8102e] px-2.5 py-1 rounded-lg">
+                          {v.id}
+                        </span>
+                        <h3 className="text-sm font-semibold text-gray-900">{v.title}</h3>
+                      </div>
+                      <span className={`text-xs font-medium px-2.5 py-1 rounded-full shrink-0 ${cfg.pill}`}>
+                        {v.action}
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-400 mb-3">{v.note}</p>
+                    <div className="bg-gray-50 rounded-xl p-3.5 border-l-2 border-gray-300">
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Plain English</p>
+                      <p className="text-sm text-gray-700 leading-relaxed">{v.plain}</p>
+                    </div>
+                    <button
+                      onClick={() => window.open(`https://claude.ai/new?q=${encodeURIComponent(v.askPrompt)}`, "_blank")}
+                      className="text-xs font-medium text-gray-500 hover:text-[#c8102e] transition-colors mt-3.5 block"
+                    >
+                      Ask Claude about this ↗
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+
+            <div className="bg-[#0a0e1a] rounded-2xl p-5 mt-2">
+              <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">
+                Nebraska's Line-Item Veto
+              </p>
+              <p className="text-sm text-white/60 leading-relaxed">
+                Unlike most states, Nebraska's governor can veto individual spending lines within a
+                bill — not just reject the whole thing. This is a significant and often underreported power.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Money Tab */}
+        {activeTab === "money" && (
+          <div>
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-xs font-bold tracking-[0.15em] text-gray-400 uppercase">
+                Follow the Money
+              </h2>
               <a
-                href="https://www.nadc.nebraska.gov"
+                href="https://www.nadc.nebraska.gov/cgi-bin/cfro_srch.pl"
                 target="_blank"
                 rel="noreferrer"
-                className="text-blue-600 hover:underline"
+                className="text-xs font-medium text-[#c8102e] hover:underline"
               >
-                Nebraska Accountability & Disclosure Commission (NADC)
+                Search NADC database ↗
               </a>
-              . Every dollar contributed to Nebraska candidates is required to
-              be reported here.
-            </p>
-          </div>
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
-            Top money flowing into Nebraska legislative races
-          </p>
-          <div className="bg-white border border-gray-200 rounded-xl divide-y divide-gray-100">
-            {DONORS.map((d) => (
-              <div
-                key={d.name}
-                className="flex items-center justify-between px-4 py-3 gap-3"
-              >
-                <div>
-                  <p className="text-sm font-medium text-gray-900">{d.name}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    <span
-                      className={`inline-block text-xs px-2 py-0.5 rounded-full mr-1.5 ${
-                        d.type === "outside"
-                          ? "bg-amber-50 text-amber-700 border border-amber-200"
-                          : "bg-green-50 text-green-700 border border-green-200"
-                      }`}
-                    >
-                      {d.typeLabel}
-                    </span>
-                    {d.focus}
-                  </p>
-                </div>
-                <span className="text-sm font-medium text-green-700 shrink-0">
-                  {d.amount}
-                </span>
+            </div>
+
+            <div className="bg-[#0a0e1a] rounded-2xl p-5 mb-5">
+              <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">
+                Campaign Finance Source
+              </p>
+              <p className="text-sm text-white/60 leading-relaxed">
+                Data sourced from the{" "}
+                <a
+                  href="https://www.nadc.nebraska.gov"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white/90 hover:underline font-medium"
+                >
+                  Nebraska Accountability & Disclosure Commission (NADC)
+                </a>
+                . Every dollar contributed to Nebraska candidates is required to be reported here.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="px-5 py-3.5 border-b border-gray-100">
+                <p className="text-xs font-bold tracking-[0.15em] text-gray-400 uppercase">
+                  Top Money Flowing Into Nebraska Legislative Races
+                </p>
               </div>
-            ))}
-          </div>
-          <div className="flex gap-4 mt-4 flex-wrap">
-            <a
-              href="https://www.nadc.nebraska.gov/cgi-bin/cfro_srch.pl"
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-blue-600 hover:underline"
-            >
-              Search NADC campaign finance database ↗
-            </a>
+              {DONORS.map((d, i) => (
+                <div
+                  key={d.name}
+                  className={`flex items-center justify-between px-5 py-4 gap-4 ${i !== DONORS.length - 1 ? "border-b border-gray-50" : ""}`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-gray-900 mb-1">{d.name}</p>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                          d.type === "outside"
+                            ? "bg-amber-50 text-amber-700 ring-1 ring-amber-200"
+                            : "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200"
+                        }`}
+                      >
+                        {d.typeLabel}
+                      </span>
+                      <span className="text-xs text-gray-400">{d.focus}</span>
+                    </div>
+                  </div>
+                  <span className="text-base font-bold text-gray-900 shrink-0">{d.amount}</span>
+                </div>
+              ))}
+            </div>
+
             <button
-              onClick={() => window.open(`https://claude.ai/new?q=${encodeURIComponent('Explain how outside money influences Nebraska state legislature races — what are the biggest donors, what do they want, and how can I research who is funding which senator?')}`, '_blank')}
-              className="text-sm text-blue-600 hover:underline"
+              onClick={() =>
+                window.open(
+                  `https://claude.ai/new?q=${encodeURIComponent(
+                    "Explain how outside money influences Nebraska state legislature races — what are the biggest donors, what do they want, and how can I research who is funding which senator?"
+                  )}`,
+                  "_blank"
+                )
+              }
+              className="mt-4 text-xs font-medium text-gray-500 hover:text-[#c8102e] transition-colors"
             >
-              How to research this further ↗
+              How to research campaign finance further ↗
             </button>
           </div>
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-200 mt-4">
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <p className="text-xs text-gray-400">
+            Nebraska Unicameral Watchdog · 109th Legislature · Not affiliated with any political party.
+          </p>
+          <a
+            href="https://nebraskalegislature.gov"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
+          >
+            nebraskalegislature.gov ↗
+          </a>
         </div>
-      )}
+      </footer>
     </div>
   );
 }
