@@ -82,41 +82,26 @@ const VETOES = [
 ];
 
 const DONORS = [
-  {
-    name: "Americans for Prosperity (Koch network)",
-    type: "outside",
-    typeLabel: "Out-of-state PAC",
-    focus: "Tax cuts, school choice",
-    amount: "$2.4M+",
-  },
-  {
-    name: "Nebraska Farm Bureau PAC",
-    type: "local",
-    typeLabel: "Nebraska-based",
-    focus: "Property tax relief, ag deregulation",
-    amount: "$890K",
-  },
-  {
-    name: "Nebraska State Education Assoc. (NSEA)",
-    type: "local",
-    typeLabel: "Nebraska-based",
-    focus: "School funding, anti-voucher",
-    amount: "$750K",
-  },
-  {
-    name: "Club for Growth PAC",
-    type: "outside",
-    typeLabel: "Out-of-state PAC",
-    focus: "Low-tax, limited government candidates",
-    amount: "$620K",
-  },
-  {
-    name: "Planned Parenthood Votes Nebraska",
-    type: "local",
-    typeLabel: "Nebraska affiliate",
-    focus: "Reproductive healthcare, abortion access",
-    amount: "$410K",
-  },
+  { name: "Sandhills Global",                        amount: "$3,364,667" },
+  { name: "US Senate",                               amount: "$3,283,347" },
+  { name: "Werner Enterprises",                      amount: "$769,416"   },
+  { name: "Exodus Movement",                         amount: "$692,400"   },
+  { name: "American Excellence PAC",                 amount: "$571,699"   },
+  { name: "Herbster Angus Farms",                    amount: "$437,443"   },
+  { name: "HDR Inc",                                 amount: "$429,329"   },
+  { name: "Tenaska Energy",                          amount: "$421,367"   },
+  { name: "Kiewit Corp",                             amount: "$348,822"   },
+  { name: "University of Nebraska",                  amount: "$345,142"   },
+  { name: "Lozier Corp",                             amount: "$327,780"   },
+  { name: "Nebraska Railroaders For Public Safety",  amount: "$250,000"   },
+  { name: "Crete Carrier Corp",                      amount: "$241,079"   },
+  { name: "Union Pacific Corp",                      amount: "$237,587"   },
+  { name: "Hawkins Construction",                    amount: "$223,330"   },
+  { name: "Cornerstone Legacy LLC",                  amount: "$223,000"   },
+  { name: "State of Nebraska",                       amount: "$191,427"   },
+  { name: "Baxter Auto Group",                       amount: "$177,595"   },
+  { name: "University of Nebraska Medical Center",   amount: "$149,235"   },
+  { name: "Green Plains",                            amount: "$121,052"   },
 ];
 
 const STATUS_CONFIG = {
@@ -223,7 +208,7 @@ export default function NebraskaWatchdog() {
     <div className="min-h-screen bg-[#f4f5f7]">
 
       {/* Hero Header */}
-      <header className="bg-[#0a0e1a] relative overflow-hidden">
+      <header className="bg-[#0a0e1a] relative overflow-hidden text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-[#c8102e]/20 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-4xl mx-auto px-6 pt-10 pb-8 relative">
           <div className="flex items-center gap-3 mb-5">
@@ -240,7 +225,7 @@ export default function NebraskaWatchdog() {
           </h1>
           <p className="text-white/50 text-sm max-w-md leading-relaxed mb-8">
             Tracking your unicameral — bills, vetoes, and campaign money
-            translated into plain Nebraska English.
+            translated into plain English for everyday Nebraskans.
           </p>
 
           {/* Stats */}
@@ -420,11 +405,11 @@ export default function NebraskaWatchdog() {
         {activeTab === "money" && (
           <div>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xs font-bold tracking-[0.15em] text-gray-400 uppercase">
+              <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
                 Follow the Money
               </h2>
               <a
-                href="https://www.nadc.nebraska.gov/cgi-bin/cfro_srch.pl"
+                href="https://nadc.nebraska.gov/node"
                 target="_blank"
                 rel="noreferrer"
                 className="text-xs font-medium text-[#c8102e] hover:underline"
@@ -435,49 +420,48 @@ export default function NebraskaWatchdog() {
 
             <div className="bg-[#0a0e1a] rounded-2xl p-5 mb-5">
               <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">
-                Campaign Finance Source
+                Data Source
               </p>
-              <p className="text-sm text-white/60 leading-relaxed">
-                Data sourced from the{" "}
+              <p className="text-sm leading-relaxed">
+                Figures below are from{" "}
                 <a
-                  href="https://www.nadc.nebraska.gov"
+                  href="https://www.opensecrets.org/states/NE/donors/2024"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-white/90 hover:underline font-medium"
+                  className="text-white font-medium hover:underline"
+                >
+                  OpenSecrets — Nebraska 2024 cycle
+                </a>
+                . For Nebraska-specific state race filings, the authoritative source is the{" "}
+                <a
+                  href="https://nadc.nebraska.gov/node"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white font-medium hover:underline"
                 >
                   Nebraska Accountability & Disclosure Commission (NADC)
                 </a>
-                . Every dollar contributed to Nebraska candidates is required to be reported here.
+                . NADC integration coming soon.
               </p>
             </div>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="px-5 py-3.5 border-b border-gray-100">
-                <p className="text-xs font-bold tracking-[0.15em] text-gray-400 uppercase">
-                  Top Money Flowing Into Nebraska Legislative Races
+              <div className="px-5 py-3.5 border-b border-gray-100 flex items-center justify-between">
+                <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+                  Top Nebraska Donors — 2024 Election Cycle
                 </p>
+                <span className="text-[10px] text-gray-400">Source: OpenSecrets</span>
               </div>
               {DONORS.map((d, i) => (
                 <div
                   key={d.name}
-                  className={`flex items-center justify-between px-5 py-4 gap-4 ${i !== DONORS.length - 1 ? "border-b border-gray-50" : ""}`}
+                  className={`flex items-center justify-between px-5 py-3.5 gap-4 ${i !== DONORS.length - 1 ? "border-b border-gray-50" : ""}`}
                 >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-gray-900 mb-1">{d.name}</p>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
-                          d.type === "outside"
-                            ? "bg-amber-50 text-amber-700 ring-1 ring-amber-200"
-                            : "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200"
-                        }`}
-                      >
-                        {d.typeLabel}
-                      </span>
-                      <span className="text-xs text-gray-400">{d.focus}</span>
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-bold text-gray-300 w-5 shrink-0">{i + 1}</span>
+                    <p className="text-sm font-medium text-gray-900">{d.name}</p>
                   </div>
-                  <span className="text-base font-bold text-gray-900 shrink-0">{d.amount}</span>
+                  <span className="text-sm font-bold text-gray-900 shrink-0">{d.amount}</span>
                 </div>
               ))}
             </div>

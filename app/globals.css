@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Any element with a dark background gets white text by default */
+[class*="bg-[#0a0e1a]"] {
+  color: white;
+}
