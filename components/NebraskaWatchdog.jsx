@@ -248,6 +248,60 @@ function StatCard({ num, label }) {
   );
 }
 
+function NewsletterForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="bg-white/10 rounded-xl px-4 py-3 border border-white/10">
+        <p className="text-white text-sm font-medium">You're on the list. We'll be in touch before January 2027.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        required
+        className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/50 transition-colors"
+      />
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="px-5 py-2.5 bg-[#c8102e] text-white text-sm font-semibold rounded-xl hover:bg-[#a50d26] disabled:opacity-50 transition-colors shrink-0"
+      >
+        {status === "loading" ? "Subscribing…" : "Subscribe"}
+      </button>
+      {status === "error" && (
+        <p className="text-red-400 text-xs mt-1 w-full">Something went wrong — try again.</p>
+      )}
+    </form>
+  );
+}
+
 export default function NebraskaWatchdog() {
   const [activeTab, setActiveTab] = useState("session");
   const [billInput, setBillInput] = useState("");
@@ -295,24 +349,32 @@ export default function NebraskaWatchdog() {
               Watchdog
             </span>
             <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
-              109th Legislature
+              District 49 · Sarpy County
             </span>
           </div>
           <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-2">
             Nebraska Unicameral<br />
             <span className="text-[#c8102e]">Watchdog</span>
           </h1>
-          <p className="text-white/50 text-sm max-w-md leading-relaxed mb-8">
+          <p className="text-white/50 text-sm max-w-md leading-relaxed mb-5">
             Tracking your unicameral — bills, vetoes, and campaign money
             translated into plain English for everyday Nebraskans.
           </p>
 
+          {/* Current Status Banner */}
+          <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 mb-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Session Status</span>
+            <p className="text-sm text-white/80">
+              The 2026 short session (60 days, Jan–Apr) has ended. <span className="text-white font-medium">Next session: January 2027</span> — the 110th Legislature's long session.
+            </p>
+          </div>
+
           {/* Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <StatCard num="109" label="Bills introduced" />
-            <StatCard num="23"  label="Passed this session" />
-            <StatCard num="4"   label="Vetoed by governor" />
-            <StatCard num="49"  label="Senators" />
+            <StatCard num="700+" label="Bills introduced in 2025" />
+            <StatCard num="209"  label="Signed into law" />
+            <StatCard num="2"    label="Vetoed by governor" />
+            <StatCard num="49"   label="Senators" />
           </div>
         </div>
 
@@ -345,7 +407,7 @@ export default function NebraskaWatchdog() {
 
             {/* Lede */}
             <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-6">
-              <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">109th Legislature · Jan 8 – Jun 2, 2025</p>
+              <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">109th Legislature · Long Session · Jan 8 – Jun 2, 2025 · 90 days</p>
               <p className="text-white font-semibold text-base leading-snug mb-2">
                 Nebraska voters showed up in November 2024. The legislature spent the next 5 months undoing it.
               </p>
@@ -688,11 +750,28 @@ export default function NebraskaWatchdog() {
         )}
       </main>
 
+      {/* Newsletter Signup */}
+      <div className="max-w-4xl mx-auto px-6 mb-4">
+        <div className="bg-[#0a0e1a] rounded-2xl p-6">
+          <div className="max-w-xl">
+            <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay Informed</p>
+            <h3 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h3>
+            <p className="text-white/50 text-sm mb-4 leading-relaxed">
+              When the 110th session kicks off in January 2027, you'll be the first to know what's happening in Lincoln — in plain English, no spin.
+            </p>
+            <NewsletterForm />
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-200 mt-4">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <p className="text-xs text-gray-400">
-            Nebraska Unicameral Watchdog · 109th Legislature · Not affiliated with any political party.
+            Nebraska Unicameral Watchdog · District 49 · Not affiliated with any political party.
+            <br className="sm:hidden" />
+            <span className="hidden sm:inline"> · </span>
+            The unicameral meets for a long session (90 days) in odd years and a short session (60 days) in even years.
           </p>
           <a
             href="https://nebraskalegislature.gov"
