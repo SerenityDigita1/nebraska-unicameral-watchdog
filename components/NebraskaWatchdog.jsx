@@ -82,26 +82,26 @@ const VETOES = [
 ];
 
 const DONORS = [
-  { name: "Sandhills Global",                        amount: "$3,364,667" },
-  { name: "US Senate",                               amount: "$3,283,347" },
-  { name: "Werner Enterprises",                      amount: "$769,416"   },
-  { name: "Exodus Movement",                         amount: "$692,400"   },
-  { name: "American Excellence PAC",                 amount: "$571,699"   },
-  { name: "Herbster Angus Farms",                    amount: "$437,443"   },
-  { name: "HDR Inc",                                 amount: "$429,329"   },
-  { name: "Tenaska Energy",                          amount: "$421,367"   },
-  { name: "Kiewit Corp",                             amount: "$348,822"   },
-  { name: "University of Nebraska",                  amount: "$345,142"   },
-  { name: "Lozier Corp",                             amount: "$327,780"   },
-  { name: "Nebraska Railroaders For Public Safety",  amount: "$250,000"   },
-  { name: "Crete Carrier Corp",                      amount: "$241,079"   },
-  { name: "Union Pacific Corp",                      amount: "$237,587"   },
-  { name: "Hawkins Construction",                    amount: "$223,330"   },
-  { name: "Cornerstone Legacy LLC",                  amount: "$223,000"   },
-  { name: "State of Nebraska",                       amount: "$191,427"   },
-  { name: "Baxter Auto Group",                       amount: "$177,595"   },
-  { name: "University of Nebraska Medical Center",   amount: "$149,235"   },
-  { name: "Green Plains",                            amount: "$121,052"   },
+  { name: "Sandhills Global",                        amount: "$3,364,667", url: "https://www.opensecrets.org/search?q=Sandhills+Global&type=donors" },
+  { name: "US Senate",                               amount: "$3,283,347", url: "https://www.opensecrets.org/search?q=US+Senate&type=donors" },
+  { name: "Werner Enterprises",                      amount: "$769,416",   url: "https://www.opensecrets.org/search?q=Werner+Enterprises&type=donors" },
+  { name: "Exodus Movement",                         amount: "$692,400",   url: "https://www.opensecrets.org/search?q=Exodus+Movement&type=donors" },
+  { name: "American Excellence PAC",                 amount: "$571,699",   url: "https://www.opensecrets.org/search?q=American+Excellence+PAC&type=donors" },
+  { name: "Herbster Angus Farms",                    amount: "$437,443",   url: "https://www.opensecrets.org/search?q=Herbster+Angus+Farms&type=donors" },
+  { name: "HDR Inc",                                 amount: "$429,329",   url: "https://www.opensecrets.org/search?q=HDR+Inc&type=donors" },
+  { name: "Tenaska Energy",                          amount: "$421,367",   url: "https://www.opensecrets.org/search?q=Tenaska+Energy&type=donors" },
+  { name: "Kiewit Corp",                             amount: "$348,822",   url: "https://www.opensecrets.org/search?q=Kiewit+Corp&type=donors" },
+  { name: "University of Nebraska",                  amount: "$345,142",   url: "https://www.opensecrets.org/search?q=University+of+Nebraska&type=donors" },
+  { name: "Lozier Corp",                             amount: "$327,780",   url: "https://www.opensecrets.org/search?q=Lozier+Corp&type=donors" },
+  { name: "Nebraska Railroaders For Public Safety",  amount: "$250,000",   url: "https://www.opensecrets.org/search?q=Nebraska+Railroaders+For+Public+Safety&type=donors" },
+  { name: "Crete Carrier Corp",                      amount: "$241,079",   url: "https://www.opensecrets.org/search?q=Crete+Carrier+Corp&type=donors" },
+  { name: "Union Pacific Corp",                      amount: "$237,587",   url: "https://www.opensecrets.org/search?q=Union+Pacific+Corp&type=donors" },
+  { name: "Hawkins Construction",                    amount: "$223,330",   url: "https://www.opensecrets.org/search?q=Hawkins+Construction&type=donors" },
+  { name: "Cornerstone Legacy LLC",                  amount: "$223,000",   url: "https://www.opensecrets.org/search?q=Cornerstone+Legacy+LLC&type=donors" },
+  { name: "State of Nebraska",                       amount: "$191,427",   url: "https://www.opensecrets.org/search?q=State+of+Nebraska&type=donors" },
+  { name: "Baxter Auto Group",                       amount: "$177,595",   url: "https://www.opensecrets.org/search?q=Baxter+Auto+Group&type=donors" },
+  { name: "University of Nebraska Medical Center",   amount: "$149,235",   url: "https://www.opensecrets.org/search?q=University+of+Nebraska+Medical+Center&type=donors" },
+  { name: "Green Plains",                            amount: "$121,052",   url: "https://www.opensecrets.org/search?q=Green+Plains&type=donors" },
 ];
 
 const VOTER_MANDATES = [
@@ -302,8 +302,8 @@ function NewsletterForm() {
   );
 }
 
-export default function NebraskaWatchdog() {
-  const [activeTab, setActiveTab] = useState("session");
+export default function NebraskaWatchdog({ defaultTab = "session" }) {
+  const [activeTab, setActiveTab] = useState(defaultTab);
   const [billInput, setBillInput] = useState("");
   const [translating, setTranslating] = useState(false);
   const [translation, setTranslation] = useState("");
@@ -380,12 +380,12 @@ export default function NebraskaWatchdog() {
 
         {/* Tab Bar */}
         <div className="max-w-4xl mx-auto px-6">
-          <div className="flex gap-1 border-b border-white/10 mt-6">
+          <div className="flex gap-1 border-b border-white/10 mt-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-3 text-sm font-medium border-b-2 -mb-px transition-all ${
+                className={`px-4 py-3 text-sm font-medium border-b-2 -mb-px transition-all whitespace-nowrap shrink-0 ${
                   activeTab === tab.id
                     ? "border-[#c8102e] text-white"
                     : "border-transparent text-white/40 hover:text-white/70"
@@ -726,7 +726,14 @@ export default function NebraskaWatchdog() {
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-bold text-gray-300 w-5 shrink-0">{i + 1}</span>
-                    <p className="text-sm font-medium text-gray-900">{d.name}</p>
+                    <a
+                      href={d.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm font-medium text-gray-900 hover:text-[#c8102e] transition-colors"
+                    >
+                      {d.name} ↗
+                    </a>
                   </div>
                   <span className="text-sm font-bold text-gray-900 shrink-0">{d.amount}</span>
                 </div>
