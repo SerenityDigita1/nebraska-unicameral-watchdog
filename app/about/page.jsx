@@ -30,7 +30,7 @@ export default function About() {
               So I zoomed out. Or really — I zoomed in. I started asking a simpler question:
               <em className="text-white"> what is actually happening in Nebraska?</em> Not in Washington.
               Not in some cable news cycle. In the statehouse in Lincoln, where 49 senators make
-              decisions that land here — in Omaha, in Sarpy County, in the districts where I live.
+              decisions that land here — in Omaha, in Sarpy County, in the district where I live.
               Decisions about my property taxes, my kids' schools, and whether workers in my
               community can call in sick without losing a day's pay.
             </p>
