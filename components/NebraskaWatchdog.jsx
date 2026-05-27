@@ -780,14 +780,22 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
             <span className="hidden sm:inline"> · </span>
             The unicameral meets for a long session (90 days) in odd years and a short session (60 days) in even years.
           </p>
-          <a
-            href="https://nebraskalegislature.gov"
-            target="_blank"
-            rel="noreferrer"
-            className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
-          >
-            nebraskalegislature.gov ↗
-          </a>
+          <div className="flex items-center gap-4 flex-wrap">
+            <a
+              href="mailto:info@unicameralwatchdog.com"
+              className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
+            >
+              info@unicameralwatchdog.com
+            </a>
+            <a
+              href="https://nebraskalegislature.gov"
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
+            >
+              nebraskalegislature.gov ↗
+            </a>
+          </div>
         </div>
       </footer>
     </div>

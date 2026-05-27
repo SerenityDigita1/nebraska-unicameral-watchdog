@@ -74,7 +74,12 @@ export default function GetInvolved() {
           <p className="text-sm text-gray-500 leading-relaxed mb-3">
             Have a tip? Spotted something wrong? Want to share what's happening in your neighborhood?
           </p>
-          <span className="inline-block text-[10px] font-bold tracking-widest text-amber-600 uppercase bg-amber-50 px-2.5 py-1 rounded-full ring-1 ring-amber-200">Contact form coming soon</span>
+          <a
+            href="mailto:info@unicameralwatchdog.com"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#c8102e] hover:underline"
+          >
+            info@unicameralwatchdog.com
+          </a>
         </div>
 
         {/* Contact your senator */}
