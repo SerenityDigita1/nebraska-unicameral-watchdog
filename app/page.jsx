@@ -1,9 +1,9 @@
 import NebraskaWatchdog from "@/components/NebraskaWatchdog";
 
 export const metadata = {
-  title: "Change My Trajectory — Nebraska Legislature Watchdog",
+  title: "Nebraska Unicameral Watchdog — Plain English Legislature Tracking",
   description:
-    "Tracking the Nebraska unicameral — translated into plain English for everyday Nebraskans.",
+    "Bills, vetoes, and campaign money from Nebraska's unicameral legislature — translated into plain English for Sarpy County and Omaha residents.",
 };
 
 export default function Home() {
