@@ -29,8 +29,8 @@ const ISSUES = [
     stat: "3",
     statNote: "Papillion-La Vista elementary schools at full capacity",
     summary: "Three Papillion-La Vista elementary schools have been at full capacity for two consecutive years, halting new enrollments. Growth is outpacing buildings. Nebraska's TEEOSA school funding formula has been altered and line-item vetoed — some Sarpy County districts are getting less state aid than the legislature intended.",
-    link: null,
-    linkLabel: null,
+    link: "/district-49",
+    linkLabel: "See District 49 school data",
     urgent: true,
   },
   {
@@ -39,8 +39,8 @@ const ISSUES = [
     stat: "140K",
     statNote: "Nebraskans who lost paid sick leave protections",
     summary: "Voters passed paid sick leave and a minimum wage increase. The legislature gutted sick leave for 140,000 workers via LB 415, tried to weaken the minimum wage, and blocked medical cannabis implementation entirely despite 67–71% voter approval. Meanwhile Sen. Andersen filed bills to further restrict SNAP and cash assistance.",
-    link: "/session",
-    linkLabel: "See full 2025 session recap",
+    link: "/pay-gap",
+    linkLabel: "See CEO pay vs. worker pay",
     urgent: true,
   },
   {
@@ -49,8 +49,8 @@ const ISSUES = [
     stat: null,
     statNote: null,
     summary: "From permitless carry to Medicaid work requirements — state policy has direct consequences for safety and stability. Gov. Pillen vetoed bed bug inspections for Omaha public housing residents and food aid for people in recovery. Sen. Andersen's LB 925 would ban encampments without providing housing alternatives.",
-    link: null,
-    linkLabel: null,
+    link: "/session",
+    linkLabel: "See 2025 session recap",
     urgent: false,
   },
   {
@@ -59,8 +59,8 @@ const ISSUES = [
     stat: "$1.5B",
     statNote: "In business tax incentives flagged by the state auditor",
     summary: "The same 2025 session that vetoed food aid and bed bug inspections approved $1.5 billion in business tax incentives over four fiscal years. Out-of-state PACs — including the Koch-backed Americans for Prosperity at $2.4M+ — flood Nebraska legislative races. The top 20 donors to Nebraska politics in 2024 are tracked on this site.",
-    link: "/pay-gap",
-    linkLabel: "See CEO pay vs. worker pay →",
+    link: "/two-tax-systems",
+    linkLabel: "See how the wealthy avoid taxes",
     urgent: false,
   },
 ];
