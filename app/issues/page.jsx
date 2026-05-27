@@ -59,8 +59,8 @@ const ISSUES = [
     stat: "$1.5B",
     statNote: "In business tax incentives flagged by the state auditor",
     summary: "The same 2025 session that vetoed food aid and bed bug inspections approved $1.5 billion in business tax incentives over four fiscal years. Out-of-state PACs — including the Koch-backed Americans for Prosperity at $2.4M+ — flood Nebraska legislative races. The top 20 donors to Nebraska politics in 2024 are tracked on this site.",
-    link: "/",
-    linkLabel: "See Follow the Money",
+    link: "/pay-gap",
+    linkLabel: "See CEO pay vs. worker pay →",
     urgent: false,
   },
 ];
