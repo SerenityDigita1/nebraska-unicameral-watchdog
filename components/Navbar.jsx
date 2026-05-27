@@ -8,8 +8,9 @@ const NAV_LINKS = [
   { href: "/district-49",   label: "District 49" },
   { href: "/session",       label: "Session Recaps" },
   { href: "/issues",        label: "Key Issues" },
-  { href: "/pay-gap",       label: "Pay vs. Power" },
-  { href: "/interim",       label: "Interim Work" },
+  { href: "/pay-gap",          label: "Pay vs. Power" },
+  { href: "/two-tax-systems",  label: "Two Tax Systems" },
+  { href: "/interim",          label: "Interim Work" },
   { href: "/about",         label: "About" },
   { href: "/get-involved",  label: "Get Involved" },
 ];
