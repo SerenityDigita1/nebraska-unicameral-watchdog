@@ -14,8 +14,8 @@ const STEPS = [
     step: "1",
     word: "Buy",
     color: "#1d4ed8",
-    heading: "Accumulate assets — don't sell",
-    body: "Invest heavily in stocks or real estate. As long as you don't sell, there's no taxable event. The asset can grow from $1M to $1B and you owe nothing. This is called an \"unrealized gain\" — real wealth, zero tax.",
+    heading: "Accumulate assets. Don't sell.",
+    body: "Invest heavily in stocks or real estate. As long as you don't sell, there's no taxable event. The asset can grow from $1M to $1B and you owe nothing. This is called an \"unrealized gain\": real wealth, zero tax.",
     example: "The 25 wealthiest Americans watched their collective net worth grow by $401 billion over four years. Because they didn't sell, almost none of that growth triggered a taxable event.",
   },
   {
@@ -23,16 +23,16 @@ const STEPS = [
     word: "Borrow",
     color: "#c8102e",
     heading: "Live off loans, not income",
-    body: "Instead of selling stock to pay for your lifestyle, you use it as collateral for a loan. Loans are not income. They are never taxed. You can borrow tens or hundreds of millions of dollars and owe zero income tax on any of it. Major banks — Morgan Stanley, JPMorgan, Schwab — offer these \"securities-backed lines of credit\" to clients with $100K+ in assets.",
+    body: "Instead of selling stock to pay for your lifestyle, you use it as collateral for a loan. Loans are not income. They are never taxed. You can borrow tens or hundreds of millions of dollars and owe zero income tax on any of it. Major banks like Morgan Stanley, JPMorgan, and Schwab offer these \"securities-backed lines of credit\" to clients with $100K+ in assets.",
     example: "The Federal Reserve tracked $138 billion in outstanding securities-backed loans as of early 2024. That's $138 billion in tax-free spending power.",
   },
   {
     step: "3",
     word: "Die",
     color: "#0a0e1a",
-    heading: "Pass it on — the gain disappears",
-    body: "When you die, your heirs inherit your assets at their current market value. The IRS calls this a \"stepped-up basis.\" Decades of appreciation — the gains you never paid taxes on — are permanently erased. Your heirs can sell immediately and owe nothing on that growth.",
-    example: "The stepped-up basis loophole costs the federal government $72.5 billion in foregone tax revenue in 2026 alone — about one-quarter of all capital gains tax income. 56% of that benefit goes to the wealthiest 20% of estates.",
+    heading: "Pass it on. The gain disappears.",
+    body: "When you die, your heirs inherit your assets at their current market value. The IRS calls this a \"stepped-up basis.\" Decades of appreciation, the gains you never paid taxes on, are permanently erased. Your heirs can sell immediately and owe nothing on that growth.",
+    example: "The stepped-up basis loophole costs the federal government $72.5 billion in foregone tax revenue in 2026 alone, about one-quarter of all capital gains tax income. 56% of that benefit goes to the wealthiest 20% of estates.",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function TwoTaxSystems() {
           <h1 className="text-3xl font-bold text-gray-900 mt-1 mb-2">There Are Two Tax Systems</h1>
           <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
             One for people who earn a paycheck. One for people whose wealth lives in stock.
-            They are not the same system — and the gap between them is not an accident.
+            They are not the same system. The gap between them is not an accident.
           </p>
         </div>
 
@@ -57,11 +57,11 @@ export default function TwoTaxSystems() {
           <p className="text-white font-semibold text-lg leading-snug mb-3">
             ProPublica obtained actual IRS records for America's 25 wealthiest people.
             Between 2014 and 2018, their wealth grew by $401 billion.
-            They paid $13.6 billion in federal taxes — a true tax rate of <span className="text-[#c8102e]">3.4%</span>.
+            They paid $13.6 billion in federal taxes. A true tax rate of <span className="text-[#c8102e]">3.4%</span>.
           </p>
           <p className="text-white/60 text-sm leading-relaxed mb-4">
             The median American household paid <span className="text-white font-semibold">14%</span>.
-            That's not a loophole. That's the system working exactly as designed — for people
+            That's not a loophole. That's the system working exactly as designed, for people
             wealthy enough to use it.
           </p>
           <a
@@ -113,14 +113,14 @@ export default function TwoTaxSystems() {
               <h2 className="text-base font-bold text-gray-900 mb-2">The $1 Salary Trick</h2>
               <p className="text-sm text-gray-600 leading-relaxed mb-3">
                 Elon Musk, Mark Zuckerberg, Larry Page, and dozens of other billionaires take an
-                official salary of $1 per year. This isn't charity — it's tax strategy. A $1 salary
+                official salary of $1 per year. This isn't charity. It's tax strategy. A $1 salary
                 means almost no ordinary income tax. Their actual compensation comes through stock
                 grants and options, which are taxed at the lower capital gains rate (20%) instead
                 of the income tax rate (up to 37%).
               </p>
               <p className="text-sm text-gray-600 leading-relaxed">
                 Zuckerberg has taken a $1 salary since 2013. In that time, his net worth grew by
-                more than $100 billion. The salary is irrelevant. The wealth is in the stock — and
+                more than $100 billion. The salary is irrelevant. The wealth is in the stock, and
                 as long as he doesn't sell it, it's never taxed.
               </p>
             </div>
@@ -168,14 +168,14 @@ export default function TwoTaxSystems() {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-5">
           <h2 className="text-base font-bold text-gray-900 mb-3">The Reform Debate</h2>
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
-            The user's instinct — that taxes should reflect total wealth, not just declared income — is
+            The idea that taxes should reflect total wealth, not just declared income, is
             the basis of the most serious current reform proposals in Congress.
           </p>
           <div className="space-y-4">
             <div className="bg-gray-50 rounded-xl p-4">
               <p className="text-sm font-bold text-gray-900 mb-1">Wyden's Billionaires Income Tax Act (reintroduced 2025)</p>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Would require annual taxation on gains from tradable assets — treating stock
+                Would require annual taxation on gains from tradable assets, treating stock
                 appreciation as income even if not sold. Targets fewer than 1,000 Americans
                 with $100M+ annual income or $1B+ in assets. Projected to raise $500B+ over
                 10 years. Has 20+ Senate cosponsors. Has not passed.
@@ -189,8 +189,8 @@ export default function TwoTaxSystems() {
             <div className="bg-gray-50 rounded-xl p-4">
               <p className="text-sm font-bold text-gray-900 mb-1">Biden's Billionaire Minimum Income Tax (proposed 2022)</p>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Would have required a 20% minimum tax on "true income" — including unrealized
-                capital gains — for billionaires. Projected to raise $500B over 10 years.
+                Would have required a 20% minimum tax on "true income," including unrealized
+                capital gains, for billionaires. Projected to raise $500B over 10 years.
                 Never passed Congress.
               </p>
             </div>
@@ -201,7 +201,7 @@ export default function TwoTaxSystems() {
         <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-8 text-white">
           <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Why this matters in Nebraska</p>
           <p className="text-white text-sm leading-relaxed mb-3">
-            Nebraska's state income tax is based on federal adjusted gross income — which means
+            Nebraska's state income tax is based on federal adjusted gross income, which means
             Nebraska's tax system inherits all the same loopholes. If a wealthy Omaha executive
             uses Buy, Borrow, Die to pay a 3% federal rate, they're also paying a fraction of
             what their median employees pay in state taxes.
@@ -209,7 +209,7 @@ export default function TwoTaxSystems() {
           <p className="text-white/60 text-sm leading-relaxed">
             Meanwhile the Nebraska legislature cut income taxes (LB 9) in ways that benefit
             higher earners more, handed out $1.5B in corporate tax incentives, and gutted
-            paid sick leave for 140,000 workers — many of whom pay a higher effective tax
+            paid sick leave for 140,000 workers. Many of them pay a higher effective tax
             rate than the CEOs of the companies they work for.
           </p>
           <div className="flex gap-4 mt-4 flex-wrap">

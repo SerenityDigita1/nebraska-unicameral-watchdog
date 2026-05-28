@@ -15,7 +15,7 @@ export default function About() {
           <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-4">My Journey</p>
 
           <p className="text-white/90 text-base font-semibold leading-snug mb-4">
-            I'm an Omaha resident who got tired of feeling like politics was something happening to me — not something I had any say in.
+            I'm an Omaha resident who got tired of feeling like politics was something happening to me, not something I had any say in.
           </p>
 
           <div className="space-y-4 text-sm text-white/70 leading-relaxed">
@@ -27,16 +27,16 @@ export default function About() {
             </p>
 
             <p>
-              So I zoomed out. Or really — I zoomed in. I started asking a simpler question:
+              So I zoomed out. Or really, I zoomed in. I started asking a simpler question:
               <em className="text-white"> what is actually happening in Nebraska?</em> Not in Washington.
               Not in some cable news cycle. In the statehouse in Lincoln, where 49 senators make
-              decisions that land here — in Omaha, in Sarpy County, in the district where I live.
+              decisions that land here, in Omaha, in Sarpy County, in the district where I live.
               Decisions about my property taxes, my kids' schools, and whether workers in my
               community can call in sick without losing a day's pay.
             </p>
 
             <p>
-              This site is me documenting that process out loud. It's me learning the unicameral —
+              This site is me documenting that process out loud. It's me learning the unicameral:
               how a bill moves, who stops it, who funds the people stopping it, and what they get
               in return. It's me translating the stuff that's designed to be confusing into language
               that makes sense to people who have jobs and families and don't have time to read
@@ -47,17 +47,17 @@ export default function About() {
               Here's what I've learned so far: local politics is not too small to matter.
               It's actually where most of the things that affect your daily life get decided.
               Property taxes. School funding. Whether your county has to outsource services because
-              the state didn't send the money it promised. These aren't abstract policy debates —
-              they're your actual life.
+              the state didn't send the money it promised. These aren't abstract policy debates.
+              They're your actual life.
             </p>
 
             <div className="border-l-2 border-[#c8102e]/50 pl-4 my-5">
               <p className="text-white/90 italic">
-                There's a scene in <em>A Bug's Life</em> where Hopper — the grasshopper running the
-                whole operation — pulls his crew aside and explains exactly why they have to keep
+                There's a scene in <em>A Bug's Life</em> where Hopper, the grasshopper running the
+                whole operation, pulls his crew aside and explains exactly why they have to keep
                 the ants scared and overwhelmed. Not because the grasshoppers are stronger.
-                Because if the ants ever stop and count — if they ever realize how many of
-                them there are compared to how few grasshoppers there are — it's over.
+                Because if the ants ever stop and count, if they ever realize how many of
+                them there are compared to how few grasshoppers there are, it's over.
                 The whole thing falls apart.
               </p>
               <p className="text-white/60 text-xs mt-2">
@@ -69,7 +69,7 @@ export default function About() {
               The people who benefit from a disengaged public work very hard to keep it that way.
               They flood the zone with more information than anyone can process. They make the
               rules complicated. They make the calendar confusing. They make it feel like a game
-              you weren't invited to and can't win anyway — so why bother showing up?
+              you weren't invited to and can't win anyway, so why bother showing up?
             </p>
 
             <p>
@@ -83,8 +83,8 @@ export default function About() {
             <p>
               That's the gap this site is trying to close. Not by being louder than everyone
               else. By being clearer. By watching what people vote for, tracking what they
-              actually fund, and making it easy for anyone — regardless of how much time
-              they have — to understand who is doing what with the power we gave them.
+              actually fund, and making it easy for anyone, regardless of how much time
+              they have, to understand who is doing what with the power we gave them.
             </p>
 
             <p className="text-white font-medium">
@@ -98,10 +98,10 @@ export default function About() {
           <h2 className="text-base font-bold text-gray-900 mb-3">What this site actually does</h2>
           <div className="space-y-2">
             {[
-              "Tracks bills moving through the Nebraska unicameral — in plain English, not legalese",
+              "Tracks bills moving through the Nebraska unicameral, in plain English not legalese",
               "Follows the money behind legislative campaigns and shows who's buying what",
               "Calls out when voter-approved measures get quietly gutted after the election",
-              "Spotlights District 49 specifically — who represents it, how they vote, and what it costs local residents",
+              "Spotlights District 49 specifically: who represents it, how they vote, and what it costs local residents",
               "Connects the dots between state-level decisions and what happens in your neighborhood",
             ].map((item) => (
               <div key={item} className="flex items-start gap-2.5">
@@ -118,7 +118,7 @@ export default function About() {
           <p className="text-sm text-gray-600 leading-relaxed">
             This site covers Nebraska state government from the perspective of working Nebraskans.
             We believe people deserve to know when their elected officials vote for corporate interests
-            over their constituents — and we won't pretend that's a neutral observation.
+            over their constituents, and we won't pretend that's a neutral observation.
             Every fact on this site is sourced: Nebraska Examiner, Nebraska Public Media,
             Ballotpedia, Nebraska Appleseed, Flatwater Free Press, and official legislative records.
             If we get something wrong, we correct it.

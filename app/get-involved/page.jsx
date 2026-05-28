@@ -40,7 +40,7 @@ export default function GetInvolved() {
           <h2 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h2>
           <p className="text-white/50 text-sm mb-4 leading-relaxed">
             When the 110th session kicks off in January 2027, you'll get plain-English updates
-            on what's happening in Lincoln — before it affects you.
+            on what's happening in Lincoln before it affects you.
           </p>
           {status === "success" ? (
             <div className="bg-white/10 rounded-xl px-4 py-3 border border-white/10">
@@ -65,7 +65,7 @@ export default function GetInvolved() {
               </button>
             </form>
           )}
-          {status === "error" && <p className="text-red-400 text-xs mt-2">Something went wrong — try again.</p>}
+          {status === "error" && <p className="text-red-400 text-xs mt-2">Something went wrong. Try again.</p>}
         </div>
 
         {/* Contact */}
