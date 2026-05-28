@@ -11,6 +11,7 @@ const NAV_LINKS = [
     label: "Key Issues",
     children: [
       { href: "/issues",          label: "Overview" },
+      { href: "/living-wage",     label: "Living Wage" },
       { href: "/pay-gap",         label: "Pay vs. Power" },
       { href: "/two-tax-systems", label: "Two Tax Systems" },
       { href: "/interim",         label: "Interim Work" },
