@@ -109,7 +109,7 @@ export default function TariffActionBanner() {
             </a>
           </div>
           <p className="text-white/30 text-xs mt-2">
-            Not in District 2? <a href="https://www.house.gov/representatives/find-your-representative" target="_blank" rel="noreferrer" className="hover:text-white/60 underline">Find your representative ↗</a>
+            Not in Congressional District 2? <a href="https://www.house.gov/representatives/find-your-representative" target="_blank" rel="noreferrer" className="hover:text-white/60 underline">Find your representative ↗</a>
           </p>
         </div>
 
