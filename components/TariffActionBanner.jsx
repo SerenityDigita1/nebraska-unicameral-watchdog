@@ -52,9 +52,19 @@ export default function TariffActionBanner() {
             No Nebraska family can make that kind of deal. Working families pay full price at the grocery store,
             the hardware store, and the gas pump. This bill uses the revenue those tariffs collect to put some of it back in your pocket.
           </p>
-          <p className="text-white/40 text-xs mt-2">
-            Sources: CNBC, 9to5Mac, Yale Budget Lab, Nebraska Public Media
-          </p>
+          <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+            {[
+              { label: "CNBC", url: "https://www.cnbc.com/2025/04/12/trump-exempts-phones-computers-chips-tariffs-apple-dell.html" },
+              { label: "9to5Mac", url: "https://9to5mac.com/2025/08/06/apples-100b-us-commitment-got-it-a-100-chip-tariff-exemption/" },
+              { label: "Yale Budget Lab", url: "https://budgetlab.yale.edu/research/where-we-stand-fiscal-economic-and-distributional-effects-all-us-tariffs-enacted-2025-through-april" },
+              { label: "Nebraska Public Media", url: "https://nebraskapublicmedia.org/en/news/news-articles/report-tariffs-will-cost-nebraska-farmers-943-million-this-year/" },
+            ].map((s) => (
+              <a key={s.label} href={s.url} target="_blank" rel="noreferrer"
+                className="text-white/30 hover:text-white/60 text-xs underline transition-colors">
+                {s.label} ↗
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Why call */}
