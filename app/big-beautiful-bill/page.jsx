@@ -50,7 +50,7 @@ export default function BigBeautifulBill() {
             <div className="bg-white/5 rounded-xl p-4 border border-white/10">
               <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-2">Bottom 10% of earners</p>
               <div className="text-2xl font-black text-[#c8102e]">-$1,200/yr</div>
-              <p className="text-white/60 text-xs mt-1 leading-relaxed">Lose household resources. Tax cuts deliver little — Medicaid and SNAP cuts take more.</p>
+              <p className="text-white/60 text-xs mt-1 leading-relaxed">Lose household resources. Tax cuts deliver little. Medicaid and SNAP cuts take more.</p>
             </div>
             <div className="bg-white/5 rounded-xl p-4 border border-white/10">
               <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-2">Top 10% of earners</p>
@@ -72,12 +72,12 @@ export default function BigBeautifulBill() {
               {
                 title: "No Tax on Tips",
                 marketed: "Deduction of up to $25,000 on tip income for workers in tipped occupations.",
-                reality: "Primarily benefits workers who already have enough total income to owe federal tax. A tipped worker earning $25,000 total likely owes little federal income tax regardless — meaning the deduction is worth little or nothing to the lowest-wage service workers it's marketed toward.",
+                reality: "Primarily benefits workers who already have enough total income to owe federal tax. A tipped worker earning $25,000 total likely owes little federal income tax regardless, meaning the deduction is worth little or nothing to the lowest-wage service workers it's marketed toward.",
               },
               {
                 title: "No Tax on Overtime",
                 marketed: "Deduction of up to $12,500 on overtime premium pay (the 0.5x portion only, not base wage). Phases out above $150,000 income.",
-                reality: "Does not apply to the self-employed or gig workers. Only covers FLSA-defined overtime. Workers without stable full-time employment — who most need overtime income — often aren't covered.",
+                reality: "Does not apply to the self-employed or gig workers. Only covers FLSA-defined overtime. Workers without stable full-time employment, who most need overtime income, often aren't covered.",
               },
               {
                 title: "Child Tax Credit: $2,000 → $2,200",
@@ -151,14 +151,14 @@ export default function BigBeautifulBill() {
         <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-8 text-white">
           <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Nebraska was first</p>
           <p className="text-white font-semibold text-base leading-snug mb-3">
-            On May 1, 2026 — seven months ahead of the federal deadline — Nebraska became
+            On May 1, 2026, seven months ahead of the federal deadline, Nebraska became
             the first state in the nation to implement Medicaid work requirements under the bill.
             Gov. Pillen co-announced the milestone with CMS Administrator Dr. Mehmet Oz.
           </p>
           <p className="text-white/60 text-sm leading-relaxed">
             To keep Medicaid coverage, expansion enrollees aged 18-64 must now document 80 hours
             of work, education, or community service per month and report it to the state.
-            Those who can't document it — or who miss the paperwork — lose coverage.
+            Those who can't document it, or who miss the paperwork, lose coverage.
             The Nebraska Hospital Association projected approximately 23,000 Nebraskans
             would lose coverage in 2026 alone.
           </p>
@@ -192,7 +192,7 @@ export default function BigBeautifulBill() {
               <p className="text-sm text-gray-600 leading-relaxed">
                 Bottom earners lose $1,200/year. Top earners gain $13,600/year. To partially fund
                 the tax cuts: $911 billion from Medicaid, $187 billion from SNAP.
-                Adds $3.4 trillion to the deficit — costs passed to future taxpayers.
+                Adds $3.4 trillion to the deficit. Costs passed to future taxpayers.
               </p>
             </div>
           </div>
@@ -206,7 +206,7 @@ export default function BigBeautifulBill() {
               <span className="text-[#c8102e] shrink-0 mt-0.5">↗</span>
               <div>
                 <p className="text-sm font-semibold text-gray-900 group-hover:text-[#c8102e] transition-colors">What a Living Wage Actually Costs in Sarpy County</p>
-                <p className="text-xs text-gray-400">The $50K vs. $100K budget breakdown — and which employers are paying workers enough to live on.</p>
+                <p className="text-xs text-gray-400">The $50K vs. $100K budget breakdown, and which employers are paying workers enough to live on.</p>
               </div>
             </Link>
             <Link href="/pay-gap" className="flex items-start gap-3 group">
@@ -220,14 +220,14 @@ export default function BigBeautifulBill() {
               <span className="text-[#c8102e] shrink-0 mt-0.5">↗</span>
               <div>
                 <p className="text-sm font-semibold text-gray-900 group-hover:text-[#c8102e] transition-colors">There Are Two Tax Systems</p>
-                <p className="text-xs text-gray-400">How the wealthy use Buy, Borrow, Die to pay 3.4% while median households pay 14% — and how this bill widens that gap.</p>
+                <p className="text-xs text-gray-400">How the wealthy use Buy, Borrow, Die to pay 3.4% while median households pay 14%, and how this bill widens that gap.</p>
               </div>
             </Link>
             <Link href="/session" className="flex items-start gap-3 group">
               <span className="text-[#c8102e] shrink-0 mt-0.5">↗</span>
               <div>
                 <p className="text-sm font-semibold text-gray-900 group-hover:text-[#c8102e] transition-colors">2025 Nebraska Session Recap</p>
-                <p className="text-xs text-gray-400">How the state legislature handled voter mandates, corporate tax incentives, and sick leave — the state-level version of the same story.</p>
+                <p className="text-xs text-gray-400">How the state legislature handled voter mandates, corporate tax incentives, and sick leave. The state-level version of the same story.</p>
               </div>
             </Link>
           </div>
