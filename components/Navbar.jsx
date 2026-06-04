@@ -10,12 +10,13 @@ const NAV_LINKS = [
   {
     label: "Key Issues",
     children: [
-      { href: "/issues",          label: "Overview" },
-      { href: "/data-centers",    label: "AI & Power Grid" },
-      { href: "/living-wage",     label: "Living Wage" },
-      { href: "/pay-gap",         label: "Pay vs. Power" },
-      { href: "/two-tax-systems", label: "Two Tax Systems" },
-      { href: "/interim",         label: "Interim Work" },
+      { href: "/issues",              label: "Overview" },
+      { href: "/big-beautiful-bill", label: "Big Beautiful Bill" },
+      { href: "/data-centers",       label: "AI & Power Grid" },
+      { href: "/living-wage",        label: "Living Wage" },
+      { href: "/pay-gap",            label: "Pay vs. Power" },
+      { href: "/two-tax-systems",    label: "Two Tax Systems" },
+      { href: "/interim",            label: "Interim Work" },
     ],
   },
   {
