@@ -114,7 +114,7 @@ export default function TariffActionBanner() {
         </div>
 
         {/* What to say */}
-        <div className="bg-white/5 rounded-xl p-4 mb-5 border border-white/10">
+        <div className="bg-white/5 rounded-xl p-4 mb-6 border border-white/10">
           <p className="text-xs font-bold text-white/50 uppercase tracking-widest mb-2">What to say</p>
           <p className="text-white/70 text-sm leading-relaxed italic">
             "I'm a Nebraska constituent. Tariffs are costing my family real money every month.
@@ -122,6 +122,64 @@ export default function TariffActionBanner() {
             which would return some of that tariff revenue directly to working families.
             Please support this bill."
           </p>
+        </div>
+
+        {/* Senator Responses */}
+        <div className="border-t border-white/10 pt-6 mb-5">
+          <p className="text-xs font-bold text-white/50 uppercase tracking-widest mb-4">Senator responses</p>
+
+          {/* Ricketts response */}
+          <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden mb-3">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+              <div>
+                <p className="text-sm font-bold text-white">Sen. Pete Ricketts (R-NE)</p>
+                <p className="text-xs text-white/40">Responded to constituent contact</p>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                Responded
+              </span>
+            </div>
+            <div className="px-4 py-4 space-y-3 text-sm text-white/60 leading-relaxed">
+              <p>Thank you for contacting my office about trade policy.</p>
+              <p>Trade allows Americans to compete globally and provide more prosperity to our communities. Good competition requires everyone to compete with the same rulebook, and for too long, some countries have taken advantage of generous American policies. Tariffs, a monetary charge levied on imported goods and services, are an important tool to make sure Americans get to compete on a level playing field.</p>
+              <p>In his first administration, President Trump effectively used tariffs to protect domestic industries from bad actors, advance foreign policy goals, and reduce trade deficits with other countries. For example, Trump applied tariffs to pressure Communist China to buy more of our agricultural products.</p>
+              <p>During the last Administration, the U.S. average weighted tariff was 1.4%, while the global weighted tariff was almost 6%. We have to level the playing field with our trading partners. Our country must combat Communist China's existential threat to our security, freedoms, and domestic jobs. We need Mexico and Canada to do their part in helping secure our borders and prevent the flow of dangerous narcotics into our communities. After four years of weak trade policy, President Trump will continue his work to ensure U.S. citizens remain safe and American business is competitive on the global stage.</p>
+              <p>My primary mission as your United States Senator is to make government work with proven Nebraskan solutions that are ready for America. To better inform my decision-making, it is important that I hear the ideas, concerns, and opinions of all Nebraskans. I appreciate the time and effort you took to provide input on trade policy and will keep it in mind as the U.S. Senate considers this issue.</p>
+            </div>
+            <div className="px-4 py-3 bg-white/5 border-t border-white/10">
+              <p className="text-xs text-amber-400 leading-relaxed">
+                Sen. Ricketts' response defends tariffs as a policy tool but does not mention S. 4093, the Tariff Refunds for Working Families Act, or address the question of whether tariff revenue should be returned to Nebraska families.
+              </p>
+            </div>
+          </div>
+
+          {/* Fischer — no response */}
+          <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden mb-3">
+            <div className="flex items-center justify-between px-4 py-3">
+              <div>
+                <p className="text-sm font-bold text-white">Sen. Deb Fischer (R-NE)</p>
+                <p className="text-xs text-white/40">Constituent contact sent</p>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-white/10 text-white/40 border border-white/10">
+                No response yet
+              </span>
+            </div>
+          </div>
+
+          {/* Bacon — no response */}
+          <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3">
+              <div>
+                <p className="text-sm font-bold text-white">Rep. Don Bacon (R-NE-02)</p>
+                <p className="text-xs text-white/40">Constituent contact sent</p>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-white/10 text-white/40 border border-white/10">
+                No response yet
+              </span>
+            </div>
+          </div>
+
+          <p className="text-white/30 text-xs mt-3">This page will be updated as responses arrive.</p>
         </div>
 
         {/* Bill link + statewide note */}
