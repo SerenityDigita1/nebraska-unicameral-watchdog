@@ -1,4 +1,8 @@
-export const metadata = { title: "About · NE Watchdog" };
+export const metadata = {
+  title: "About Nebraska Unicameral Watchdog",
+  description:
+    "A citizen watchdog tracking Nebraska's unicameral legislature for District 49 and Sarpy County — bills, money, votes. Independent, sourced, no agenda except accountability.",
+};
 
 export default function About() {
   return (

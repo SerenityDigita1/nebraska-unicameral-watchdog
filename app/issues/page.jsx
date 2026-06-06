@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export const metadata = { title: "Key Issues · NE Watchdog" };
+export const metadata = {
+  title: "Key Issues — Nebraska Legislature 2025-2026",
+  description:
+    "Property taxes, living wage, AI data centers, and corporate influence in Nebraska's unicameral. The issues that most affect Sarpy County families, sourced and explained.",
+};
 
 const ISSUES = [
   {

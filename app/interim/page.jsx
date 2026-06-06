@@ -1,4 +1,8 @@
-export const metadata = { title: "Interim Work · NE Watchdog" };
+export const metadata = {
+  title: "Nebraska Legislature Interim Studies 2026",
+  description:
+    "The 2026 short session ended in April. Track what Nebraska's unicameral committees are studying before the 111th Legislature convenes in January 2027.",
+};
 
 export default function Interim() {
   return (

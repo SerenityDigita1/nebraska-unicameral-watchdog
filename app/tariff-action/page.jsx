@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export const metadata = { title: "Tariff Refunds for Working Families · NE Watchdog" };
+export const metadata = {
+  title: "S. 4093: Tariff Refunds for Nebraska Families — Take Action",
+  description:
+    "Tariffs cost Nebraska families $1,700+/year. S. 4093 would return $600/person using tariff revenue already collected. Fischer and Ricketts haven't signed on. See Ricketts' response.",
+};
 
 export default function TariffAction() {
   return (

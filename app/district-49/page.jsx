@@ -1,4 +1,8 @@
-export const metadata = { title: "District 49 · NE Watchdog" };
+export const metadata = {
+  title: "Nebraska Legislative District 49 — Sen. Bob Andersen Bill Tracker",
+  description:
+    "Track Sen. Bob Andersen's record in Lincoln. Plain-English breakdowns of every bill from District 49 — SNAP cuts, property taxes, and what each vote means for Sarpy County families.",
+};
 
 const ANDERSEN_BILLS = [
   {

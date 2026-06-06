@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export const metadata = { title: "AI Data Centers & Nebraska's Power Grid · NE Watchdog" };
+export const metadata = {
+  title: "LB 1261: AI Data Centers and Nebraska's Power Grid",
+  description:
+    "LB 1261 gave major tax exemptions to AI data centers in Nebraska. OPPD's load is projected to hit 41%. Sarpy County loses $5.8M/yr in property taxes. Who benefits and who pays?",
+};
 
 const SOURCES = [
   { label: "Nebraska Examiner: Pillen celebrates LB 1261", url: "https://nebraskaexaminer.com/briefs/pillen-celebrates-law-boosting-private-energy-help-in-public-power-state-pushes-for-more-ai-growth/" },

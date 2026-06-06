@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export const metadata = { title: "Two Tax Systems · NE Watchdog" };
+export const metadata = {
+  title: "Two Tax Systems — How the Wealthy Pay Less Than You",
+  description:
+    "The top 25 wealthiest Americans paid a 3.4% true tax rate on $401B in wealth gains. The median household pays 14%. ProPublica data explains how the tax code is designed this way.",
+};
 
 const PROPUBLICA_DATA = [
   { name: "Jeff Bezos",            wealthGrowth: "$99.0B",        taxesPaid: "$973M",   trueRate: "0.98%", color: "#c8102e" },

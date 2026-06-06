@@ -5,9 +5,13 @@ export default function sitemap() {
     "/district-49",
     "/session",
     "/issues",
+    "/big-beautiful-bill",
+    "/data-centers",
+    "/living-wage",
     "/pay-gap",
     "/two-tax-systems",
     "/interim",
+    "/tariff-action",
     "/about",
     "/get-involved",
   ];

@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export const metadata = { title: "The One Big Beautiful Bill · NE Watchdog" };
+export const metadata = {
+  title: "One Big Beautiful Bill — What It Really Means for Nebraska",
+  description:
+    "CBO analysis: the bottom 10% lose $1,200/yr while top earners gain $13,600. More than 55,000 Nebraskans risk losing Medicaid. Here's what Pillen isn't saying about H.R. 1.",
+};
 
 const SOURCES = [
   { label: "CBO: Distributional Effects of Public Law 119-21 (post-enactment, August 2025)", url: "https://www.cbo.gov/publication/61367" },

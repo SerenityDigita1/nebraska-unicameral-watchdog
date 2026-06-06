@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export const metadata = { title: "Pay vs. Power · NE Watchdog" };
+export const metadata = {
+  title: "CEO Pay vs. Worker Wages — Nebraska Employer Scorecard",
+  description:
+    "Nebraska's biggest Omaha-area employers pay their CEOs 27x to 146x what the median worker earns. Sourced from SEC proxy filings — Union Pacific, Werner, Berkshire, Valmont, and more.",
+};
 
 const COMPANIES = [
   {
