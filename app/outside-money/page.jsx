@@ -36,7 +36,7 @@ export default function OutsideMoney() {
             In June 2026, Texas Sen. Ted Cruz came to Lincoln to warn Nebraskans about outside interference in their politics.
           </p>
           <p className="text-white/60 text-sm leading-relaxed mb-3">
-            The Democrats, he told a crowd at the Country Club of Lincoln, were "dropping millions of dollars into Nebraska" to "deceive the voters." He was there to support Gov. Pete Ricketts, who's running for U.S. Senate on a message of keeping Nebraska local—protecting Nebraskan interests from coastal elites and national political machines.
+            The Democrats, he told a crowd at the Country Club of Lincoln, were "dropping millions of dollars into Nebraska" to "deceive the voters." He was there to support Gov. Pete Ricketts, who's running for U.S. Senate on a message of keeping Nebraska local. He promised to protect Nebraskan interests from coastal elites and national political machines.
           </p>
           <p className="text-white/60 text-sm leading-relaxed">
             The problem is obvious: the man warning about outside influence *is* the outside influence. And the candidate he's supporting has built his entire political career on it.
@@ -52,7 +52,7 @@ export default function OutsideMoney() {
               Pete Ricketts didn't invent his political fortune. His family did.
             </p>
             <p>
-              Since 2010, the Ricketts family has poured <strong className="text-gray-900">$28.9 million</strong> into Nebraska politics. That's not just campaign contributions—that's a controlling interest in how Nebraska votes. Of every 11 dollars spent on any Nebraska political race over the last 12 years, one came from the Ricketts family.
+              Since 2010, the Ricketts family has poured <strong className="text-gray-900">$28.9 million</strong> into Nebraska politics. That's not just campaign contributions. That's a controlling interest in how Nebraska votes. Of every 11 dollars spent on any Nebraska political race over the last 12 years, one came from the Ricketts family.
             </p>
             <div className="bg-gray-50 rounded-xl p-4 border-l-2 border-[#c8102e]">
               <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">What this means</p>
@@ -77,7 +77,7 @@ export default function OutsideMoney() {
               On wages, the answer is clear: he opposed them.
             </p>
             <p>
-              Ricketts didn't just fail to raise Nebraska's minimum wage. He actively fought against it. More damaging, under his governorship, the Legislature passed a law that <strong className="text-gray-900">caps how much the minimum wage can rise each year</strong>. For workers under 20, there's an even lower "youth wage"—below $15 an hour, capped until 2065.
+              Ricketts didn't just fail to raise Nebraska's minimum wage. He actively fought against it. More damaging, under his governorship, the Legislature passed a law that <strong className="text-gray-900">caps how much the minimum wage can rise each year</strong>. For workers under 20, there's an even lower "youth wage" - below $15 an hour, capped until 2065.
             </p>
             <div className="grid sm:grid-cols-2 gap-3 my-4">
               <div className="bg-gray-50 rounded-xl p-3">
@@ -106,7 +106,7 @@ export default function OutsideMoney() {
               Ricketts' record shows the pattern clearly. Millions flowed in from the Ricketts family, corporate PACs (Walmart, Google, Microsoft), and now the national Republican establishment. In return, what did they get? A governor who fought wage increases, capped wage growth, and cut taxes for corporations while workers fell further behind.
             </p>
             <p>
-              Now, in 2026, that same machine is running again—national Republicans are investing heavily, Ted Cruz is flying in to campaign, and the message is the same: outside forces are threatening Nebraska.
+              Now, in 2026, that same machine is running again. National Republicans are investing heavily, Ted Cruz is flying in to campaign, and the message is the same: outside forces are threatening Nebraska.
             </p>
             <p className="font-semibold text-gray-900">
               The irony is lost on no one: the outside forces *are* the Ricketts machine.

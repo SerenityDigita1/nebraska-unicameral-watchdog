@@ -12,10 +12,8 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <NebraskaWatchdog />
-
       {/* Key Issues Section */}
-      <section className="bg-[#f4f5f7] border-t border-gray-200">
+      <section className="bg-[#f4f5f7]">
         <div className="max-w-4xl mx-auto px-6 py-12">
           <div className="mb-8">
             <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase">Key Issues</p>
@@ -27,7 +25,7 @@ export default function Home() {
               <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">2026 Senate Race</span>
               <h3 className="text-lg font-bold text-gray-900 mt-2 mb-1">Outside Money in Nebraska Politics</h3>
               <p className="text-sm text-gray-500 leading-relaxed">
-                How $28.9M in outside money shaped political decisions — and what the record actually shows.
+                How $28.9M in outside money shaped political decisions and what the record actually shows.
               </p>
             </Link>
 
@@ -43,7 +41,7 @@ export default function Home() {
               <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Workers & Economy</span>
               <h3 className="text-lg font-bold text-gray-900 mt-2 mb-1">What Does It Take to Live in Nebraska?</h3>
               <p className="text-sm text-gray-500 leading-relaxed">
-                Housing, food, childcare, transportation — the real cost of living here.
+                Housing, food, childcare, transportation. The real cost of living here.
               </p>
             </Link>
 
@@ -57,6 +55,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <NebraskaWatchdog />
     </>
   );
 }
