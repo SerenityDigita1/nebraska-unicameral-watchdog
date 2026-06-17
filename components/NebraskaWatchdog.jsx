@@ -365,16 +365,8 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
           <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 mb-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Session Status</span>
             <p className="text-sm text-white/80">
-              The 2026 short session (60 days, Jan–Apr) has ended. <span className="text-white font-medium">Next session: January 2027</span> — the 110th Legislature's long session.
+              The 2026 short session (60 days, Jan–Apr) has ended. <span className="text-white font-medium">Next session: January 2027</span> for the 110th Legislature's long session.
             </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <StatCard num="700+" label="Bills introduced in 2025" />
-            <StatCard num="209"  label="Signed into law" />
-            <StatCard num="2"    label="Vetoed by governor" />
-            <StatCard num="49"   label="Senators" />
           </div>
         </div>
 
@@ -404,6 +396,14 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
         {/* Session Recap Tab */}
         {activeTab === "session" && (
           <div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+              <StatCard num="700+" label="Bills introduced in 2025" />
+              <StatCard num="209"  label="Signed into law" />
+              <StatCard num="2"    label="Vetoed by governor" />
+              <StatCard num="49"   label="Senators" />
+            </div>
 
             {/* Lede */}
             <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-6">
