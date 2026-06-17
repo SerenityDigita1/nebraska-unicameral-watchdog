@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 const BILLS = [
   {
@@ -241,9 +242,9 @@ function BillCard({ bill }) {
 
 function StatCard({ num, label }) {
   return (
-    <div className="bg-white/10 rounded-2xl p-4 text-center backdrop-blur-sm border border-white/10">
-      <div className="text-3xl font-bold text-white tracking-tight">{num}</div>
-      <div className="text-xs text-white/60 mt-1 leading-tight">{label}</div>
+    <div className="bg-gray-50 rounded-2xl p-4 text-center border border-gray-200">
+      <div className="text-3xl font-bold text-gray-900 tracking-tight">{num}</div>
+      <div className="text-xs text-gray-500 mt-1 leading-tight">{label}</div>
     </div>
   );
 }
@@ -362,11 +363,49 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
           </p>
 
           {/* Current Status Banner */}
-          <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 mb-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 mb-8 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Session Status</span>
             <p className="text-sm text-white/80">
               The 2026 short session (60 days, Jan–Apr) has ended. <span className="text-white font-medium">Next session: January 2027</span> for the 110th Legislature's long session.
             </p>
+          </div>
+
+          {/* Key Issues Section */}
+          <div>
+            <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-4">Key Issues</p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Link href="/outside-money" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
+                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">2026 Senate Race</span>
+                <h3 className="text-white font-bold mt-2 mb-1">Outside Money in Nebraska Politics</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  How $28.9M in outside money shaped political decisions and what the record actually shows.
+                </p>
+              </Link>
+
+              <Link href="/tariff-action" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
+                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Economic Impact</span>
+                <h3 className="text-white font-bold mt-2 mb-1">Tariffs Are Costing Nebraska Families</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  $1,700+ per year. Who's fighting back, and what bill is on the table to help.
+                </p>
+              </Link>
+
+              <Link href="/living-wage" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
+                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Workers & Economy</span>
+                <h3 className="text-white font-bold mt-2 mb-1">What Does It Take to Live in Nebraska?</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  Housing, food, childcare, transportation. The real cost of living here.
+                </p>
+              </Link>
+
+              <Link href="/issues" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
+                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">All Issues</span>
+                <h3 className="text-white font-bold mt-2 mb-1">See All Key Topics</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  Data centers, medicaid, campaign finance, and everything we're tracking.
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
 
