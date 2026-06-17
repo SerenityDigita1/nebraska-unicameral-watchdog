@@ -60,7 +60,7 @@ export default function Navbar() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className="absolute top-full left-0 mt-1 w-48 bg-[#0a0e1a] border border-white/10 rounded-xl shadow-xl hidden group-hover:block z-50">
+                <div className="absolute top-full left-0 w-48 bg-[#0a0e1a] border border-white/10 rounded-xl shadow-xl hidden group-hover:block z-50">
                   {link.children.map((child) => (
                     <Link
                       key={child.href}
