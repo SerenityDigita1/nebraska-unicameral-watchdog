@@ -12,6 +12,8 @@ export const metadata = {
 export default function Home() {
   return (
     <>
+      <NebraskaWatchdog />
+
       {/* Key Issues Section */}
       <section className="bg-[#f4f5f7]">
         <div className="max-w-4xl mx-auto px-6 py-12">
@@ -55,8 +57,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <NebraskaWatchdog />
     </>
   );
 }
