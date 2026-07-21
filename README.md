@@ -37,14 +37,3 @@ Built by a Nebraskan who believes people deserve to know what their government i
 ## Technical setup (for developers)
 
 Built with Next.js, Tailwind CSS, and the Claude AI API. Deployed on Vercel.
-
-To run locally:
-```
-npm install
-npm run dev
-```
-
-Add your Anthropic API key to `.env.local` to enable the bill translator:
-```
-ANTHROPIC_API_KEY=your_key_here
-```

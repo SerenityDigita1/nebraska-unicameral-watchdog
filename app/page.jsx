@@ -1,5 +1,5 @@
+import Link from "next/link";
 import NebraskaWatchdog from "@/components/NebraskaWatchdog";
-import TariffActionBanner from "@/components/TariffActionBanner";
 
 export const metadata = {
   title: {
@@ -10,10 +10,5 @@ export const metadata = {
 };
 
 export default function Home() {
-  return (
-    <>
-      <TariffActionBanner />
-      <NebraskaWatchdog />
-    </>
-  );
+  return <NebraskaWatchdog />;
 }
