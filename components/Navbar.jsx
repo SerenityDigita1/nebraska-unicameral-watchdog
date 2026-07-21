@@ -15,6 +15,7 @@ const NAV_LINKS = [
       { href: "/data-centers",       label: "AI & Power Grid" },
       { href: "/living-wage",        label: "Living Wage" },
       { href: "/pay-gap",            label: "Pay vs. Power" },
+      { href: "/cyclospora-outbreak", label: "Cyclospora Outbreak" },
       { href: "/two-tax-systems",    label: "Two Tax Systems" },
       { href: "/interim",            label: "Interim Work" },
     ],
