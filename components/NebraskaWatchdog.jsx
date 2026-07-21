@@ -370,6 +370,29 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
             </p>
           </div>
 
+          {/* Featured Investigation */}
+          <div className="mb-8">
+            <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-4">Featured Investigation</p>
+            <Link
+              href="/what-they-stopped-watching"
+              className="block bg-white/5 border border-white/10 rounded-xl px-5 py-5 hover:bg-white/10 transition-colors"
+            >
+              <span className="inline-block text-[10px] font-bold tracking-[0.15em] text-white bg-[#c8102e] uppercase px-2.5 py-1 rounded-full mb-3">
+                What They Stopped Watching
+              </span>
+              <h3 className="text-white font-bold text-lg mb-1">
+                27 Cases in Douglas County. A Tracking Program Cut in 2025. A $1M Donation.
+              </h3>
+              <p className="text-white/60 text-sm leading-relaxed mb-3 max-w-xl">
+                The CDC stopped requiring states to track cyclospora four months after the company
+                now linked to Nebraska's outbreak donated $1 million to the president's super PAC.
+                The documented timeline, sourced directly — first in an ongoing series on federal
+                monitoring rollbacks.
+              </p>
+              <span className="text-xs font-bold text-[#c8102e]">Read the full timeline →</span>
+            </Link>
+          </div>
+
           {/* Key Issues Section */}
           <div>
             <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-4">Key Issues</p>
