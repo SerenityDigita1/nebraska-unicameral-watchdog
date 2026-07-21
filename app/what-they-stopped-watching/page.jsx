@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "The Timeline Behind the Cyclospora Outbreak — Nebraska Watchdog",
+  title: "What They Stopped Watching — Nebraska Watchdog",
   description:
-    "27 confirmed cases in Douglas County. A parasite the CDC stopped requiring states to track in 2025. And a $1 million donation from the company now linked to the outbreak. Here's what's documented, sourced directly.",
+    "An ongoing look at federal monitoring programs quietly scaled back, and what happened next. First up: the CDC dropped mandatory cyclospora tracking in 2025 — then the largest outbreak on record hit, including 27 cases in Douglas County.",
 };
 
 const STATS = [
@@ -24,18 +24,34 @@ const TIMELINE = [
   { date: "July 21, 2026", text: "HHS publicly denies any connection between the donations and the surveillance rollback, calling reporting on it \"FAKE NEWS.\"" },
 ];
 
-export default function CyclosporaOutbreak() {
+export default function WhatTheyStoppedWatching() {
   return (
     <div className="min-h-screen bg-[#f4f5f7]">
       <div className="max-w-4xl mx-auto px-6 py-10">
 
         {/* Header */}
         <div className="mb-8">
-          <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase">Public Health</span>
+          <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase">An Ongoing Series</span>
           <h1 className="text-3xl font-bold text-gray-900 mt-1 mb-2">
-            The Timeline Behind the Cyclospora Outbreak
+            What They Stopped Watching
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
+            Federal agencies have been quietly narrowing what they monitor and report on. This page
+            tracks those rollbacks and what happened after — starting with the CDC's decision to stop
+            requiring states to track cyclospora, four months before the largest outbreak on record.
+            We'll add cases as they're documented, including a look at the EPA's PFAS monitoring cuts.
+          </p>
+        </div>
+
+        {/* Case #1 label */}
+        <div className="mb-6">
+          <span className="inline-block text-[10px] font-bold tracking-[0.15em] text-white bg-[#c8102e] uppercase px-2.5 py-1 rounded-full">
+            Case #1 — Public Health
+          </span>
+          <h2 className="text-xl font-bold text-gray-900 mt-3">
+            The Timeline Behind the Cyclospora Outbreak
+          </h2>
+          <p className="text-gray-500 text-sm leading-relaxed max-w-xl mt-1">
             Douglas County has 27 confirmed cases of a parasite the CDC stopped requiring states to
             track in July 2025. The company now identified as the outbreak's source donated $1 million
             to the president's super PAC four months before that surveillance change. Here's what's
@@ -145,9 +161,21 @@ export default function CyclosporaOutbreak() {
           </p>
         </div>
 
+        {/* What's coming next */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+          <h2 className="text-base font-bold text-gray-900 mb-3">Coming next in this series</h2>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            We're tracking other examples of the same pattern — federal agencies narrowing what they
+            monitor, with real consequences downstream. Next up: a look at the EPA's rollback of PFAS
+            ("forever chemicals") monitoring in drinking water. That entry will get the same
+            documented-timeline, sourced-only treatment as above once it's researched — we're not
+            publishing claims on it yet.
+          </p>
+        </div>
+
         {/* Sources */}
         <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200">
-          <p className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-3">Sources</p>
+          <p className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-3">Sources for Case #1 — Cyclospora</p>
           <div className="space-y-2">
             {[
               { label: "Douglas County confirms 27 local cases of Cyclospora — WOWT", url: "https://www.wowt.com/2026/07/20/douglas-county-confirms-27-local-cases-cyclospora/" },

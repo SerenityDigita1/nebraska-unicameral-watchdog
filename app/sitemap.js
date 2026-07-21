@@ -9,7 +9,7 @@ export default function sitemap() {
     "/data-centers",
     "/living-wage",
     "/pay-gap",
-    "/cyclospora-outbreak",
+    "/what-they-stopped-watching",
     "/two-tax-systems",
     "/interim",
     "/tariff-action",
