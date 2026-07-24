@@ -11,6 +11,7 @@ const NAV_LINKS = [
     label: "Key Issues",
     children: [
       { href: "/issues",              label: "Overview" },
+      { href: "/ask-your-neighbor",  label: "Ask Your Neighbor?" },
       { href: "/big-beautiful-bill", label: "Big Beautiful Bill" },
       { href: "/data-centers",       label: "AI & Power Grid" },
       { href: "/living-wage",        label: "Living Wage" },

@@ -5,6 +5,7 @@ export default function sitemap() {
     "/district-49",
     "/session",
     "/issues",
+    "/ask-your-neighbor",
     "/big-beautiful-bill",
     "/data-centers",
     "/living-wage",
