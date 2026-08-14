@@ -1,6 +1,136 @@
 "use client";
 import { useState } from "react";
 
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [status, setStatus] = useState('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('loading')
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Form submission failed')
+      }
+
+      setStatus('success')
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      })
+
+      setTimeout(() => setStatus('idle'), 3000)
+    } catch (error) {
+      setStatus('error')
+      setErrorMessage('An error occurred. Please try again.')
+      console.error('Form submission error:', error)
+    }
+  }
+
+  return (
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-5">
+      <h2 className="text-base font-bold text-gray-900 mb-2">Contact</h2>
+      <p className="text-sm text-gray-500 leading-relaxed mb-4">
+        Have a tip? Spotted something wrong? Want to share what's happening in your neighborhood?
+      </p>
+
+      {status === 'success' ? (
+        <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3">
+          <p className="text-green-800 text-sm font-medium">Thanks for reaching out. We'll review your message.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-xs font-semibold text-gray-700 mb-1.5">
+              Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-[#c8102e]"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-xs font-semibold text-gray-700 mb-1.5">
+              Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-[#c8102e]"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-xs font-semibold text-gray-700 mb-1.5">
+              Message *
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={4}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-[#c8102e]"
+              placeholder="Share your tip or comment..."
+            />
+          </div>
+
+          {status === 'error' && (
+            <div className="bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+              <p className="text-red-800 text-xs">{errorMessage}</p>
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="w-full px-4 py-2.5 bg-[#c8102e] text-white text-sm font-semibold rounded-lg hover:bg-[#a50d26] disabled:opacity-50 transition-colors"
+          >
+            {status === 'loading' ? 'Sending...' : 'Send Message'}
+          </button>
+        </form>
+      )}
+    </div>
+  )
+}
+
 export default function GetInvolvedClient() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle");
@@ -68,19 +198,8 @@ export default function GetInvolvedClient() {
           {status === "error" && <p className="text-red-400 text-xs mt-2">Something went wrong. Try again.</p>}
         </div>
 
-        {/* Contact */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-5">
-          <h2 className="text-base font-bold text-gray-900 mb-2">Contact</h2>
-          <p className="text-sm text-gray-500 leading-relaxed mb-3">
-            Have a tip? Spotted something wrong? Want to share what's happening in your neighborhood?
-          </p>
-          <a
-            href="mailto:info@unicameralwatchdog.com"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#c8102e] hover:underline"
-          >
-            info@unicameralwatchdog.com
-          </a>
-        </div>
+        {/* Contact Form */}
+        <ContactForm />
 
         {/* Contact your senator */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
