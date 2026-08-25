@@ -16,6 +16,7 @@ const SOURCES = [
   { label: "Nebraska Attorney General: Protect The Good Life — report a scam", url: "https://protectthegoodlife.nebraska.gov/contact-us" },
   { label: "TrumpAccounts.gov — the official federal enrollment site", url: "https://trumpaccounts.gov" },
   { label: "NEST 529 — Nebraska's college savings plan", url: "https://www.nest529.com" },
+  { label: "Invite Education: college savings estimator linked from NEST", url: "https://v3.inviteeducation.com/tools/college_savings_estimator/310/" },
   { label: "CDC / NCHS: Nebraska vital statistics — 24,785 births in 2024", url: "https://www.cdc.gov/nchs/state-stats/states/ne.html" },
   { label: "Nebraska DHHS: Provisional Birth Dashboard", url: "https://dhhs.ne.gov/ProvisionalBirth" },
 ];
@@ -147,8 +148,19 @@ export default function TrumpAccounts() {
             </a>. The contract has moved between banks before — Union Bank held it from 2001 to 2010, First
             National Bank of Omaha from 2010 to 2020.
           </p>
+          <p className="text-sm text-gray-700 leading-relaxed mb-4">
+            NEST also points families to a college savings estimator run by a vendor,{" "}
+            <a href="https://v3.inviteeducation.com/tools/college_savings_estimator/310/" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">
+              Invite Education ↗
+            </a>, which carries the treasurer&apos;s and Union Bank&apos;s disclaimers. That is a normal
+            white-label arrangement, not a scam. It is worth knowing it exists, though, because it asks for a
+            child&apos;s name, grade and school — and no privacy policy was visible on the calculator page
+            itself. The point is not that the tool is suspect. It is that
+            <span className="font-semibold"> even legitimate tools collect real information about your
+            child</span>, so the habit worth building is asking who receives it and why, every time.
+          </p>
           <p className="text-sm text-gray-700 leading-relaxed">
-            So seeing either name is not a warning sign by itself. That is exactly why scams use them. The
+            So seeing a familiar name is not a warning sign by itself. That is exactly why scams use them. The
             question is never whether a familiar name appears — it is
             <span className="font-semibold"> who contacted whom</span>. The state and the IRS do not email
             you asking for your child&apos;s Social Security number, and any company that is neither the
