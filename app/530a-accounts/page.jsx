@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "That $1,000 Email About Your Kid Is Real. Read the Footnotes. — Nebraska Watchdog",
+  title: "Parents Are Getting $1,000 Emails About Their Kids. How to Tell Which Are Real. — Nebraska Watchdog",
   description:
-    "Nebraska parents are getting emails about a $1,000 federal deposit for their children under the new 530A accounts. One we reviewed is genuinely from ID.me, the government's identity vendor. It is also advertising, and three things it leaves out change the picture.",
+    "Nebraska parents are getting emails about a $1,000 federal deposit for their children under the new 530A accounts. One we checked was legitimate. Here is how we verified it, what even a real one leaves out, and what the fakes are actually after.",
 };
 
 const SOURCES = [
@@ -53,13 +53,15 @@ export default function ChildAccounts() {
         <div className="mb-8">
           <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase">Consumer Protection</span>
           <h1 className="text-3xl font-bold text-gray-900 mt-1 mb-2">
-            That $1,000 Email About Your Kid Is Real. Read the Footnotes.
+            Parents Are Getting $1,000 Emails About Their Kids. How to Tell Which Are Real.
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
-            Nebraska parents are receiving emails about a $1,000 federal deposit for their children. We checked
-            one. It is genuinely from <span className="font-semibold text-gray-700">ID.me</span> — the company
-            the IRS uses to verify your identity — and it passes every authentication check. It is also
-            advertising, and three things it leaves out change what you are actually being offered.
+            There is a genuine federal program putting $1,000 into accounts for children born from 2025. There
+            are also emails about it landing in Nebraska inboxes — some real, some not. We checked one that
+            turned out to be
+            <span className="font-semibold text-gray-700"> legitimate advertising from a federal identity
+            vendor</span>. Here is how we confirmed that, what even a real one leaves out, and what a fake one
+            is trying to take.
           </p>
         </div>
 
@@ -76,36 +78,34 @@ export default function ChildAccounts() {
 
         {/* Authenticity */}
         <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-8 text-white">
-          <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">We checked the headers</p>
+          <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">How we checked the one we were sent</p>
           <div className="font-mono text-sm space-y-1 mb-4">
-            <p><span className="text-gray-500">from</span> &nbsp;&nbsp;&nbsp;news@email.id.me</p>
-            <p><span className="text-gray-500">spf</span> &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">pass</span></p>
-            <p><span className="text-gray-500">dkim</span> &nbsp;&nbsp;&nbsp;<span className="text-green-400">pass</span> <span className="text-gray-500">(signature verified)</span></p>
-            <p><span className="text-gray-500">dmarc</span> &nbsp;&nbsp;<span className="text-green-400">pass</span></p>
-            <p><span className="text-gray-500">links</span> &nbsp;&nbsp;18 of 18 to clicks.id.me</p>
+            <p><span className="text-gray-500">spf</span> &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">pass</span> <span className="text-gray-500">— sent from a server the domain authorises</span></p>
+            <p><span className="text-gray-500">dkim</span> &nbsp;&nbsp;&nbsp;<span className="text-green-400">pass</span> <span className="text-gray-500">— cryptographic signature verified</span></p>
+            <p><span className="text-gray-500">dmarc</span> &nbsp;&nbsp;<span className="text-green-400">pass</span> <span className="text-gray-500">— the domain owner vouches for it</span></p>
+            <p><span className="text-gray-500">links</span> &nbsp;&nbsp;18 of 18 to a single domain owned by the sender</p>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed max-w-2xl">
-            This is not a spoof, and it is not somebody impersonating a government vendor. It is ID.me emailing
-            its own users. The message carries ID.me&apos;s own
-            <span className="text-white font-semibold"> &ldquo;Advertising Disclosure&rdquo;</span> label, and
-            its own line: <span className="text-white font-semibold">&ldquo;ID.me is an independent private
-            company.&rdquo;</span>
+            All three checks passing means the message really came from the company it claims to, and was not
+            altered on the way. It was advertising from a federal identity vendor to its own users, carrying an
+            <span className="text-white font-semibold"> &ldquo;Advertising Disclosure&rdquo;</span> label. Real,
+            in other words — but an advertisement, not a government notice.
           </p>
         </div>
 
-        {/* Why that is the story */}
-        <h2 className="text-xl font-bold text-gray-900 mb-3">Why that is worth noticing</h2>
+        {/* Why a real email still matters */}
+        <h2 className="text-xl font-bold text-gray-900 mb-3">A real email is not the same as a government notice</h2>
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-8">
           <p className="text-sm text-gray-700 leading-relaxed mb-4">
-            Most Nebraskans with an ID.me account did not choose the company. They needed to reach an IRS
-            service, and ID.me is what the federal government put in front of the door. Setting one up means
-            handing over a government photo ID, a selfie, and a Social Security number.
+            Companies that verify your identity for federal services hold a lot about you — a government photo
+            ID, a selfie, a Social Security number — because that is what the verification requires. Most people
+            did not pick those companies. They needed to reach an IRS service and that was the door.
           </p>
           <p className="text-sm text-gray-700 leading-relaxed">
-            That list is now also a marketing list. None of that is illegal, and the email discloses that it is
-            advertising. But a company you were effectively required to register with, in order to deal with
-            your own government, is now emailing you about your children&apos;s money — and the distance
-            between a government notice and an advertisement is doing a lot of work in that inbox.
+            When a message from one of them arrives about your children&apos;s money, it can read like officialdom
+            even when it is marketing. That is not fraud, and it is disclosed in the small print. But
+            <span className="font-semibold"> the government does not advertise, and an advertisement is written
+            to be persuasive rather than complete.</span> Which brings us to the footnotes.
           </p>
         </div>
 
@@ -222,6 +222,33 @@ export default function ChildAccounts() {
           </p>
         </div>
 
+        {/* What the fakes want */}
+        <h2 className="text-xl font-bold text-gray-900 mb-3">What a fake one is actually after</h2>
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-8">
+          <p className="text-sm text-gray-700 leading-relaxed mb-4">
+            Real solicitations and fraudulent ones are arriving in the same inboxes about the same program. The
+            fakes are not trying to sell you anything. They are trying to collect four things, and a child&apos;s
+            set is worth more than an adult&apos;s because nobody checks a seven-year-old&apos;s credit for years.
+          </p>
+          <ul className="space-y-2 text-sm text-gray-700 mb-4">
+            <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> Your child&apos;s <span className="font-semibold">Social Security number</span>, usually framed as &ldquo;confirming&rdquo; or &ldquo;completing&rdquo; an enrollment that does not exist.</li>
+            <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> Your child&apos;s <span className="font-semibold">full name and date of birth</span>, which together with the number is enough to open credit.</li>
+            <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> Your <span className="font-semibold">bank details</span>, to &ldquo;receive the deposit&rdquo;. The Treasury does not need them for this.</li>
+            <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> Your <span className="font-semibold">login credentials</span>, through a page that looks like the identity verifier you already use.</li>
+          </ul>
+          <p className="text-sm text-gray-700 leading-relaxed mb-4">
+            Treasury has separately warned about messages claiming an existing 529 must be
+            &ldquo;converted&rdquo; or &ldquo;linked&rdquo; to secure the $1,000. There is no such requirement,
+            no such process, and no unsolicited third party can carry out any part of this for you.
+          </p>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            <span className="font-semibold">The rule that covers all of it:</span> nobody who legitimately needs
+            your child&apos;s Social Security number will ask for it by email. Not the IRS, not the Treasury, not
+            the State of Nebraska, not your bank. If a message asks, the answer is to close it and go to the
+            official site yourself — which costs nothing and takes you to the same place.
+          </p>
+        </div>
+
         {/* Enroll */}
         <h2 className="text-xl font-bold text-gray-900 mb-3">How to do it yourself, for free</h2>
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-8">
@@ -290,7 +317,7 @@ export default function ChildAccounts() {
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-8">
           <h2 className="text-lg font-bold text-gray-900 mb-3">The short version</h2>
           <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> The email going around really is from ID.me. It is advertising, and it says so in the small print.</li>
+            <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> Some of these emails are genuine advertising and some are fraud. Check the sender before you act on either.</li>
             <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> The $1,000 is federal and real, for citizens born 2025 through 2028.</li>
             <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> The $250 is private money from the Dell family, capped at 25 million children, and income-tested by ZIP code.</li>
             <li className="flex gap-2"><span className="text-[#c8102e] font-bold">·</span> No rush on the federal money — you have until the year your child turns 17.</li>

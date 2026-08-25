@@ -425,11 +425,11 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
 
                 <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Consumer Protection</span>
 
-                <h3 className="text-white font-bold mt-2 mb-1">That $1,000 Email About Your Kid Is Real</h3>
+                <h3 className="text-white font-bold mt-2 mb-1">Those $1,000 Emails About Your Kids</h3>
 
                 <p className="text-white/60 text-sm leading-relaxed">
 
-                  It really is from ID.me, and it really is advertising. Three things the footnotes leave out change what you are being offered.
+                  Some are real advertising, some are fraud. How to tell the difference, and what the fakes are trying to take.
 
                 </p>
 
