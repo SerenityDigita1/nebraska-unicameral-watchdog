@@ -421,6 +421,21 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
                 </p>
               </Link>
 
+              <Link href="/trump-accounts" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
+
+                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Consumer Protection</span>
+
+                <h3 className="text-white font-bold mt-2 mb-1">The Trump Account Emails Are Lying About the Deadline</h3>
+
+                <p className="text-white/60 text-sm leading-relaxed">
+
+                  The $1,000 is real. The urgency is not — you have until your child turns 17. What the state says, and where to report it.
+
+                </p>
+
+              </Link>
+
+
               <Link href="/issues" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
                 <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">All Issues</span>
                 <h3 className="text-white font-bold mt-2 mb-1">See All Key Topics</h3>
