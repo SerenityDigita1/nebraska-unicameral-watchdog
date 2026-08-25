@@ -107,3 +107,62 @@ whether they answer or not. "Declined to comment" is a fact.
 
 **Bellevue Police Department** is keeping the gloves in the two OPS schools it serves, inside
 a district that asked for their removal. That is worth one direct question to BPD.
+
+---
+
+## 4. Millard Public Schools — what to actually ask
+
+John is a Millard constituent, which is the strongest position to ask from. Two separate
+tracks, and they are not interchangeable.
+
+### Track A: the records request (to the district, not the board)
+
+The district holds the agreement that governs what an officer may do in its buildings. This
+is the document to get, and it does not depend on Omaha Police releasing anything.
+
+> **Re:** Public records request — Neb. Rev. Stat. § 84-712
+>
+> I am requesting copies of:
+>
+> 1. The current school resource officer agreement, memorandum of understanding, or contract
+>    between Millard Public Schools and any law enforcement agency providing officers to
+>    district buildings, including all amendments.
+> 2. Any district policy, administrative regulation, or guidance addressing use of force by
+>    school resource officers or security personnel on district property.
+> 3. Any communication between the district and Omaha Police Department, from January 1, 2025
+>    to the present, referencing the Compliant Technologies G.L.O.V.E. device, shock gloves, or
+>    electronic control devices carried by school resource officers.
+> 4. Any district policy governing notification of a parent or guardian when force is used on
+>    a student by a school resource officer.
+
+Item 3 is the one that establishes **when Millard knew**. Item 4 matters because if the
+device is ever used on a Millard student, the answer to "who gets told, and how fast" should
+already exist — and if it does not, that is itself the finding.
+
+### Track B: the questions to the board
+
+Ask things that have dates and documents in them. "What is the district's position" invites a
+statement about student safety and commits nobody to anything.
+
+1. **When did the district first learn** that officers assigned to Millard buildings were
+   carrying these devices — before or after the August 13, 2026 news reports?
+2. **Does the SRO agreement give Millard any say** over what equipment officers carry in
+   district buildings? Omaha Public Schools asked for removal and Omaha Police agreed, so the
+   answer appears to be yes. **Has Millard asked?**
+3. The district said it plans to learn more from Omaha Police. **Has that meeting happened,
+   who attended, and what was the outcome?**
+4. **When will the board take a position**, and will it be on a public agenda?
+5. **If the device is used on a Millard student, who is notified and within what time?**
+
+Question 2 is the sharp one. There is now a live precedent inside the same city, with the same
+police department: a district asked, and the department complied. That converts "we are
+learning more" from a reasonable posture into a choice.
+
+### Which venue
+
+Emailing individual board members gets you a reply. **Public comment at a board meeting gets
+you a reply on the record**, in the minutes, where it can be quoted and followed up. If the
+goal is a publishable answer rather than a private reassurance, use the meeting.
+
+Either way, note the date asked. "The district did not respond by publication" is only usable
+if the request is documented.
