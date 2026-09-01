@@ -17,6 +17,7 @@ const NAV_LINKS = [
       { href: "/living-wage",        label: "Living Wage" },
       { href: "/pay-gap",            label: "Pay vs. Power" },
       { href: "/what-they-stopped-watching", label: "What They Stopped Watching" },
+      { href: "/property-tax-coupon", label: "Property Tax Coupon" },
       { href: "/two-tax-systems",    label: "Two Tax Systems" },
       { href: "/interim",            label: "Interim Work" },
     ],

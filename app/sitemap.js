@@ -11,6 +11,7 @@ export default function sitemap() {
     "/living-wage",
     "/pay-gap",
     "/what-they-stopped-watching",
+    "/property-tax-coupon",
     "/two-tax-systems",
     "/interim",
     "/tariff-action",

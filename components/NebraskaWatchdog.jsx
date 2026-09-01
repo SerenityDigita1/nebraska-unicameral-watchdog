@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import PropertyTaxTrailSection from "@/components/PropertyTaxTrailSection";
 
 const BILLS = [
   {
@@ -303,7 +304,53 @@ function NewsletterForm() {
   );
 }
 
-export default function NebraskaWatchdog({ defaultTab = "session" }) {
+function SiteFooter() {
+  return (
+    <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-200 mt-4">
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <p className="text-xs text-gray-400">
+          Nebraska Unicameral Watchdog · District 49 · Not affiliated with any political party.
+          <br className="sm:hidden" />
+          <span className="hidden sm:inline"> · </span>
+          The unicameral meets for a long session (90 days) in odd years and a short session (60 days) in even years.
+        </p>
+        <div className="flex items-center gap-4 flex-wrap">
+          <a
+            href="mailto:info@unicameralwatchdog.com"
+            className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
+          >
+            info@unicameralwatchdog.com
+          </a>
+          <a
+            href="https://nebraskalegislature.gov"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
+          >
+            nebraskalegislature.gov ↗
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function NewsletterBlock() {
+  return (
+    <div className="bg-[#0a0e1a] rounded-2xl p-6">
+      <div className="max-w-xl">
+        <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay Informed</p>
+        <h3 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h3>
+        <p className="text-white/50 text-sm mb-4 leading-relaxed">
+          When the 110th session kicks off in January 2027, you'll be the first to know what's happening in Lincoln — in plain English, no spin.
+        </p>
+        <NewsletterForm />
+      </div>
+    </div>
+  );
+}
+
+export default function NebraskaWatchdog({ defaultTab = "home" }) {
   const [activeTab, setActiveTab] = useState(defaultTab);
   const [billInput, setBillInput] = useState("");
   const [translating, setTranslating] = useState(false);
@@ -338,6 +385,83 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
     setTranslating(false);
   }
 
+  if (defaultTab === "home") {
+    return (
+      <div className="min-h-screen bg-[#f4f5f7]">
+        <header className="bg-[#0a0e1a] relative overflow-hidden text-white">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#c8102e]/20 via-transparent to-transparent pointer-events-none" />
+          <div className="max-w-4xl mx-auto px-6 pt-10 pb-8 relative">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase bg-[#c8102e]/10 border border-[#c8102e]/30 px-3 py-1.5 rounded-full">
+                Watchdog
+              </span>
+              <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
+                Nov. 3, 2026 · Election season
+              </span>
+            </div>
+            <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-2">
+              Nebraska Unicameral<br />
+              <span className="text-[#c8102e]">Watchdog</span>
+            </h1>
+            <p className="text-white/50 text-sm max-w-xl leading-relaxed mb-5">
+              The ads say one thing. The Unicameral record says another. Pillen vs Walz on Nov. 3.
+              The 110th Legislature opens in January 2027.
+            </p>
+            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Now</span>
+              <p className="text-sm text-white/80">
+                2026 short session is over. Next: <span className="text-white font-medium">January 2027</span>, 110th long session.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <main className="max-w-4xl mx-auto px-6 py-8">
+          <PropertyTaxTrailSection showExplainer />
+
+          <div className="mt-10 mb-8">
+            <NewsletterBlock />
+          </div>
+
+          <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">Also watching</h2>
+          <div className="grid sm:grid-cols-3 gap-3 mb-8">
+            <Link href="/two-tax-systems" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Taxes</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">Two Tax Systems</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">How the wealthy pay a 3.4% true rate. You don’t.</p>
+            </Link>
+            <Link href="/outside-money" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">2026 Senate</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">Outside Money</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">$28.9M in outside money, and what the record shows.</p>
+            </Link>
+            <Link href="/what-they-stopped-watching" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Investigation</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">What They Stopped Watching</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">27 Douglas County cases after a tracking program was cut.</p>
+            </Link>
+          </div>
+
+          <Link
+            href="/session"
+            className="block bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow"
+          >
+            <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-2">Last session · 2025 long session</p>
+            <h3 className="text-sm font-bold text-gray-900 mb-1">
+              Voters showed up. The legislature spent five months undoing it.
+            </h3>
+            <p className="text-sm text-gray-500 leading-relaxed mb-3">
+              Sick leave gutted, cannabis blocked, $1.5 billion in corporate incentives, two vetoes. The full 2025 wrap lives on the session recap — not on this fold.
+            </p>
+            <span className="text-xs font-bold text-[#c8102e]">Read the 2025 recap →</span>
+          </Link>
+        </main>
+
+        <SiteFooter />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#f4f5f7]">
 
@@ -347,103 +471,25 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
         <div className="max-w-4xl mx-auto px-6 pt-10 pb-8 relative">
           <div className="flex items-center gap-3 mb-5">
             <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase bg-[#c8102e]/10 border border-[#c8102e]/30 px-3 py-1.5 rounded-full">
-              Watchdog
+              Session Recap
             </span>
             <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
-              District 49 · Sarpy County
+              109th Legislature · 2025–2026
             </span>
           </div>
           <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-2">
-            Nebraska Unicameral<br />
-            <span className="text-[#c8102e]">Watchdog</span>
+            What the Unicameral<br />
+            <span className="text-[#c8102e]">Actually Did</span>
           </h1>
           <p className="text-white/50 text-sm max-w-md leading-relaxed mb-5">
-            Tracking your unicameral — bills, vetoes, and campaign money
-            translated into plain English for everyday Nebraskans.
+            The 2025 long session and 2026 short session, translated into plain English — bills, vetoes, and what they meant for regular Nebraskans.
           </p>
 
-          {/* Current Status Banner */}
-          <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 mb-8 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Session Status</span>
             <p className="text-sm text-white/80">
               The 2026 short session (60 days, Jan–Apr) has ended. <span className="text-white font-medium">Next session: January 2027</span> for the 110th Legislature's long session.
             </p>
-          </div>
-
-          {/* Featured Investigation */}
-          <div className="mb-8">
-            <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-4">Featured Investigation</p>
-            <Link
-              href="/what-they-stopped-watching"
-              className="block bg-white/5 border border-white/10 rounded-xl px-5 py-5 hover:bg-white/10 transition-colors"
-            >
-              <span className="inline-block text-[10px] font-bold tracking-[0.15em] text-white bg-[#c8102e] uppercase px-2.5 py-1 rounded-full mb-3">
-                What They Stopped Watching
-              </span>
-              <h3 className="text-white font-bold text-lg mb-1">
-                27 Cases in Douglas County. A Tracking Program Cut in 2025. A $1M Donation.
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-3 max-w-xl">
-                The CDC stopped requiring states to track cyclospora four months after the company
-                now linked to Nebraska's outbreak donated $1 million to the president's super PAC.
-                The documented timeline, sourced directly — first in an ongoing series on federal
-                monitoring rollbacks.
-              </p>
-              <span className="text-xs font-bold text-[#c8102e]">Read the full timeline →</span>
-            </Link>
-          </div>
-
-          {/* Key Issues Section */}
-          <div>
-            <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-4">Key Issues</p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Link href="/outside-money" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">2026 Senate Race</span>
-                <h3 className="text-white font-bold mt-2 mb-1">Outside Money in Nebraska Politics</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  How $28.9M in outside money shaped political decisions and what the record actually shows.
-                </p>
-              </Link>
-
-              <Link href="/tariff-action" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Economic Impact</span>
-                <h3 className="text-white font-bold mt-2 mb-1">Tariffs Are Costing Nebraska Families</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  $1,700+ per year. Who's fighting back, and what bill is on the table to help.
-                </p>
-              </Link>
-
-              <Link href="/living-wage" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Workers & Economy</span>
-                <h3 className="text-white font-bold mt-2 mb-1">What Does It Take to Live in Nebraska?</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Housing, food, childcare, transportation. The real cost of living here.
-                </p>
-              </Link>
-
-              <Link href="/530a-accounts" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Consumer Protection</span>
-
-                <h3 className="text-white font-bold mt-2 mb-1">Those $1,000 Emails About Your Kids</h3>
-
-                <p className="text-white/60 text-sm leading-relaxed">
-
-                  Some are real advertising, some are fraud. How to tell the difference, and what the fakes are trying to take.
-
-                </p>
-
-              </Link>
-
-
-              <Link href="/issues" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">All Issues</span>
-                <h3 className="text-white font-bold mt-2 mb-1">See All Key Topics</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Data centers, medicaid, campaign finance, and everything we're tracking.
-                </p>
-              </Link>
-            </div>
           </div>
         </div>
 
@@ -474,7 +520,8 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
         {activeTab === "session" && (
           <div>
 
-            {/* Stats */}
+            {/* Stats — last session, labeled */}
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-3">Last session · 2025 long session</p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
               <StatCard num="700+" label="Bills introduced in 2025" />
               <StatCard num="209"  label="Signed into law" />
@@ -601,6 +648,8 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
             <p className="text-xs text-gray-400 text-center pb-2">
               Sources: Nebraska Examiner · Nebraska Public Media · Ballotpedia · Nebraska Appleseed
             </p>
+
+            <PropertyTaxTrailSection showExplainer className="mt-10 pt-8 border-t border-gray-200" />
           </div>
         )}
 
@@ -834,47 +883,11 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
         )}
       </main>
 
-      {/* Newsletter Signup */}
       <div className="max-w-4xl mx-auto px-6 mb-4">
-        <div className="bg-[#0a0e1a] rounded-2xl p-6">
-          <div className="max-w-xl">
-            <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay Informed</p>
-            <h3 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h3>
-            <p className="text-white/50 text-sm mb-4 leading-relaxed">
-              When the 110th session kicks off in January 2027, you'll be the first to know what's happening in Lincoln — in plain English, no spin.
-            </p>
-            <NewsletterForm />
-          </div>
-        </div>
+        <NewsletterBlock />
       </div>
 
-      {/* Footer */}
-      <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-200 mt-4">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <p className="text-xs text-gray-400">
-            Nebraska Unicameral Watchdog · District 49 · Not affiliated with any political party.
-            <br className="sm:hidden" />
-            <span className="hidden sm:inline"> · </span>
-            The unicameral meets for a long session (90 days) in odd years and a short session (60 days) in even years.
-          </p>
-          <div className="flex items-center gap-4 flex-wrap">
-            <a
-              href="mailto:info@unicameralwatchdog.com"
-              className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
-            >
-              info@unicameralwatchdog.com
-            </a>
-            <a
-              href="https://nebraskalegislature.gov"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
-            >
-              nebraskalegislature.gov ↗
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

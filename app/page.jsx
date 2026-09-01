@@ -1,14 +1,13 @@
-import Link from "next/link";
 import NebraskaWatchdog from "@/components/NebraskaWatchdog";
 
 export const metadata = {
   title: {
-    absolute: "Nebraska Unicameral Watchdog — Plain English Legislature Tracking",
+    absolute: "Nebraska Unicameral Watchdog — Ads vs the Unicameral Record",
   },
   description:
-    "Bills, vetoes, and campaign money from Nebraska's unicameral legislature, translated into plain English for Sarpy County and Omaha residents.",
+    "Nov. 3, 2026: what the ads say vs what the Unicameral passed. Property-tax credits, the 2025 session recap, and the 110th Legislature in January 2027 — in plain English.",
 };
 
 export default function Home() {
-  return <NebraskaWatchdog />;
+  return <NebraskaWatchdog defaultTab="home" />;
 }
