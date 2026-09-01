@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import PropertyTaxTrailSection from "@/components/PropertyTaxTrailSection";
 
 const BILLS = [
   {
@@ -183,18 +184,6 @@ const SESSION_WINS = [
   },
 ];
 
-const PROPERTY_TAX_SOURCES = [
-  { label: "LB 34", url: "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=58075" },
-  { label: "DOR LB 34 explainer", url: "https://revenue.nebraska.gov/sites/default/files/doc/news-release/ndr/LB_34_News_Release_Final.pdf" },
-  { label: "DOR 2025 credits", url: "https://revenue.nebraska.gov/sites/default/files/doc/news-release/pad/2025/NewsRelease_2025_Real_Property_Tax_Credit_and_School_Dist_Prop_Tax_Relief_Credit.pdf" },
-  { label: "DOR 2025 levy pie charts", url: "https://revenue.nebraska.gov/sites/default/files/doc/pad/research/valuation/2026/CurrentYr_VT_PieCharts_State%20%26%2093%20counties%202025.pdf" },
-  { label: "Nebraska Examiner, Aug. 20, 2024", url: "https://nebraskaexaminer.com/2024/08/20/legislature-passes-slimmed-down-property-tax-relief-package-ends-nebraskas-special-session/" },
-  { label: "Nebraska Examiner, Apr. 20, 2026", url: "https://nebraskaexaminer.com/2026/04/20/pillen-eyes-more-state-budget-cuts-to-help-offset-local-property-taxes/" },
-  { label: "Nebraska Examiner, Jul. 9, 2026", url: "https://nebraskaexaminer.com/2026/07/09/pillen-talks-priorities-pivot-from-nebraska-primary-election-to-nov-3-faceoff/" },
-  { label: "LB 814", url: "https://www.nebraskalegislature.gov/bills/view_bill.php?DocumentID=63258" },
-  { label: "Referendum 435 · Ballotpedia", url: "https://ballotpedia.org/Nebraska_Referendum_435,_Private_Education_Scholarship_Program_Referendum_(2024)" },
-];
-
 const STATUS_CONFIG = {
   committee: { bar: "bg-blue-500", pill: "bg-blue-50 text-blue-700 ring-1 ring-blue-200" },
   vote:      { bar: "bg-amber-400", pill: "bg-amber-50 text-amber-700 ring-1 ring-amber-200" },
@@ -315,7 +304,53 @@ function NewsletterForm() {
   );
 }
 
-export default function NebraskaWatchdog({ defaultTab = "session" }) {
+function SiteFooter() {
+  return (
+    <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-200 mt-4">
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <p className="text-xs text-gray-400">
+          Nebraska Unicameral Watchdog · District 49 · Not affiliated with any political party.
+          <br className="sm:hidden" />
+          <span className="hidden sm:inline"> · </span>
+          The unicameral meets for a long session (90 days) in odd years and a short session (60 days) in even years.
+        </p>
+        <div className="flex items-center gap-4 flex-wrap">
+          <a
+            href="mailto:info@unicameralwatchdog.com"
+            className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
+          >
+            info@unicameralwatchdog.com
+          </a>
+          <a
+            href="https://nebraskalegislature.gov"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
+          >
+            nebraskalegislature.gov ↗
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function NewsletterBlock() {
+  return (
+    <div className="bg-[#0a0e1a] rounded-2xl p-6">
+      <div className="max-w-xl">
+        <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay Informed</p>
+        <h3 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h3>
+        <p className="text-white/50 text-sm mb-4 leading-relaxed">
+          When the 110th session kicks off in January 2027, you'll be the first to know what's happening in Lincoln — in plain English, no spin.
+        </p>
+        <NewsletterForm />
+      </div>
+    </div>
+  );
+}
+
+export default function NebraskaWatchdog({ defaultTab = "home" }) {
   const [activeTab, setActiveTab] = useState(defaultTab);
   const [billInput, setBillInput] = useState("");
   const [translating, setTranslating] = useState(false);
@@ -350,6 +385,83 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
     setTranslating(false);
   }
 
+  if (defaultTab === "home") {
+    return (
+      <div className="min-h-screen bg-[#f4f5f7]">
+        <header className="bg-[#0a0e1a] relative overflow-hidden text-white">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#c8102e]/20 via-transparent to-transparent pointer-events-none" />
+          <div className="max-w-4xl mx-auto px-6 pt-10 pb-8 relative">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase bg-[#c8102e]/10 border border-[#c8102e]/30 px-3 py-1.5 rounded-full">
+                Watchdog
+              </span>
+              <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
+                Nov. 3, 2026 · Election season
+              </span>
+            </div>
+            <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-2">
+              Nebraska Unicameral<br />
+              <span className="text-[#c8102e]">Watchdog</span>
+            </h1>
+            <p className="text-white/50 text-sm max-w-xl leading-relaxed mb-5">
+              The ads say one thing. The Unicameral record says another. Pillen vs Walz on Nov. 3.
+              The 110th Legislature opens in January 2027.
+            </p>
+            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Now</span>
+              <p className="text-sm text-white/80">
+                2026 short session is over. Next: <span className="text-white font-medium">January 2027</span>, 110th long session.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <main className="max-w-4xl mx-auto px-6 py-8">
+          <PropertyTaxTrailSection showExplainer />
+
+          <div className="mt-10 mb-8">
+            <NewsletterBlock />
+          </div>
+
+          <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">Also watching</h2>
+          <div className="grid sm:grid-cols-3 gap-3 mb-8">
+            <Link href="/two-tax-systems" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Taxes</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">Two Tax Systems</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">How the wealthy pay a 3.4% true rate. You don’t.</p>
+            </Link>
+            <Link href="/outside-money" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">2026 Senate</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">Outside Money</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">$28.9M in outside money, and what the record shows.</p>
+            </Link>
+            <Link href="/what-they-stopped-watching" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Investigation</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">What They Stopped Watching</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">27 Douglas County cases after a tracking program was cut.</p>
+            </Link>
+          </div>
+
+          <Link
+            href="/session"
+            className="block bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow"
+          >
+            <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-2">Last session · 2025 long session</p>
+            <h3 className="text-sm font-bold text-gray-900 mb-1">
+              Voters showed up. The legislature spent five months undoing it.
+            </h3>
+            <p className="text-sm text-gray-500 leading-relaxed mb-3">
+              Sick leave gutted, cannabis blocked, $1.5 billion in corporate incentives, two vetoes. The full 2025 wrap lives on the session recap — not on this fold.
+            </p>
+            <span className="text-xs font-bold text-[#c8102e]">Read the 2025 recap →</span>
+          </Link>
+        </main>
+
+        <SiteFooter />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#f4f5f7]">
 
@@ -359,103 +471,25 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
         <div className="max-w-4xl mx-auto px-6 pt-10 pb-8 relative">
           <div className="flex items-center gap-3 mb-5">
             <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase bg-[#c8102e]/10 border border-[#c8102e]/30 px-3 py-1.5 rounded-full">
-              Watchdog
+              Session Recap
             </span>
             <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
-              District 49 · Sarpy County
+              109th Legislature · 2025–2026
             </span>
           </div>
           <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-2">
-            Nebraska Unicameral<br />
-            <span className="text-[#c8102e]">Watchdog</span>
+            What the Unicameral<br />
+            <span className="text-[#c8102e]">Actually Did</span>
           </h1>
           <p className="text-white/50 text-sm max-w-md leading-relaxed mb-5">
-            Tracking your unicameral — bills, vetoes, and campaign money
-            translated into plain English for everyday Nebraskans.
+            The 2025 long session and 2026 short session, translated into plain English — bills, vetoes, and what they meant for regular Nebraskans.
           </p>
 
-          {/* Current Status Banner */}
-          <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 mb-8 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Session Status</span>
             <p className="text-sm text-white/80">
               The 2026 short session (60 days, Jan–Apr) has ended. <span className="text-white font-medium">Next session: January 2027</span> for the 110th Legislature's long session.
             </p>
-          </div>
-
-          {/* Featured Investigation */}
-          <div className="mb-8">
-            <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-4">Featured Investigation</p>
-            <Link
-              href="/what-they-stopped-watching"
-              className="block bg-white/5 border border-white/10 rounded-xl px-5 py-5 hover:bg-white/10 transition-colors"
-            >
-              <span className="inline-block text-[10px] font-bold tracking-[0.15em] text-white bg-[#c8102e] uppercase px-2.5 py-1 rounded-full mb-3">
-                What They Stopped Watching
-              </span>
-              <h3 className="text-white font-bold text-lg mb-1">
-                27 Cases in Douglas County. A Tracking Program Cut in 2025. A $1M Donation.
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-3 max-w-xl">
-                The CDC stopped requiring states to track cyclospora four months after the company
-                now linked to Nebraska's outbreak donated $1 million to the president's super PAC.
-                The documented timeline, sourced directly — first in an ongoing series on federal
-                monitoring rollbacks.
-              </p>
-              <span className="text-xs font-bold text-[#c8102e]">Read the full timeline →</span>
-            </Link>
-          </div>
-
-          {/* Key Issues Section */}
-          <div>
-            <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-4">Key Issues</p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Link href="/outside-money" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">2026 Senate Race</span>
-                <h3 className="text-white font-bold mt-2 mb-1">Outside Money in Nebraska Politics</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  How $28.9M in outside money shaped political decisions and what the record actually shows.
-                </p>
-              </Link>
-
-              <Link href="/tariff-action" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Economic Impact</span>
-                <h3 className="text-white font-bold mt-2 mb-1">Tariffs Are Costing Nebraska Families</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  $1,700+ per year. Who's fighting back, and what bill is on the table to help.
-                </p>
-              </Link>
-
-              <Link href="/living-wage" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Workers & Economy</span>
-                <h3 className="text-white font-bold mt-2 mb-1">What Does It Take to Live in Nebraska?</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Housing, food, childcare, transportation. The real cost of living here.
-                </p>
-              </Link>
-
-              <Link href="/530a-accounts" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">Consumer Protection</span>
-
-                <h3 className="text-white font-bold mt-2 mb-1">Those $1,000 Emails About Your Kids</h3>
-
-                <p className="text-white/60 text-sm leading-relaxed">
-
-                  Some are real advertising, some are fraud. How to tell the difference, and what the fakes are trying to take.
-
-                </p>
-
-              </Link>
-
-
-              <Link href="/issues" className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-colors">
-                <span className="text-xs font-bold tracking-widest text-[#c8102e] uppercase">All Issues</span>
-                <h3 className="text-white font-bold mt-2 mb-1">See All Key Topics</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Data centers, medicaid, campaign finance, and everything we're tracking.
-                </p>
-              </Link>
-            </div>
           </div>
         </div>
 
@@ -486,7 +520,8 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
         {activeTab === "session" && (
           <div>
 
-            {/* Stats */}
+            {/* Stats — last session, labeled */}
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-3">Last session · 2025 long session</p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
               <StatCard num="700+" label="Bills introduced in 2025" />
               <StatCard num="209"  label="Signed into law" />
@@ -614,215 +649,7 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
               Sources: Nebraska Examiner · Nebraska Public Media · Ballotpedia · Nebraska Appleseed
             </p>
 
-            {/* On the trail vs in the chamber — 2026 property-tax ads */}
-            <section id="trail-vs-chamber" className="mt-10 pt-8 border-t border-gray-200">
-              <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">On the Trail vs in the Chamber</h2>
-
-              <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-6">
-                <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">Nov. 3, 2026 · Pillen vs Walz · Farmer-coded ads</p>
-                <p className="text-white font-semibold text-base leading-snug mb-2">
-                  He says he cut property taxes. The Legislature passed a coupon. The levy went back up.
-                </p>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Gov. Jim Pillen, a Columbus hog producer, is running for re-election against Lynne Walz. Late-August TV and digital ads aimed at farmers say “we reduced property taxes.” That is not the 40–50% mill-levy cut he touted in 2024. He has dated the next big push to 2027. The ad oversells a coupon as a cut.
-                </p>
-              </div>
-
-              <div className="space-y-4 mb-6">
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                  <div className="h-1 w-full bg-amber-400" />
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <div className="flex items-start gap-2.5">
-                        <span className="text-xs font-bold text-white bg-[#c8102e] px-2.5 py-1 rounded-lg shrink-0 mt-0.5">Campaign</span>
-                        <div>
-                          <h3 className="text-sm font-bold text-gray-900">We reduced property taxes</h3>
-                          <p className="text-xs text-gray-400 mt-0.5">What the ads say vs who actually sets the mill rate</p>
-                        </div>
-                      </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 bg-amber-50 text-amber-700 ring-1 ring-amber-200">
-                        Coupon, not a cut
-                      </span>
-                    </div>
-                    <p className="text-xs text-gray-500 mb-3 leading-relaxed border-b border-gray-100 pb-3">
-                      <strong className="text-gray-700">What the ad says:</strong> Farmer-coded campaign language claims the administration reduced property taxes. The state cannot levy a property tax. Schools, counties, and cities set mill rates.
-                    </p>
-                    <div className="bg-red-50 rounded-xl p-3.5 border-l-2 border-red-300">
-                      <p className="text-xs font-semibold text-red-600 uppercase tracking-widest mb-1.5">What actually happened</p>
-                      <p className="text-sm text-gray-800 leading-relaxed">
-                        Lincoln did not cut the mill levy. It printed a credit on the tax statement — a coupon the state reimburses. Everyday homeowners get the school coupon too. The farmer tilt is the older credit, the 75% ag valuation, and the 2027 ask — not a different mill rate the governor set.
-                      </p>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2.5">
-                      Source:{" "}
-                      <a href="https://nebraskaexaminer.com/2026/07/09/pillen-talks-priorities-pivot-from-nebraska-primary-election-to-nov-3-faceoff/" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">Nebraska Examiner</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                  <div className="h-1 w-full bg-emerald-500" />
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <div className="flex items-start gap-2.5">
-                        <span className="text-xs font-bold text-white bg-emerald-600 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">LB 34</span>
-                        <div>
-                          <h3 className="text-sm font-bold text-gray-900">School District Property Tax Relief Act</h3>
-                          <p className="text-xs text-gray-400 mt-0.5">Signed Aug. 20, 2024 · Passed 40–3</p>
-                        </div>
-                      </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200">
-                        What passed
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                      About a 30% credit on the school-district line (non-bond) for all real property, printed on the statement. The Department of Revenue called it equitable — 30% of school district taxes, not the whole bill. Same package: the Property Tax Growth Limitation Act for cities and counties. Earlier,{" "}
-                      <span className="font-semibold text-gray-800">LB 243 (2023)</span> moved most community-college operating levies to the state. That caused the tiny 2024 statewide dip.
-                    </p>
-                    <p className="text-xs text-gray-400">
-                      Bill:{" "}
-                      <a href="https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=58075" target="_blank" rel="noreferrer" className="font-semibold text-gray-600 hover:text-[#c8102e]">LB 34</a>
-                      {" "}· Source:{" "}
-                      <a href="https://nebraskaexaminer.com/2024/08/20/legislature-passes-slimmed-down-property-tax-relief-package-ends-nebraskas-special-session/" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">Nebraska Examiner</a>
-                      {" · "}
-                      <a href="https://revenue.nebraska.gov/sites/default/files/doc/news-release/ndr/LB_34_News_Release_Final.pdf" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">DOR explainer</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                  <div className="h-1 w-full bg-red-500" />
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <div className="flex items-start gap-2.5">
-                        <span className="text-xs font-bold text-white bg-[#c8102e] px-2.5 py-1 rounded-lg shrink-0 mt-0.5">LB 814</span>
-                        <div>
-                          <h3 className="text-sm font-bold text-gray-900">The 40–50% cut, and the 75%→50% ag bill</h3>
-                          <p className="text-xs text-gray-400 mt-0.5">Indefinitely postponed · Apr. 17, 2026</p>
-                        </div>
-                      </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 bg-red-50 text-red-700 ring-1 ring-red-200">
-                        ✕ What died
-                      </span>
-                    </div>
-                    <div className="bg-red-50 rounded-xl p-3.5 border-l-2 border-red-300">
-                      <p className="text-xs font-semibold text-red-600 uppercase tracking-widest mb-1.5">What actually happened</p>
-                      <p className="text-sm text-gray-800 leading-relaxed">
-                        The 2024 special session’s 40–50% cut plus sales-tax expansion died. In 2026, Sen. Brandt’s LB 814 — drop ag land valuation from 75% to 50% — was indefinitely postponed April 17. The short session ditched most of Pillen’s remaining tax-base ideas.
-                      </p>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2.5">
-                      Bill:{" "}
-                      <a href="https://www.nebraskalegislature.gov/bills/view_bill.php?DocumentID=63258" target="_blank" rel="noreferrer" className="font-semibold text-gray-600 hover:text-[#c8102e]">LB 814</a>
-                      {" "}· Source:{" "}
-                      <a href="https://nebraskaexaminer.com/2026/04/20/pillen-eyes-more-state-budget-cuts-to-help-offset-local-property-taxes/" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">Nebraska Examiner</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                  <div className="h-1 w-full bg-gray-400" />
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3 mb-3">
-                      <div className="flex items-start gap-2.5">
-                        <span className="text-xs font-bold text-white bg-gray-700 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">DOR</span>
-                        <h3 className="text-sm font-bold text-gray-900">What the numbers did</h3>
-                      </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 bg-gray-50 text-gray-700 ring-1 ring-gray-200">
-                        Credits ≠ a rate cut
-                      </span>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-3 mb-4">
-                      <div className="bg-gray-50 rounded-xl p-3 border-l-2 border-gray-300">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">2024 levy</p>
-                        <p className="text-sm text-gray-800 leading-relaxed">
-                          First statewide property-tax decrease in 26 years — about <span className="font-semibold">$6 million</span> vs. ~$5.3 billion total. Mostly the community-college shift.
-                        </p>
-                      </div>
-                      <div className="bg-red-50 rounded-xl p-3 border-l-2 border-red-300">
-                        <p className="text-xs font-semibold text-red-600 uppercase tracking-widest mb-1">2025 levy</p>
-                        <p className="text-sm text-gray-800 leading-relaxed">
-                          Up about <span className="font-semibold">$285 million</span> to <span className="font-semibold">$5,587,369,523</span>.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-3 mb-4">
-                      <div>
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Where it goes · 2025 DOR</p>
-                        <ul className="text-sm text-gray-700 leading-relaxed space-y-1">
-                          <li>Schools 59.45% · $3,321,609,205 <span className="text-gray-400">(incl. bonds)</span></li>
-                          <li>Counties 17.46% · $975,404,479</li>
-                          <li>Cities/villages 11.69% · $653,061,843</li>
-                          <li className="text-xs text-gray-500">Rest: NRDs, fire, misc, leftover community college, ESUs, townships</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Who pays · 2025 DOR</p>
-                        <ul className="text-sm text-gray-700 leading-relaxed space-y-1">
-                          <li>Residential ~53.75% of taxes on ~45.93% of value <span className="text-gray-400">(avg rate 1.7244)</span></li>
-                          <li>Ag land ~22.30% of taxes on ~31.92% of value <span className="text-gray-400">(avg rate 1.0298)</span></li>
-                          <li className="text-xs text-gray-500">Ag land assessed at 75% of actual value; homes 100%. Farmhouses and farm sites taxed as residential.</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-xl p-3.5 border-l-2 border-gray-300">
-                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">2025 credits · DOR EO 25-13</p>
-                      <p className="text-sm text-gray-800 leading-relaxed mb-2">
-                        School District Property Tax Relief Credit <span className="font-semibold">$797,295,209</span>. Property Tax Credit Act <span className="font-semibold">$467,132,271</span> — $119.00 per $100,000 taxable value for non-ag, $142.79 per $100,000 for ag land (120% allocation).
-                      </p>
-                      <p className="text-xs text-gray-500">DOR is explicit: credits are not a levy-rate cut.</p>
-                    </div>
-
-                    <p className="text-xs text-gray-400 mt-2.5">
-                      Source:{" "}
-                      <a href="https://nebraskaexaminer.com/2026/04/20/pillen-eyes-more-state-budget-cuts-to-help-offset-local-property-taxes/" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">Nebraska Examiner, Apr. 20, 2026</a>
-                      {" · "}
-                      <a href="https://revenue.nebraska.gov/sites/default/files/doc/pad/research/valuation/2026/CurrentYr_VT_PieCharts_State%20%26%2093%20counties%202025.pdf" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">DOR pie charts</a>
-                      {" · "}
-                      <a href="https://revenue.nebraska.gov/sites/default/files/doc/news-release/pad/2025/NewsRelease_2025_Real_Property_Tax_Credit_and_School_Dist_Prop_Tax_Relief_Credit.pdf" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">DOR 2025 credits</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                  <div className="h-1 w-full bg-gray-400" />
-                  <div className="p-5">
-                    <div className="flex items-start gap-2.5 mb-2">
-                      <span className="text-xs font-bold text-white bg-gray-700 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">2027</span>
-                      <h3 className="text-sm font-bold text-gray-900">How he’d pay for more</h3>
-                    </div>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      State spending cuts. Maybe broaden the 5.5% sales tax to currently exempt goods and services. Hard local spending caps. He said the messaging needs to be simpler and the next fight is 2027. Sen. Tanya Storer called credits “feeding the demon.”
-                    </p>
-                    <p className="text-xs text-gray-400 mt-2.5">
-                      Source:{" "}
-                      <a href="https://nebraskaexaminer.com/2026/07/09/pillen-talks-priorities-pivot-from-nebraska-primary-election-to-nov-3-faceoff/" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">Nebraska Examiner, Jul. 9, 2026</a>
-                      {" · "}
-                      <a href="https://nebraskaexaminer.com/2026/04/20/pillen-eyes-more-state-budget-cuts-to-help-offset-local-property-taxes/" target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">Apr. 20, 2026</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-xs text-gray-500 leading-relaxed mb-6 border-t border-gray-100 pt-4">
-                Separate fight —{" "}
-                <a href="https://ballotpedia.org/Nebraska_Referendum_435,_Private_Education_Scholarship_Program_Referendum_(2024)" target="_blank" rel="noreferrer" className="font-semibold text-gray-700 hover:text-[#c8102e]">Referendum 435</a>
-                {" "}(Nov. 2024) repealed the private-school scholarship law 57.03%–42.97% statewide (508,140 to repeal vs. 382,921), including Douglas County ~56%. Pillen’s “right fit” / federal $1,700 credit is a 2027 argument, not this levy story.
-              </p>
-
-              <p className="text-xs text-gray-400 text-center leading-relaxed">
-                Sources:{" "}
-                {PROPERTY_TAX_SOURCES.map((s, i) => (
-                  <span key={s.url}>
-                    <a href={s.url} target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">{s.label}</a>
-                    {i < PROPERTY_TAX_SOURCES.length - 1 ? " · " : ""}
-                  </span>
-                ))}
-              </p>
-            </section>
+            <PropertyTaxTrailSection showExplainer className="mt-10 pt-8 border-t border-gray-200" />
           </div>
         )}
 
@@ -1056,47 +883,11 @@ export default function NebraskaWatchdog({ defaultTab = "session" }) {
         )}
       </main>
 
-      {/* Newsletter Signup */}
       <div className="max-w-4xl mx-auto px-6 mb-4">
-        <div className="bg-[#0a0e1a] rounded-2xl p-6">
-          <div className="max-w-xl">
-            <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay Informed</p>
-            <h3 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h3>
-            <p className="text-white/50 text-sm mb-4 leading-relaxed">
-              When the 110th session kicks off in January 2027, you'll be the first to know what's happening in Lincoln — in plain English, no spin.
-            </p>
-            <NewsletterForm />
-          </div>
-        </div>
+        <NewsletterBlock />
       </div>
 
-      {/* Footer */}
-      <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-200 mt-4">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <p className="text-xs text-gray-400">
-            Nebraska Unicameral Watchdog · District 49 · Not affiliated with any political party.
-            <br className="sm:hidden" />
-            <span className="hidden sm:inline"> · </span>
-            The unicameral meets for a long session (90 days) in odd years and a short session (60 days) in even years.
-          </p>
-          <div className="flex items-center gap-4 flex-wrap">
-            <a
-              href="mailto:info@unicameralwatchdog.com"
-              className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
-            >
-              info@unicameralwatchdog.com
-            </a>
-            <a
-              href="https://nebraskalegislature.gov"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs text-gray-400 hover:text-[#c8102e] transition-colors"
-            >
-              nebraskalegislature.gov ↗
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

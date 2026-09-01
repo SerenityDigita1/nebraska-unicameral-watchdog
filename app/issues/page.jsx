@@ -10,11 +10,11 @@ const ISSUES = [
   {
     title: "Property Taxes",
     icon: "🏠",
-    stat: "1.91%",
-    statNote: "Sarpy effective rate vs. 1.02% national median",
-    summary: "Sarpy County kept its levy flat for 2026, but valuations have doubled over the past decade, so bills keep rising. The median annual tax bill is $4,820. County commissioners cite $13M in unfunded state mandates as the driver. The state's property tax relief bills have largely benefited large landowners and corporations, not homeowners.",
-    link: "/district-49",
-    linkLabel: "See District 49 breakdown",
+    stat: "+$285M",
+    statNote: "2025 levy increase after the coupon",
+    summary: "Campaign ads say “we reduced property taxes.” The Unicameral passed a school-district credit printed on the statement. The 2025 levy went up about $285 million. Everyday homeowners get the coupon too. The farmer tilt is the older credit, 75% ag valuation, and the 2027 ask.",
+    link: "/property-tax-coupon",
+    linkLabel: "Read the coupon explainer",
     urgent: true,
   },
   {
