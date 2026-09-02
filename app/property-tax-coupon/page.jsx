@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { BillCardList } from "@/components/BillCard";
+import { PROPERTY_TAX_BILLS } from "@/data/unicameral-bills";
 
 export const metadata = {
   title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
@@ -10,14 +12,14 @@ export const metadata = {
       "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
     url: "https://unicameralwatchdog.com/property-tax-coupon",
     type: "article",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+    images: [{ url: "/property-tax-coupon/opengraph-image", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
     description:
       "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
-    images: ["/opengraph-image"],
+    images: ["/property-tax-coupon/opengraph-image"],
   },
 };
 
@@ -29,6 +31,7 @@ const SOURCES = [
   { label: "Nebraska Examiner: Legislature passes slimmed-down property tax relief package (Aug. 20, 2024)", url: "https://nebraskaexaminer.com/2024/08/20/legislature-passes-slimmed-down-property-tax-relief-package-ends-nebraskas-special-session/" },
   { label: "Nebraska Examiner: Pillen eyes more state budget cuts to offset local property taxes (Apr. 20, 2026)", url: "https://nebraskaexaminer.com/2026/04/20/pillen-eyes-more-state-budget-cuts-to-help-offset-local-property-taxes/" },
   { label: "Nebraska Examiner: Pillen talks priorities, pivot to Nov. 3 faceoff (Jul. 9, 2026)", url: "https://nebraskaexaminer.com/2026/07/09/pillen-talks-priorities-pivot-from-nebraska-primary-election-to-nov-3-faceoff/" },
+  { label: "LB 243 — community-college operations to the state (2023)", url: "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50310" },
   { label: "LB 814 — agricultural land valuation (indefinitely postponed Apr. 17, 2026)", url: "https://www.nebraskalegislature.gov/bills/view_bill.php?DocumentID=63258" },
   { label: "Ballotpedia: Nebraska Referendum 435 (2024)", url: "https://ballotpedia.org/Nebraska_Referendum_435,_Private_Education_Scholarship_Program_Referendum_(2024)" },
   { label: "Nebraska Examiner: AFP-NE / Battleground Connect sales-tax poll (Jan. 11, 2024)", url: "https://nebraskaexaminer.com/2024/01/11/polling-indicates-many-nebraskans-oppose-pillen-plan-to-offset-property-taxes-with-higher-sales-tax/" },
@@ -81,6 +84,12 @@ export default function PropertyTaxCoupon() {
             Source: Nebraska Examiner — July 9, 2026 ↗
           </a>
         </div>
+
+        <p className="text-xs text-gray-400 mb-4">
+          Last session heartbeat · 2026 short session is over. Next: January 2027, 110th long session.
+        </p>
+        <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">The record · three bills</h2>
+        <BillCardList bills={PROPERTY_TAX_BILLS} className="mb-8" />
 
         {/* Ads */}
         <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">What the ads are talking about</h2>
