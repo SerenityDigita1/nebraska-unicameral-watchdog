@@ -5,6 +5,13 @@ export const alt = "LB 34 — coupon, not a cut. Unicameral Watchdog.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+const STAGE = [
+  { label: "Introduced", color: "#0a0e1a" },
+  { label: "Committee", color: "#0a0e1a" },
+  { label: "Floor", color: "#0a0e1a" },
+  { label: "Passed", color: "#059669" },
+];
+
 export default async function Image() {
   return new ImageResponse(
     (
@@ -15,27 +22,35 @@ export default async function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          padding: "48px 56px",
+          padding: "44px 52px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "28px" }}>
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 24,
+          }}
+        >
           <div style={{ display: "flex", alignItems: "center" }}>
             <div
               style={{
                 background: "#c8102e",
                 color: "white",
-                fontSize: "22px",
+                fontSize: 22,
                 fontWeight: 700,
                 padding: "8px 14px",
-                borderRadius: "10px",
-                marginRight: "14px",
+                borderRadius: 10,
+                marginRight: 14,
               }}
             >
               49
             </div>
-            <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "22px", fontWeight: 600 }}>NE Watchdog</span>
+            <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 22, fontWeight: 600 }}>NE Watchdog</span>
           </div>
-          <span style={{ color: "#c8102e", fontSize: "18px", fontWeight: 700 }}>unicameralwatchdog.com</span>
+          <span style={{ color: "#c8102e", fontSize: 18, fontWeight: 700 }}>unicameralwatchdog.com</span>
         </div>
 
         <div
@@ -43,74 +58,79 @@ export default async function Image() {
             display: "flex",
             flexDirection: "column",
             background: "white",
-            borderRadius: "24px",
-            padding: "36px 40px",
-            flex: 1,
+            borderRadius: 24,
+            padding: "32px 40px 28px",
+            width: 1096,
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", marginBottom: "18px" }}>
+          <div style={{ display: "flex", alignItems: "center", marginBottom: 18 }}>
             <div
               style={{
                 background: "#059669",
                 color: "white",
-                fontSize: "22px",
+                fontSize: 22,
                 fontWeight: 700,
                 padding: "8px 16px",
-                borderRadius: "10px",
-                marginRight: "14px",
+                borderRadius: 10,
+                marginRight: 14,
               }}
             >
               LB 34
             </div>
-            <span style={{ color: "#6b7280", fontSize: "20px" }}>Signed Aug. 20, 2024 · 40–3</span>
+            <span style={{ color: "#6b7280", fontSize: 20 }}>Signed Aug. 20, 2024 · 40–3</span>
           </div>
 
-          <div style={{ color: "#0a0e1a", fontSize: "40px", fontWeight: 700, lineHeight: 1.15, marginBottom: "16px" }}>
+          <div
+            style={{
+              display: "flex",
+              color: "#0a0e1a",
+              fontSize: 40,
+              fontWeight: 700,
+              lineHeight: 1.2,
+              marginBottom: 12,
+            }}
+          >
             School District Property Tax Relief Act
           </div>
-          <div style={{ color: "#4b5563", fontSize: "24px", lineHeight: 1.35, marginBottom: "28px" }}>
+          <div
+            style={{
+              display: "flex",
+              color: "#4b5563",
+              fontSize: 24,
+              lineHeight: 1.35,
+              marginBottom: 28,
+            }}
+          >
             ~30% credit on the school line. Coupon, not a cut.
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
-            {["Introduced", "Committee", "Floor", "Passed"].map((label, i) => (
-              <div key={label} style={{ display: "flex", alignItems: "center", flex: i < 3 ? 1 : 0 }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <div
-                    style={{
-                      width: 16,
-                      height: 16,
-                      borderRadius: 999,
-                      background: i === 3 ? "#059669" : "#0a0e1a",
-                    }}
-                  />
-                  <span
-                    style={{
-                      marginTop: 8,
-                      fontSize: 16,
-                      fontWeight: 700,
-                      color: i === 3 ? "#047857" : "#374151",
-                    }}
-                  >
-                    {label}
-                  </span>
-                </div>
-                {i < 3 && (
-                  <div style={{ height: 4, flex: 1, background: "#0a0e1a", margin: "0 10px 22px 10px" }} />
-                )}
+          <div style={{ display: "flex", width: 1016, height: 4, background: "#0a0e1a", marginBottom: -12 }} />
+          <div style={{ display: "flex", width: 1016, justifyContent: "space-between", marginBottom: 28 }}>
+            {STAGE.map((step) => (
+              <div key={step.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 180 }}>
+                <div
+                  style={{
+                    width: 18,
+                    height: 18,
+                    borderRadius: 9,
+                    background: step.color,
+                    marginBottom: 8,
+                  }}
+                />
+                <span style={{ fontSize: 18, fontWeight: 700, color: step.color }}>{step.label}</span>
               </div>
             ))}
           </div>
 
           <div
             style={{
-              marginTop: "auto",
+              display: "flex",
               background: "#fffbeb",
-              borderLeft: "4px solid #f59e0b",
+              borderLeft: "6px solid #f59e0b",
               borderRadius: "0 12px 12px 0",
-              padding: "14px 18px",
+              padding: "16px 20px",
               color: "#78350f",
-              fontSize: "22px",
+              fontSize: 22,
               fontWeight: 600,
             }}
           >
