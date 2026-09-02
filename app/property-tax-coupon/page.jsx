@@ -10,12 +10,14 @@ export const metadata = {
       "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
     url: "https://unicameralwatchdog.com/property-tax-coupon",
     type: "article",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
     description:
       "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
+    images: ["/opengraph-image"],
   },
 };
 
