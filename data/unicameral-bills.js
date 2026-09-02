@@ -1,0 +1,47 @@
+// Hardcoded Unicameral bills. Swap this module for a live feed later (LegiScan).
+// Facts only: existing Watchdog pages + official legislature.gov bill records.
+
+export const PROPERTY_TAX_BILLS = [
+  {
+    id: "LB34",
+    number: "LB 34",
+    session: "2024 special session",
+    title: "School District Property Tax Relief Act",
+    summary: "~30% credit on the school (non-bond) line for all real property. The state reimburses. Locals still levy.",
+    sponsor: "Sen. Brewer",
+    lastAction: "Signed Aug. 20, 2024",
+    lastActionNote: "Passed 40–3",
+    stageReached: "passed",
+    outcome: "passed",
+    url: "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=58075",
+    adVsRecord: "The ad calls this a cut. Lincoln printed a coupon.",
+  },
+  {
+    id: "LB243",
+    number: "LB 243",
+    session: "2023",
+    title: "Community-college operations to the state",
+    summary: "Moved most community-college operating levies onto the state. That shift produced the tiny 2024 statewide dip.",
+    sponsor: "Sen. Briese",
+    lastAction: "Signed May 31, 2023",
+    lastActionNote: null,
+    stageReached: "passed",
+    outcome: "passed",
+    url: "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50310",
+    adVsRecord: null,
+  },
+  {
+    id: "LB814",
+    number: "LB 814",
+    session: "2026",
+    title: "Ag land valuation 75% → 50%",
+    summary: "Would have dropped agricultural land valuation from 75% to 50%. Died in Revenue Committee.",
+    sponsor: "Sen. Brandt",
+    lastAction: "Indefinitely postponed Apr. 17, 2026",
+    lastActionNote: null,
+    stageReached: "committee",
+    outcome: "postponed",
+    url: "https://www.nebraskalegislature.gov/bills/view_bill.php?DocumentID=63258",
+    adVsRecord: "The farm valuation cut died. It is not a mill rate the governor set.",
+  },
+];

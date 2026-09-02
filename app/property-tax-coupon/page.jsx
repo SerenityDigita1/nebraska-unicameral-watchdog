@@ -1,9 +1,27 @@
 import Link from "next/link";
+import { BillCardList } from "@/components/BillCard";
+import ShareControl from "@/components/ShareControl";
+import { PROPERTY_TAX_BILLS } from "@/data/unicameral-bills";
 
 export const metadata = {
-  title: "The Coupon Isn’t a Cut — What Pillen’s Farmer Tax Ads Leave Out",
+  title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
   description:
-    "Gov. Pillen’s 2026 ads say “we reduced property taxes.” The Unicameral passed a school-district credit, not a mill-levy cut. What LB 34 did, what died, and what the 2025 levy numbers actually show.",
+    "He says he cut property taxes. The Legislature passed a coupon. The levy went back up.",
+  openGraph: {
+    title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
+    description:
+      "He says he cut property taxes. The Legislature passed a coupon. The levy went back up.",
+    url: "https://unicameralwatchdog.com/property-tax-coupon",
+    type: "article",
+    images: [{ url: "/property-tax-coupon/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
+    description:
+      "He says he cut property taxes. The Legislature passed a coupon. The levy went back up.",
+    images: ["/property-tax-coupon/opengraph-image"],
+  },
 };
 
 const SOURCES = [
@@ -14,6 +32,7 @@ const SOURCES = [
   { label: "Nebraska Examiner: Legislature passes slimmed-down property tax relief package (Aug. 20, 2024)", url: "https://nebraskaexaminer.com/2024/08/20/legislature-passes-slimmed-down-property-tax-relief-package-ends-nebraskas-special-session/" },
   { label: "Nebraska Examiner: Pillen eyes more state budget cuts to offset local property taxes (Apr. 20, 2026)", url: "https://nebraskaexaminer.com/2026/04/20/pillen-eyes-more-state-budget-cuts-to-help-offset-local-property-taxes/" },
   { label: "Nebraska Examiner: Pillen talks priorities, pivot to Nov. 3 faceoff (Jul. 9, 2026)", url: "https://nebraskaexaminer.com/2026/07/09/pillen-talks-priorities-pivot-from-nebraska-primary-election-to-nov-3-faceoff/" },
+  { label: "LB 243 — community-college operations to the state (2023)", url: "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50310" },
   { label: "LB 814 — agricultural land valuation (indefinitely postponed Apr. 17, 2026)", url: "https://www.nebraskalegislature.gov/bills/view_bill.php?DocumentID=63258" },
   { label: "Ballotpedia: Nebraska Referendum 435 (2024)", url: "https://ballotpedia.org/Nebraska_Referendum_435,_Private_Education_Scholarship_Program_Referendum_(2024)" },
   { label: "Nebraska Examiner: AFP-NE / Battleground Connect sales-tax poll (Jan. 11, 2024)", url: "https://nebraskaexaminer.com/2024/01/11/polling-indicates-many-nebraskans-oppose-pillen-plan-to-offset-property-taxes-with-higher-sales-tax/" },
@@ -31,9 +50,20 @@ export default function PropertyTaxCoupon() {
             The Coupon Isn’t a Cut
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
-            What Pillen’s farmer tax ads leave out. The state cannot levy a property tax.
+            The ads in Omaha and Lincoln feeds leave this out. The state cannot levy a property tax.
             Locals set mill rates. Lincoln printed a credit on the statement. Then the levy went back up.
           </p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-8">
+          <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">If you just saw the ad</p>
+          <p className="text-sm text-gray-600 leading-relaxed mb-3">
+            If a property-tax spot just landed in your Omaha or Lincoln feed — TV or digital, Pillen or Walz — this page is the Unicameral record behind it. Farmer footage is the costume. The audience is whoever pays the bill, including homeowners.
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+            The state cannot levy a property tax. Locals set mill rates. Lincoln printed a credit on the statement. Homes already pay a higher average rate than ag land. The 2027 plan is a farm buy-down paid with broader sales tax and local levy caps.
+          </p>
+          <ShareControl />
         </div>
 
         <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-8 text-white">
@@ -42,8 +72,8 @@ export default function PropertyTaxCoupon() {
             He says he cut property taxes. The Legislature passed a coupon. The levy went back up.
           </p>
           <p className="text-white/60 text-sm leading-relaxed mb-4">
-            Gov. Jim Pillen, a Columbus hog producer, is running for re-election against Lynne Walz.
-            Late-August TV and digital ads aimed at farmers say “we reduced property taxes.” That is not
+            Gov. Jim Pillen is running for re-election against Lynne Walz.
+            TV and digital ads say “we reduced property taxes.” That is not
             the 40–50% mill-levy cut he touted in 2024. He has dated the next big push to{" "}
             <span className="text-white font-semibold">2027</span>. The ad oversells a coupon as a cut.
           </p>
@@ -57,12 +87,18 @@ export default function PropertyTaxCoupon() {
           </a>
         </div>
 
+        <p className="text-xs text-gray-400 mb-4">
+          Last session heartbeat · 2026 short session is over. Next: January 2027, 110th long session.
+        </p>
+        <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">The record · three bills</h2>
+        <BillCardList bills={PROPERTY_TAX_BILLS} className="mb-8" />
+
         {/* Ads */}
         <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">What the ads are talking about</h2>
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
-            This is not an income-tax ad. It is not a school-choice ad. It is a property-tax ad coded for farmers,
-            because in much of rural Nebraska the school is paid by whoever owns the acres. Pillen’s campaign
+            This is not an income-tax ad. It is not a school-choice ad. It is a property-tax ad that still uses farm footage,
+            even when it lands in a metro feed, because in much of rural Nebraska the school is paid by whoever owns the acres. Pillen’s campaign
             language — “we reduced property taxes” — collapses three different machines into one sentence:
             a credit printed on the tax statement, an older credit that already tilts toward ag land, and a
             2027 ask that has not passed.
