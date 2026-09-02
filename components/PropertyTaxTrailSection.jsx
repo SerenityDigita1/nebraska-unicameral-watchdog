@@ -18,12 +18,12 @@ export default function PropertyTaxTrailSection({ showExplainer = false, classNa
       <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">On the Trail vs in the Chamber</h2>
 
       <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-6">
-        <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">Nov. 3, 2026 · Pillen vs Walz · Farmer-coded ads</p>
+        <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">Nov. 3, 2026 · Pillen vs Walz · Property-tax ads</p>
         <p className="text-white font-semibold text-base leading-snug mb-2">
           He says he cut property taxes. The Legislature passed a coupon. The levy went back up.
         </p>
         <p className="text-white/60 text-sm leading-relaxed">
-          Gov. Jim Pillen, a Columbus hog producer, is running for re-election against Lynne Walz. Late-August TV and digital ads aimed at farmers say “we reduced property taxes.” That is not the 40–50% mill-levy cut he touted in 2024. He has dated the next big push to 2027. The ad oversells a coupon as a cut.
+          Gov. Jim Pillen is running for re-election against Lynne Walz. The ads are in Omaha and Lincoln feeds, not just rural, and the 2027 plan is a farm buy-down paid with broader sales tax and local levy caps. Homes already pay a higher average rate than ag land. That is not the 40–50% mill-levy cut he touted in 2024. The ad oversells a coupon as a cut.
         </p>
       </div>
 
@@ -34,7 +34,7 @@ export default function PropertyTaxTrailSection({ showExplainer = false, classNa
         >
           <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-2">Full explainer</p>
           <h3 className="text-base font-bold text-gray-900 mb-1">
-            The coupon isn’t a cut: what Pillen’s farmer tax ads leave out
+            The coupon isn’t a cut: if you just saw the tax ad
           </h3>
           <p className="text-sm text-gray-500 leading-relaxed mb-3">
             Who already pays more, what LB 34 actually printed on the statement, and how he’d pay for the 2027 ask — in plain English.
@@ -60,7 +60,7 @@ export default function PropertyTaxTrailSection({ showExplainer = false, classNa
               </span>
             </div>
             <p className="text-xs text-gray-500 mb-3 leading-relaxed border-b border-gray-100 pb-3">
-              <strong className="text-gray-700">What the ad says:</strong> Farmer-coded campaign language claims the administration reduced property taxes. The state cannot levy a property tax. Schools, counties, and cities set mill rates.
+              <strong className="text-gray-700">What the ad says:</strong> Campaign language claims the administration reduced property taxes. The state cannot levy a property tax. Schools, counties, and cities set mill rates.
             </p>
             <div className="bg-red-50 rounded-xl p-3.5 border-l-2 border-red-300">
               <p className="text-xs font-semibold text-red-600 uppercase tracking-widest mb-1.5">What actually happened</p>

@@ -1,9 +1,22 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "The Coupon Isn’t a Cut — What Pillen’s Farmer Tax Ads Leave Out",
+  title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
   description:
-    "Gov. Pillen’s 2026 ads say “we reduced property taxes.” The Unicameral passed a school-district credit, not a mill-levy cut. What LB 34 did, what died, and what the 2025 levy numbers actually show.",
+    "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
+  openGraph: {
+    title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
+    description:
+      "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
+    url: "https://unicameralwatchdog.com/property-tax-coupon",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
+    description:
+      "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
+  },
 };
 
 const SOURCES = [
@@ -31,8 +44,18 @@ export default function PropertyTaxCoupon() {
             The Coupon Isn’t a Cut
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
-            What Pillen’s farmer tax ads leave out. The state cannot levy a property tax.
+            The ads in Omaha and Lincoln feeds leave this out. The state cannot levy a property tax.
             Locals set mill rates. Lincoln printed a credit on the statement. Then the levy went back up.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-8">
+          <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">If you just saw the ad</p>
+          <p className="text-sm text-gray-600 leading-relaxed mb-3">
+            If a property-tax spot just landed in your Omaha or Lincoln feed — TV or digital, Pillen or Walz — this page is the Unicameral record behind it. Farmer footage is the costume. The audience is whoever pays the bill, including homeowners.
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            The state cannot levy a property tax. Locals set mill rates. Lincoln printed a credit on the statement. Homes already pay a higher average rate than ag land. The 2027 plan is a farm buy-down paid with broader sales tax and local levy caps.
           </p>
         </div>
 
@@ -42,8 +65,8 @@ export default function PropertyTaxCoupon() {
             He says he cut property taxes. The Legislature passed a coupon. The levy went back up.
           </p>
           <p className="text-white/60 text-sm leading-relaxed mb-4">
-            Gov. Jim Pillen, a Columbus hog producer, is running for re-election against Lynne Walz.
-            Late-August TV and digital ads aimed at farmers say “we reduced property taxes.” That is not
+            Gov. Jim Pillen is running for re-election against Lynne Walz.
+            TV and digital ads say “we reduced property taxes.” That is not
             the 40–50% mill-levy cut he touted in 2024. He has dated the next big push to{" "}
             <span className="text-white font-semibold">2027</span>. The ad oversells a coupon as a cut.
           </p>
@@ -61,8 +84,8 @@ export default function PropertyTaxCoupon() {
         <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">What the ads are talking about</h2>
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
-            This is not an income-tax ad. It is not a school-choice ad. It is a property-tax ad coded for farmers,
-            because in much of rural Nebraska the school is paid by whoever owns the acres. Pillen’s campaign
+            This is not an income-tax ad. It is not a school-choice ad. It is a property-tax ad that still uses farm footage,
+            even when it lands in a metro feed, because in much of rural Nebraska the school is paid by whoever owns the acres. Pillen’s campaign
             language — “we reduced property taxes” — collapses three different machines into one sentence:
             a credit printed on the tax statement, an older credit that already tilts toward ag land, and a
             2027 ask that has not passed.
