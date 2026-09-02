@@ -29,24 +29,27 @@ export default function ShareControl({ className = "", showSave = true, compact 
 
   async function share() {
     const payload = { title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL };
+    const line = `${SHARE_TEXT}\n${SHARE_URL}`;
+    const mobile =
+      window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
     try {
-      if (typeof navigator.share === "function") {
+      if (mobile && typeof navigator.share === "function") {
         await navigator.share(payload);
         setStatus("Shared");
       } else {
-        await copyText(`${SHARE_TEXT}\n${SHARE_URL}`);
+        await copyText(line);
         setStatus("Link copied");
       }
     } catch (err) {
       if (err?.name === "AbortError") return;
       try {
-        await copyText(`${SHARE_TEXT}\n${SHARE_URL}`);
+        await copyText(line);
         setStatus("Link copied");
       } catch {
         setStatus("Couldn’t share");
       }
     }
-    window.setTimeout(() => setStatus(""), 2000);
+    window.setTimeout(() => setStatus(""), 3000);
   }
 
   async function saveImage() {
@@ -66,7 +69,7 @@ export default function ShareControl({ className = "", showSave = true, compact 
     } catch {
       setStatus("Couldn’t save");
     }
-    window.setTimeout(() => setStatus(""), 2000);
+    window.setTimeout(() => setStatus(""), 3000);
   }
 
   return (
@@ -95,7 +98,7 @@ export default function ShareControl({ className = "", showSave = true, compact 
           Save image
         </button>
       )}
-      <span className="text-[11px] text-gray-400" aria-live="polite">
+      <span className="text-xs font-medium text-[#c8102e]" aria-live="polite">
         {status}
       </span>
     </div>
