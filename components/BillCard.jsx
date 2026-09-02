@@ -1,3 +1,5 @@
+import ShareControl from "@/components/ShareControl";
+
 const PROCESS_STEPS = [
   { key: "introduced", label: "Introduced" },
   { key: "committee", label: "Committee" },
@@ -104,6 +106,7 @@ export default function BillCard({ bill }) {
             Legislature.ne.gov ↗
           </a>
         </div>
+        <ShareControl compact className="mt-3" />
       </div>
     </article>
   );

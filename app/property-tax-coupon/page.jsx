@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { BillCardList } from "@/components/BillCard";
+import ShareControl from "@/components/ShareControl";
 import { PROPERTY_TAX_BILLS } from "@/data/unicameral-bills";
 
 export const metadata = {
   title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
   description:
-    "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
+    "He says he cut property taxes. The Legislature passed a coupon. The levy went back up.",
   openGraph: {
     title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
     description:
-      "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
+      "He says he cut property taxes. The Legislature passed a coupon. The levy went back up.",
     url: "https://unicameralwatchdog.com/property-tax-coupon",
     type: "article",
     images: [{ url: "/property-tax-coupon/opengraph-image", width: 1200, height: 630 }],
@@ -18,7 +19,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "If You Just Saw the Property-Tax Ad — The Coupon Isn’t a Cut",
     description:
-      "The ads in Omaha and Lincoln feeds say property taxes were cut. The Unicameral passed a school-district credit, not a mill-levy cut. Homes already pay a higher average rate than ag land.",
+      "He says he cut property taxes. The Legislature passed a coupon. The levy went back up.",
     images: ["/property-tax-coupon/opengraph-image"],
   },
 };
@@ -59,9 +60,10 @@ export default function PropertyTaxCoupon() {
           <p className="text-sm text-gray-600 leading-relaxed mb-3">
             If a property-tax spot just landed in your Omaha or Lincoln feed — TV or digital, Pillen or Walz — this page is the Unicameral record behind it. Farmer footage is the costume. The audience is whoever pays the bill, including homeowners.
           </p>
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <p className="text-sm text-gray-600 leading-relaxed mb-4">
             The state cannot levy a property tax. Locals set mill rates. Lincoln printed a credit on the statement. Homes already pay a higher average rate than ag land. The 2027 plan is a farm buy-down paid with broader sales tax and local levy caps.
           </p>
+          <ShareControl />
         </div>
 
         <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-8 text-white">
