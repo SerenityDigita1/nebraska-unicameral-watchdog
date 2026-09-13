@@ -12,6 +12,7 @@ export default function sitemap() {
     "/pay-gap",
     "/what-they-stopped-watching",
     "/property-tax-coupon",
+    "/dan-osborn-immigration-ad",
     "/two-tax-systems",
     "/interim",
     "/tariff-action",

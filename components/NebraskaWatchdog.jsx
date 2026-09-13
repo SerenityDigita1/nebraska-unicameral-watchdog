@@ -435,6 +435,11 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
               <h3 className="text-sm font-bold text-gray-900 mb-1">Outside Money</h3>
               <p className="text-xs text-gray-500 leading-relaxed">$28.9M in outside money, and what the record shows.</p>
             </Link>
+            <Link href="/dan-osborn-immigration-ad" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Ads vs record</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">If you saw the immigration ad</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Osborn “amnesty” spots vs the Kellogg’s / ICE record.</p>
+            </Link>
             <Link href="/what-they-stopped-watching" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
               <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Investigation</p>
               <h3 className="text-sm font-bold text-gray-900 mb-1">What They Stopped Watching</h3>

@@ -24,12 +24,21 @@ async function copyText(value) {
   document.body.removeChild(area);
 }
 
-export default function ShareControl({ className = "", showSave = true, compact = false }) {
+export default function ShareControl({
+  className = "",
+  showSave = true,
+  compact = false,
+  shareUrl = SHARE_URL,
+  shareText = SHARE_TEXT,
+  shareTitle = SHARE_TITLE,
+  shareImage = SHARE_IMAGE,
+  downloadName = "watchdog-lb34-coupon-isnt-a-cut.png",
+}) {
   const [status, setStatus] = useState("");
 
   async function share() {
-    const payload = { title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL };
-    const line = `${SHARE_TEXT}\n${SHARE_URL}`;
+    const payload = { title: shareTitle, text: shareText, url: shareUrl };
+    const line = `${shareText}\n${shareUrl}`;
     const mobile =
       window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
     try {
@@ -54,13 +63,13 @@ export default function ShareControl({ className = "", showSave = true, compact 
 
   async function saveImage() {
     try {
-      const res = await fetch(SHARE_IMAGE);
+      const res = await fetch(shareImage);
       if (!res.ok) throw new Error("image");
       const blob = await res.blob();
       const href = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = href;
-      a.download = "watchdog-lb34-coupon-isnt-a-cut.png";
+      a.download = downloadName;
       document.body.appendChild(a);
       a.click();
       a.remove();
