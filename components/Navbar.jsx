@@ -18,6 +18,7 @@ const NAV_LINKS = [
       { href: "/pay-gap",            label: "Pay vs. Power" },
       { href: "/what-they-stopped-watching", label: "What They Stopped Watching" },
       { href: "/property-tax-coupon", label: "If you saw the tax ad" },
+      { href: "/dan-osborn-immigration-ad", label: "If you saw the immigration ad" },
       { href: "/two-tax-systems",    label: "Two Tax Systems" },
       { href: "/interim",            label: "Interim Work" },
     ],
