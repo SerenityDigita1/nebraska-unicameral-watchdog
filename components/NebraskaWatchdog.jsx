@@ -430,6 +430,11 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
               <h3 className="text-sm font-bold text-gray-900 mb-1">Two Tax Systems</h3>
               <p className="text-xs text-gray-500 leading-relaxed">How the wealthy pay a 3.4% true rate. You don’t.</p>
             </Link>
+            <Link href="/snap-nebraska" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Food assistance</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">The soda ban is void. Did anyone tell your store?</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">A court struck it down in June. The rules on who qualifies changed too.</p>
+            </Link>
             <Link href="/outside-money" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
               <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">2026 Senate</p>
               <h3 className="text-sm font-bold text-gray-900 mb-1">Outside Money</h3>

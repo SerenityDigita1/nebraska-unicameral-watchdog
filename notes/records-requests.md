@@ -166,3 +166,67 @@ goal is a publishable answer rather than a private reassurance, use the meeting.
 
 Either way, note the date asked. "The district did not respond by publication" is only usable
 if the request is documented.
+
+---
+
+# Records request — SNAP story (`/snap-nebraska`)
+
+Two things the piece asserts that we only have secondhand: whether the vacated soda
+restriction is still being enforced at individual registers, and whether the new work
+requirements are pushing Nebraska's payment error rate toward the 6% penalty line.
+
+**Nebraska DHHS Public Records Office — DHHS.PublicRecords@nebraska.gov**
+Public Records and Discovery Attorney: Thomas Skutt Jr., 402-471-7020
+Four business days to respond under Neb. Rev. Stat. § 84-712. They may charge for copies,
+not for searching.
+
+Send from info@unicameralwatchdog.com so replies land somewhere we watch.
+
+> **Subject:** Public records request — SNAP food restriction wind-down and payment error rate
+>
+> To the Public Records Officer,
+>
+> Under the Nebraska Public Records Act, Neb. Rev. Stat. § 84-712 et seq., I am requesting
+> copies of the following records held by the Department of Health and Human Services. I am a
+> journalist with Nebraska Unicameral Watchdog and these records are sought for news purposes.
+>
+> **1. Wind-down of the SNAP food restriction waiver.** Following the June 22, 2026 order of the
+> U.S. District Court for the District of Columbia vacating USDA's approval of Nebraska's food
+> restriction waiver, all guidance, notices, bulletins, or correspondence issued by the
+> Department to SNAP-authorized retailers, retailer associations, or point-of-sale vendors
+> concerning removal of the soda and energy drink restrictions, from June 22, 2026 to the
+> present.
+>
+> **2. Retailer compliance status.** Any record showing the number or proportion of
+> SNAP-authorized retailers in Nebraska that have confirmed removal of the restriction from
+> their point-of-sale systems, and any record of retailers known not to have done so, from
+> June 22, 2026 to the present.
+>
+> **3. SNAP participation by month.** Total SNAP participation in Nebraska, by month, from
+> January 2025 through the most recent month available, broken out by household and individual
+> counts if maintained that way.
+>
+> **4. Payment error rate.** Any analysis, projection, memorandum, or correspondence prepared by
+> or for the Department addressing the effect of the expanded SNAP work requirements on
+> Nebraska's payment error rate, or on the state cost-share obligation beginning in federal
+> fiscal year 2028 under Public Law 119-21, from January 1, 2025 to the present.
+>
+> If any portion of a responsive record is withheld, please cite the specific statutory
+> exemption relied upon and release the remainder. Electronic copies are preferred. Please
+> advise of any fees before incurring them.
+>
+> Thank you,
+> [name], Nebraska Unicameral Watchdog
+> info@unicameralwatchdog.com
+
+**Why each item.** (1) and (2) answer the question the piece actually raises: is a void rule
+still being enforced against people, and does anyone know. (3) lets us verify the 10% drop
+ourselves rather than citing a news figure. (4) is the $15 million question, and the answer is
+useful whether it comes back as a thick file or as "no responsive records" — the second would
+mean nobody has modelled it.
+
+**Expect a partial refusal on (4)** as deliberative or attorney-client. Ask for the
+non-exempt portions and a specific citation. Log the send date here; four business days from
+then is the deadline.
+
+Sent: ____________    Response due: ____________    Response received: ____________
