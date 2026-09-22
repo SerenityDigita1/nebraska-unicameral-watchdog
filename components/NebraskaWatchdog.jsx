@@ -350,6 +350,69 @@ function NewsletterBlock() {
   );
 }
 
+const MORE_INVESTIGATIONS = [
+  {
+    href: "/shock-gloves",
+    title: "The shock gloves were never meant for emergencies",
+    blurb: "Bought on a consent agenda with no debate. Policy permits use on students who refuse an order.",
+  },
+  {
+    href: "/big-beautiful-bill",
+    title: "One Big Beautiful Bill — what it really means for Nebraska",
+    blurb: "The bottom 10% lose $1,200 a year while top earners gain $13,600. More than 55,000 Nebraskans risk losing Medicaid.",
+  },
+  {
+    href: "/living-wage",
+    title: "What does it take to live in Nebraska?",
+    blurb: "Housing, food, childcare, transportation. The real cost of living here.",
+  },
+  {
+    href: "/tariff-action",
+    title: "Tariffs are costing Nebraska families",
+    blurb: "$1,700+ a year. Who is fighting back, and what bill is on the table.",
+  },
+  {
+    href: "/530a-accounts",
+    title: "Parents are getting $1,000 emails about their kids",
+    blurb: "One we checked was legitimate. How to tell which are real, and what even a real one leaves out.",
+  },
+  {
+    href: "/property-tax-coupon",
+    title: "The property tax coupon",
+    blurb: "What the relief actually pays for, and who it reaches.",
+  },
+  {
+    href: "/pay-gap",
+    title: "The pay gap",
+    blurb: "What Nebraskans earn, and who is falling behind.",
+  },
+  {
+    href: "/data-centers",
+    title: "Data centers",
+    blurb: "What they take in water and power, and what the state gets back.",
+  },
+  {
+    href: "/ask-your-neighbor",
+    title: "Ask your neighbor",
+    blurb: "SNAP is declining in Nebraska. Two bills stalled in the Unicameral, and what would actually help.",
+  },
+  {
+    href: "/district-49",
+    title: "District 49",
+    blurb: "One district, up close.",
+  },
+  {
+    href: "/interim",
+    title: "Interim studies",
+    blurb: "What the Legislature is looking at between sessions.",
+  },
+  {
+    href: "/issues",
+    title: "Key issues",
+    blurb: "Property taxes, growth, schools, wages, public safety, corporate influence.",
+  },
+];
+
 export default function NebraskaWatchdog({ defaultTab = "home" }) {
   const [activeTab, setActiveTab] = useState(defaultTab);
   const [billInput, setBillInput] = useState("");
@@ -450,6 +513,28 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
               <h3 className="text-sm font-bold text-gray-900 mb-1">What They Stopped Watching</h3>
               <p className="text-xs text-gray-500 leading-relaxed">27 Douglas County cases after a tracking program was cut.</p>
             </Link>
+          </div>
+
+          {/* Everything else we have published. The cards above are what leads
+              today; this is the full record. On 2026-09-22 eleven live pages
+              were reachable from nowhere on this site - do not let that happen
+              again by adding a card and forgetting the list. */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-5">
+            <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-3">
+              More investigations
+            </p>
+            <ul className="space-y-2.5">
+              {MORE_INVESTIGATIONS.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="group block">
+                    <span className="text-sm font-bold text-gray-900 group-hover:text-[#c8102e] transition-colors">
+                      {item.title}
+                    </span>
+                    <span className="block text-xs text-gray-500 leading-relaxed">{item.blurb}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <Link
