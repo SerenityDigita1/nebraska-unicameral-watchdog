@@ -63,8 +63,8 @@ export default function BillCard({ bill }) {
         : "bg-[#0a0e1a]";
 
   return (
-    <article className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-      <div className={`h-1 w-full ${bill.outcome === "passed" ? "bg-emerald-500" : bill.outcome === "postponed" ? "bg-[#c8102e]" : "bg-[#0a0e1a]"}`} />
+    <article className="relative bg-white rounded-2xl shadow-sm border border-gray-100 focus-within:z-20 h-full">
+      <div className={`h-1 w-full rounded-t-2xl ${bill.outcome === "passed" ? "bg-emerald-500" : bill.outcome === "postponed" ? "bg-[#c8102e]" : "bg-[#0a0e1a]"}`} />
       <div className="p-5">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-start gap-2.5 min-w-0">
@@ -97,24 +97,27 @@ export default function BillCard({ bill }) {
             Last action {bill.lastAction}
             {bill.lastActionNote ? ` · ${bill.lastActionNote}` : ""}
           </p>
-          <a
-            href={bill.url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-xs font-semibold text-[#c8102e] hover:underline shrink-0"
-          >
-            Legislature.ne.gov ↗
-          </a>
+          <div className="flex items-center gap-2 shrink-0">
+            <a
+              href={bill.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-semibold text-[#c8102e] hover:underline"
+            >
+              Legislature.ne.gov ↗
+            </a>
+            <ShareControl menu />
+          </div>
         </div>
-        <ShareControl compact className="mt-3" />
       </div>
     </article>
   );
 }
 
-export function BillCardList({ bills, className = "" }) {
+export function BillCardList({ bills, className = "", columns = false }) {
+  const layout = columns ? "grid gap-4 lg:grid-cols-3" : "space-y-4";
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div className={`${layout} ${className}`}>
       {bills.map((bill) => (
         <BillCard key={bill.id} bill={bill} />
       ))}
