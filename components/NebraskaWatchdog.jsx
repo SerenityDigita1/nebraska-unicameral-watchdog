@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import PropertyTaxTrailSection from "@/components/PropertyTaxTrailSection";
-import { HOME_CARD as RICKETTS_IRAN_CARD } from "@/data/ricketts-iran";
+import { BillCardList } from "@/components/BillCard";
+import { PROPERTY_TAX_BILLS } from "@/data/unicameral-bills";
+import { LATEST_EXPLAINERS, TOPIC_GROUPS } from "@/data/topics";
 
 const BILLS = [
   {
@@ -338,81 +339,57 @@ function SiteFooter() {
 
 function NewsletterBlock() {
   return (
-    <div className="bg-[#0a0e1a] rounded-2xl p-6">
-      <div className="max-w-xl">
-        <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay Informed</p>
-        <h3 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h3>
-        <p className="text-white/50 text-sm mb-4 leading-relaxed">
-          When the 110th session kicks off in January 2027, you'll be the first to know what's happening in Lincoln — in plain English, no spin.
-        </p>
+    <div id="newsletter" className="bg-[#0a0e1a] rounded-2xl p-6 scroll-mt-20">
+      <div className="grid md:grid-cols-[1.2fr_1fr] gap-6 md:items-center">
+        <div>
+          <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay informed</p>
+          <h2 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h2>
+          <p className="text-white/50 text-sm leading-relaxed">
+            Before Nov. 3 and when the 110th session opens in Jan. 2027: what’s happening in Lincoln, in plain English.
+          </p>
+        </div>
         <NewsletterForm />
       </div>
     </div>
   );
 }
 
-const MORE_INVESTIGATIONS = [
+const SOURCE_CARDS = [
   {
-    href: "/shock-gloves",
-    title: "The shock gloves were never meant for emergencies",
-    blurb: "Bought on a consent agenda with no debate. Policy permits use on students who refuse an order.",
+    title: "Primary records first",
+    body: "Bills on nebraskalegislature.gov, Department of Revenue filings, senate.gov roll calls, and the Nebraska Accountability and Disclosure Commission.",
   },
   {
-    href: "/big-beautiful-bill",
-    title: "One Big Beautiful Bill — what it really means for Nebraska",
-    blurb: "The bottom 10% lose $1,200 a year while top earners gain $13,600. More than 55,000 Nebraskans risk losing Medicaid.",
+    title: "Named reporting",
+    body: "Nebraska Examiner, Nebraska Public Media, Ballotpedia, Nebraska Appleseed, Flatwater Free Press, and local TV — cited with the date.",
   },
   {
-    href: "/living-wage",
-    title: "What does it take to live in Nebraska?",
-    blurb: "Housing, food, childcare, transportation. The real cost of living here.",
-  },
-  {
-    href: "/tariff-action",
-    title: "Tariffs are costing Nebraska families",
-    blurb: "$1,700+ a year. Who is fighting back, and what bill is on the table.",
-  },
-  {
-    href: "/530a-accounts",
-    title: "Parents are getting $1,000 emails about their kids",
-    blurb: "One we checked was legitimate. How to tell which are real, and what even a real one leaves out.",
-  },
-  {
-    href: "/property-tax-coupon",
-    title: "The property tax coupon",
-    blurb: "What the relief actually pays for, and who it reaches.",
-  },
-  {
-    href: "/pay-gap",
-    title: "The pay gap",
-    blurb: "What Nebraskans earn, and who is falling behind.",
-  },
-  {
-    href: "/data-centers",
-    title: "Data centers",
-    blurb: "What they take in water and power, and what the state gets back.",
-  },
-  {
-    href: "/ask-your-neighbor",
-    title: "Ask your neighbor",
-    blurb: "SNAP is declining in Nebraska. Two bills stalled in the Unicameral, and what would actually help.",
-  },
-  {
-    href: "/district-49",
-    title: "District 49",
-    blurb: "One district, up close.",
-  },
-  {
-    href: "/interim",
-    title: "Interim studies",
-    blurb: "What the Legislature is looking at between sessions.",
-  },
-  {
-    href: "/issues",
-    title: "Key issues",
-    blurb: "Property taxes, growth, schools, wages, public safety, corporate influence.",
+    title: "Independence & corrections",
+    body: "Not affiliated with any political party. If we get something wrong, we correct it.",
   },
 ];
+
+function ExplainerCard({ href, kicker, title, blurb }) {
+  return (
+    <Link
+      href={href}
+      className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow block h-full"
+    >
+      <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">{kicker}</p>
+      <h3 className="text-sm font-bold text-gray-900 mb-1">{title}</h3>
+      <p className="text-xs text-gray-500 leading-relaxed">{blurb}</p>
+    </Link>
+  );
+}
+
+function SectionHeading({ title, sub }) {
+  return (
+    <div className="mb-4">
+      <h2 className="text-xl font-bold text-gray-900 tracking-tight">{title}</h2>
+      {sub && <p className="text-sm text-gray-500 mt-1">{sub}</p>}
+    </div>
+  );
+}
 
 export default function NebraskaWatchdog({ defaultTab = "home" }) {
   const [activeTab, setActiveTab] = useState(defaultTab);
@@ -455,107 +432,149 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
         <header className="bg-[#0a0e1a] relative overflow-hidden text-white">
           <div className="absolute inset-0 bg-gradient-to-br from-[#c8102e]/20 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-4xl mx-auto px-6 pt-10 pb-8 relative">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase bg-[#c8102e]/10 border border-[#c8102e]/30 px-3 py-1.5 rounded-full">
-                Watchdog
+            <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-3">
+              Nebraska politics, checked against the record
+            </p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-3">
+              What they told you vs. what the record shows.
+            </h1>
+            <p className="text-white/60 text-sm max-w-xl leading-relaxed">
+              Plain-English, sourced explainers on the Nebraska Unicameral — and on how Nebraska’s officials vote. Every claim links to the bill, the roll call, or the agency filing. Not affiliated with any party.
+            </p>
+            <div className="flex flex-wrap gap-2 mt-5">
+              <span className="text-xs text-white/80 border border-white/15 rounded-lg px-3 py-1.5">
+                Election: Nov. 3
               </span>
-              <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
-                Nov. 3, 2026 · Election season
+              <span className="text-xs text-white/80 border border-white/15 rounded-lg px-3 py-1.5">
+                Legislature: back Jan. 2027 (110th)
               </span>
             </div>
-            <h1 className="text-4xl font-bold text-white tracking-tight leading-tight mb-2">
-              Nebraska Unicameral<br />
-              <span className="text-[#c8102e]">Watchdog</span>
-            </h1>
-            <p className="text-white/50 text-sm max-w-xl leading-relaxed mb-5">
-              The ads say one thing. The Unicameral record says another. Pillen vs Walz on Nov. 3.
-              The 110th Legislature opens in January 2027.
-            </p>
-            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-              <span className="text-[10px] font-bold tracking-widest text-amber-400 uppercase shrink-0">Now</span>
-              <p className="text-sm text-white/80">
-                2026 short session is over. Next: <span className="text-white font-medium">January 2027</span>, 110th long session.
-              </p>
+            <div className="flex flex-wrap gap-2 mt-5">
+              <a
+                href="#latest"
+                className="px-4 py-2.5 bg-[#c8102e] text-white text-sm font-semibold rounded-xl hover:bg-[#a50d26] transition-colors"
+              >
+                Read the latest explainers
+              </a>
+              <a
+                href="#newsletter"
+                className="px-4 py-2.5 text-sm font-semibold rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors"
+              >
+                Get the newsletter
+              </a>
             </div>
           </div>
         </header>
 
         <main className="max-w-4xl mx-auto px-6 py-8">
-          <PropertyTaxTrailSection showExplainer />
-
-          <div className="mt-10 mb-8">
-            <NewsletterBlock />
-          </div>
-
-          <h2 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">Also watching</h2>
-          <div className="grid sm:grid-cols-3 gap-3 mb-8">
-            <Link href="/two-tax-systems" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
-              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Taxes</p>
-              <h3 className="text-sm font-bold text-gray-900 mb-1">Two Tax Systems</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">How the wealthy pay a 3.4% true rate. You don’t.</p>
+          <section id="latest" className="mb-12 scroll-mt-20">
+            <SectionHeading title="Latest explainers" sub="Newest first. One lead story, then the same card for the rest." />
+            <Link
+              href="/property-tax-coupon"
+              className="grid md:grid-cols-[1.35fr_1fr] bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-3 hover:shadow-md transition-shadow"
+            >
+              <div className="p-5">
+                <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">
+                  Unicameral · Ads vs record
+                </p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 leading-snug">
+                  The coupon isn’t a cut: if you just saw the tax ad
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed mb-3">
+                  He says he cut property taxes. The Legislature passed a coupon. The levy went back up.
+                  Who already pays more, what LB 34 actually printed on the statement, and how he’d pay for the 2027 ask — in plain English.
+                </p>
+                <span className="text-xs font-bold text-[#c8102e]">Read the explainer →</span>
+              </div>
+              <div className="bg-[#0a0e1a] p-5">
+                <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-4">By the numbers · DOR</p>
+                <p className="text-3xl font-bold tracking-tight">$285 million</p>
+                <p className="text-xs text-white/60 mt-1 leading-relaxed">
+                  Up about $285 million to $5,587,369,523. 2025 statewide levy.
+                </p>
+                <p className="text-3xl font-bold tracking-tight mt-5">~30%</p>
+                <p className="text-xs text-white/60 mt-1 leading-relaxed">
+                  LB 34 credit on the school (non-bond) line. The state reimburses. Locals still levy.
+                </p>
+              </div>
             </Link>
-            <Link href="/snap-nebraska" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
-              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Food assistance</p>
-              <h3 className="text-sm font-bold text-gray-900 mb-1">The soda ban is void. Did anyone tell your store?</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">A court struck it down in June. The rules on who qualifies changed too.</p>
-            </Link>
-            <Link href="/outside-money" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
-              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">2026 Senate</p>
-              <h3 className="text-sm font-bold text-gray-900 mb-1">Outside Money</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">$28.9M in outside money, and what the record shows.</p>
-            </Link>
-            <Link href="/dan-osborn-immigration-ad" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
-              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Ads vs record</p>
-              <h3 className="text-sm font-bold text-gray-900 mb-1">If you saw the immigration ad</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">Osborn “amnesty” spots vs the Kellogg’s / ICE record.</p>
-            </Link>
-            <Link href={RICKETTS_IRAN_CARD.href} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
-              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">{RICKETTS_IRAN_CARD.kicker}</p>
-              <h3 className="text-sm font-bold text-gray-900 mb-1">{RICKETTS_IRAN_CARD.title}</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">{RICKETTS_IRAN_CARD.blurb}</p>
-            </Link>
-            <Link href="/what-they-stopped-watching" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
-              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Investigation</p>
-              <h3 className="text-sm font-bold text-gray-900 mb-1">What They Stopped Watching</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">27 Douglas County cases after a tracking program was cut.</p>
-            </Link>
-          </div>
-
-          {/* Everything else we have published. The cards above are what leads
-              today; this is the full record. On 2026-09-22 eleven live pages
-              were reachable from nowhere on this site - do not let that happen
-              again by adding a card and forgetting the list. */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-5">
-            <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-3">
-              More investigations
-            </p>
-            <ul className="space-y-2.5">
-              {MORE_INVESTIGATIONS.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="group block">
-                    <span className="text-sm font-bold text-gray-900 group-hover:text-[#c8102e] transition-colors">
-                      {item.title}
-                    </span>
-                    <span className="block text-xs text-gray-500 leading-relaxed">{item.blurb}</span>
-                  </Link>
-                </li>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {LATEST_EXPLAINERS.map((item) => (
+                <ExplainerCard key={item.href} {...item} />
               ))}
-            </ul>
-          </div>
+            </div>
+          </section>
 
-          <Link
-            href="/session"
-            className="block bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow"
-          >
-            <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-2">Last session · 2025 long session</p>
-            <h3 className="text-sm font-bold text-gray-900 mb-1">
-              Voters showed up. The legislature spent five months undoing it.
-            </h3>
-            <p className="text-sm text-gray-500 leading-relaxed mb-3">
-              Sick leave gutted, cannabis blocked, $1.5 billion in corporate incentives, two vetoes. The full 2025 wrap lives on the session recap — not on this fold.
-            </p>
-            <span className="text-xs font-bold text-[#c8102e]">Read the 2025 recap →</span>
-          </Link>
+          <section className="mb-12">
+            <SectionHeading
+              title="In the chamber: bills behind the ads"
+              sub="What the Unicameral passed or killed. Each card shows the stage it reached and the ad claim it’s tied to."
+            />
+            <BillCardList bills={PROPERTY_TAX_BILLS} columns />
+          </section>
+
+          <section className="mb-12">
+            <SectionHeading title="Last session: 2025 in one card" />
+            <Link
+              href="/session"
+              className="block bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow"
+            >
+              <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-2">Last session · 2025 long session</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">
+                Voters showed up. The legislature spent five months undoing it.
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-3">
+                Sick leave gutted, cannabis blocked, $1.5 billion in corporate incentives, two vetoes. The full 2025 wrap lives on the session recap — not on this fold.
+              </p>
+              <span className="text-xs font-bold text-[#c8102e]">Read the 2025 recap →</span>
+            </Link>
+          </section>
+
+          <section className="mb-12">
+            <SectionHeading title="All explainers, by topic" sub="The full archive, so no published page is left off the homepage." />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {TOPIC_GROUPS.map((group) => (
+                <div key={group.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+                  <h3 className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-3">
+                    {group.label}
+                  </h3>
+                  <ul className="space-y-2">
+                    {group.links.map((item) => (
+                      <li key={item.href}>
+                        <Link href={item.href} className="text-sm text-gray-800 hover:text-[#c8102e] transition-colors">
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <SectionHeading title="How we source" />
+            <div className="grid sm:grid-cols-3 gap-3">
+              {SOURCE_CARDS.map((card) => (
+                <div key={card.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+                  <h3 className="text-sm font-bold text-gray-900 mb-1">{card.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    {card.body}
+                    {card.title === "Independence & corrections" && (
+                      <>
+                        {" "}Spot an error?{" "}
+                        <a href="mailto:info@unicameralwatchdog.com" className="text-[#c8102e] hover:underline">
+                          info@unicameralwatchdog.com
+                        </a>
+                      </>
+                    )}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <NewsletterBlock />
         </main>
 
         <SiteFooter />
@@ -749,8 +768,6 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
             <p className="text-xs text-gray-400 text-center pb-2">
               Sources: Nebraska Examiner · Nebraska Public Media · Ballotpedia · Nebraska Appleseed
             </p>
-
-            <PropertyTaxTrailSection showExplainer className="mt-10 pt-8 border-t border-gray-200" />
           </div>
         )}
 
