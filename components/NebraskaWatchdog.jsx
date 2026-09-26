@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import PropertyTaxTrailSection from "@/components/PropertyTaxTrailSection";
+import { HOME_CARD as RICKETTS_IRAN_CARD } from "@/data/ricketts-iran";
 
 const BILLS = [
   {
@@ -507,6 +508,11 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
               <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Ads vs record</p>
               <h3 className="text-sm font-bold text-gray-900 mb-1">If you saw the immigration ad</h3>
               <p className="text-xs text-gray-500 leading-relaxed">Osborn “amnesty” spots vs the Kellogg’s / ICE record.</p>
+            </Link>
+            <Link href={RICKETTS_IRAN_CARD.href} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+              <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">{RICKETTS_IRAN_CARD.kicker}</p>
+              <h3 className="text-sm font-bold text-gray-900 mb-1">{RICKETTS_IRAN_CARD.title}</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">{RICKETTS_IRAN_CARD.blurb}</p>
             </Link>
             <Link href="/what-they-stopped-watching" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
               <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">Investigation</p>
