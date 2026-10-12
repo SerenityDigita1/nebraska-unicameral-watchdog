@@ -29,6 +29,13 @@ export default function OutsideMoney() {
           </p>
         </div>
 
+        {/* New: Who's Really Paying */}
+        <Link href="/whos-really-paying" className="block bg-[#0a0e1a] rounded-2xl p-5 mb-8 border-l-4 border-[#c8102e] hover:opacity-90 transition-opacity">
+          <p className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase mb-1">New · Oct 2026</p>
+          <p className="text-white font-bold text-lg leading-snug">Who's Really Paying? The GOP's donor attacks meet its own money</p>
+          <p className="text-white/60 text-sm mt-1">FEC filings on Ricketts, Osborn, Paxton, Talarico and the super PACs that have not yet named their donors. Read it →</p>
+        </Link>
+
         {/* The contradiction */}
         <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-8 text-white">
           <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-3">The contradiction</p>

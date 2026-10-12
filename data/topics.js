@@ -23,6 +23,7 @@ export const TOPIC_GROUPS = [
       { href: "/tariff-action", label: "Tariffs are costing Nebraska families" },
       { href: "/big-beautiful-bill", label: "One Big Beautiful Bill" },
       { href: "/outside-money", label: "Outside money" },
+      { href: "/whos-really-paying", label: "Who's really paying?" },
     ],
   },
   {
