@@ -21,7 +21,7 @@ export const OG = {
   cardChip: "Part 2 of 3",
   cardMeta: "After the 2017 cut",
   cardTitle: "Record buybacks. Modest raises.",
-  cardNote: "Part 3 coming soon.",
+  cardNote: "Next: Part 3",
 };
 
 export const HOME_CARD = {
@@ -37,6 +37,7 @@ export const SERIES = {
     label: "Previous: Part 1",
   },
   next: {
-    label: "Part 3, Same rules for every dollar (coming soon)",
+    href: "/same-rules-for-every-dollar-contracts-audits",
+    label: "Next: Part 3",
   },
 };

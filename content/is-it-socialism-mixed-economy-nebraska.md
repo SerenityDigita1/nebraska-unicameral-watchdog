@@ -1,6 +1,6 @@
 You have probably heard it at a cafe, a ballgame, or on the radio: "Socialism will break America." I am not a socialist. But I have never understood why SNAP, Medicaid, or a school lunch makes a country socialist, while a tax credit for a corporation does not. Shouldn't government work to make its people's lives better? And if we're going to argue about it, shouldn't we at least argue about the same thing?
 
-This is the first of three pieces. This one is about the word itself, the fair case for worry, and how to talk about it. Part 2 follows the money that goes to companies. Part 3 asks whether every dollar faces the same rules.
+This is the first of three pieces. This one is about the word itself, the fair case for worry, and how to talk about it. Part 2 follows the money that goes to companies. [Part 3](/same-rules-for-every-dollar-contracts-audits) asks whether every dollar faces the same rules.
 
 ## What socialism actually means
 

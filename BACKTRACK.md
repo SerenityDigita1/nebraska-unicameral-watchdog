@@ -2,39 +2,37 @@
 
 Pre-change default branch: `main`
 
-Pre-change SHA: `becb18b43575570d744b3f742b5b329703381ac7`
+Pre-change SHA: `5d0dd1384bdc503b24499b38aa3033101073de79`
 
-Commit subject at that SHA: Ping Discord on newsletter signups
+Commit subject at that SHA: Add mixed-economy series, parts 1 and 2 (#8)
 
-Recorded: 2026-10-17, before the socialism series pages were added.
+Recorded: 2026-10-17, before Part 3 of the series was added.
 
-Working branch for this change: `cursor/add-socialism-series-3124`
+Working branch for this change: `cursor/same-rules-part-3-3124`
+
+Parts 1 and 2 are already on `main` at that SHA. This note replaces the earlier backtrack for `becb18b43575570d744b3f742b5b329703381ac7`, which was the commit before those two parts.
 
 ## Files touched
 
 New:
 
-- `BACKTRACK.md`
-- `content/is-it-socialism-mixed-economy-nebraska.md`
-- `content/where-the-money-goes-tax-breaks-buybacks-pay.md`
-- `lib/article-markdown.mjs`
-- `components/MarkdownArticle.jsx`
-- `components/SeriesNav.jsx`
-- `data/is-it-socialism.js`
-- `data/where-the-money-goes.js`
-- `app/is-it-socialism-mixed-economy-nebraska/page.jsx`
-- `app/is-it-socialism-mixed-economy-nebraska/opengraph-image.jsx`
-- `app/where-the-money-goes-tax-breaks-buybacks-pay/page.jsx`
-- `app/where-the-money-goes-tax-breaks-buybacks-pay/opengraph-image.jsx`
+- `content/same-rules-for-every-dollar-contracts-audits.md`
+- `data/same-rules.js`
+- `app/same-rules-for-every-dollar-contracts-audits/page.jsx`
+- `app/same-rules-for-every-dollar-contracts-audits/opengraph-image.jsx`
 
 Modified:
 
+- `BACKTRACK.md`
+- `content/is-it-socialism-mixed-economy-nebraska.md`
+- `content/where-the-money-goes-tax-breaks-buybacks-pay.md`
+- `data/where-the-money-goes.js`
 - `data/topics.js`
 
 Not modified on purpose:
 
-- `app/sitemap.js` builds the sitemap from directories under `app/` that contain a page file. The two new routes are included as soon as those pages exist.
-- `app/layout.jsx` already sets `metadataBase` and the default Open Graph image. Each new article sets its own title, description, Open Graph, and Twitter metadata the same way `/ricketts-iran` does.
+- `app/sitemap.js` builds the sitemap from directories under `app/` that contain a page file. `/same-rules-for-every-dollar-contracts-audits` is included as soon as the page exists.
+- `components/MarkdownArticle.jsx` and `components/SeriesNav.jsx` already render the series. Part 3 uses them as Parts 1 and 2 do.
 
 ## Revert
 
@@ -44,8 +42,8 @@ These steps return the tree to the pre-change commit above. Do not force-push `m
 
 ```bash
 git checkout main
-git reset --hard becb18b43575570d744b3f742b5b329703381ac7
-git push origin --delete cursor/add-socialism-series-3124
+git reset --hard 5d0dd1384bdc503b24499b38aa3033101073de79
+git push origin --delete cursor/same-rules-part-3-3124
 ```
 
 Then close the pull request without merging.
@@ -54,8 +52,8 @@ To drop only the local branch and keep the remote branch until the pull request 
 
 ```bash
 git checkout main
-git branch -D cursor/add-socialism-series-3124
-git reset --hard becb18b43575570d744b3f742b5b329703381ac7
+git branch -D cursor/same-rules-part-3-3124
+git reset --hard 5d0dd1384bdc503b24499b38aa3033101073de79
 ```
 
 ### Restore the touched paths without moving HEAD
@@ -63,18 +61,16 @@ git reset --hard becb18b43575570d744b3f742b5b329703381ac7
 Run this from a checkout that still contains the change:
 
 ```bash
-git checkout becb18b43575570d744b3f742b5b329703381ac7 -- data/topics.js
-rm -rf \
-  app/is-it-socialism-mixed-economy-nebraska \
-  app/where-the-money-goes-tax-breaks-buybacks-pay \
+git checkout 5d0dd1384bdc503b24499b38aa3033101073de79 -- \
+  BACKTRACK.md \
   content/is-it-socialism-mixed-economy-nebraska.md \
   content/where-the-money-goes-tax-breaks-buybacks-pay.md \
-  lib/article-markdown.mjs \
-  components/MarkdownArticle.jsx \
-  components/SeriesNav.jsx \
-  data/is-it-socialism.js \
   data/where-the-money-goes.js \
-  BACKTRACK.md
+  data/topics.js
+rm -rf \
+  app/same-rules-for-every-dollar-contracts-audits \
+  content/same-rules-for-every-dollar-contracts-audits.md \
+  data/same-rules.js
 ```
 
 ### After a squash merge onto main

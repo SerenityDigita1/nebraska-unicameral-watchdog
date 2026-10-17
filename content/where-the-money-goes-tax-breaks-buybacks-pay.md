@@ -48,4 +48,4 @@ None of this means companies are villains or that tax policy should never help b
 
 **Previous, Part 1 of 3: [Is it socialism?](/is-it-socialism-mixed-economy-nebraska)** What the word means, what Republicans built, and how to talk about it.
 
-**Coming soon, Part 3 of 3: Same rules for every dollar.** SNAP gets audited to the decimal point. The Pentagon has never passed an audit. We look at contracts, broadband money sent to satellite companies, and who has to prove results.
+**Part 3 of 3: [Same rules for every dollar](/same-rules-for-every-dollar-contracts-audits).** SNAP gets audited to the decimal point. The Pentagon has never passed an audit. We look at contracts, broadband money sent to satellite companies, and who has to prove results.
