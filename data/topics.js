@@ -1,3 +1,5 @@
+import { HOME_CARD as SOCIALISM_CARD } from "./is-it-socialism";
+import { HOME_CARD as MONEY_GOES_CARD } from "./where-the-money-goes";
 import { HOME_CARD as RICKETTS_IRAN_CARD } from "./ricketts-iran";
 
 /**
@@ -12,6 +14,8 @@ export const TOPIC_GROUPS = [
     id: "taxes",
     label: "Taxes & money",
     links: [
+      { href: "/is-it-socialism-mixed-economy-nebraska", label: "Is it socialism? (Part 1)" },
+      { href: "/where-the-money-goes-tax-breaks-buybacks-pay", label: "Where the money goes (Part 2)" },
       { href: "/property-tax-coupon", label: "The property tax coupon" },
       { href: "/two-tax-systems", label: "Two tax systems" },
       { href: "/tariff-action", label: "Tariffs are costing Nebraska families" },
@@ -53,6 +57,18 @@ export const TOPIC_GROUPS = [
 ];
 
 export const LATEST_EXPLAINERS = [
+  {
+    href: SOCIALISM_CARD.href,
+    kicker: "Part 1 of 3 · Mixed economy",
+    title: SOCIALISM_CARD.title,
+    blurb: SOCIALISM_CARD.blurb,
+  },
+  {
+    href: MONEY_GOES_CARD.href,
+    kicker: "Part 2 of 3 · Tax breaks",
+    title: MONEY_GOES_CARD.title,
+    blurb: MONEY_GOES_CARD.blurb,
+  },
   {
     href: RICKETTS_IRAN_CARD.href,
     kicker: "New · U.S. Senate · Record vs rhetoric",
