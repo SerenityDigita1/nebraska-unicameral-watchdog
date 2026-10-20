@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .js,.jsx"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
