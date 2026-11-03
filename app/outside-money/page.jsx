@@ -14,6 +14,101 @@ const SOURCES = [
   { label: "Nebraska Examiner: Legislature passes law capping annual minimum wage bumps, creating 'youth' wage below $15", url: "https://nebraskaexaminer.com/2026/02/05/legislature-passes-law-capping-annual-minimum-wage-bumps-creating-youth-wage-below-15-until-2065/" },
 ];
 
+const FEC_OSBORN = "https://www.fec.gov/data/committee/C00901355/?cycle=2026";
+const FEC_RICKETTS = "https://www.fec.gov/data/committee/C00832436/?cycle=2026";
+const FEC_DAJ = "https://www.fec.gov/data/committee/C00836221/?cycle=2026";
+const DONORALPHA = "https://donoralpha.com/races/nebraska-senate-general-2026";
+
+function Src({ href, label, asOf }) {
+  return (
+    <span className="block text-[11px] text-gray-400 mt-1">
+      As of {asOf} ·{" "}
+      <a href={href} target="_blank" rel="noreferrer" className="text-[#c8102e] hover:underline">
+        {label} ↗
+      </a>
+    </span>
+  );
+}
+
+function Stat({ value, desc, children }) {
+  return (
+    <div className="bg-gray-50 rounded-xl p-3">
+      <div className="text-lg font-black text-gray-900">{value}</div>
+      <div className="text-xs text-gray-500 mt-1">{desc}</div>
+      {children}
+    </div>
+  );
+}
+
+function WhoPaid() {
+  return (
+    <section id="who-paid" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+      <span className="text-[10px] font-bold tracking-[0.2em] text-[#c8102e] uppercase">By the numbers</span>
+      <h2 className="text-xl font-bold text-gray-900 mt-1 mb-1">Who paid for this race?</h2>
+      <p className="text-xs text-gray-400 mb-5">
+        U.S. Senate, Nebraska, 2026 general election. Candidate figures are from reports filed with the Federal Election Commission (FEC). Outside-group figures are a third-party tally, not an official FEC total.
+      </p>
+
+      <h3 className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-3">The candidates&apos; own campaigns</h3>
+      <div className="grid sm:grid-cols-2 gap-3 mb-6">
+        <div className="rounded-xl border border-gray-100 p-4">
+          <p className="text-sm font-bold text-gray-900 mb-3">Dan Osborn (I) · Osborn for Senate</p>
+          <div className="space-y-3">
+            <Stat value="$10,975,472" desc="Total raised (receipts)">
+              <Src href={FEC_OSBORN} label="FEC, committee C00901355" asOf="Oct. 14, 2026" />
+            </Stat>
+            <Stat value="$9,025,558" desc="Total spent (disbursements)">
+              <Src href={FEC_OSBORN} label="FEC, committee C00901355" asOf="Oct. 14, 2026" />
+            </Stat>
+          </div>
+        </div>
+        <div className="rounded-xl border border-gray-100 p-4">
+          <p className="text-sm font-bold text-gray-900 mb-3">Pete Ricketts (R) · Pete Ricketts for Senate</p>
+          <div className="space-y-3">
+            <Stat value="$14,546,959" desc="Total raised (receipts)">
+              <Src href={FEC_RICKETTS} label="FEC, committee C00832436" asOf="Oct. 14, 2026" />
+            </Stat>
+            <Stat value="$13,815,790" desc="Total spent (disbursements)">
+              <Src href={FEC_RICKETTS} label="FEC, committee C00832436" asOf="Oct. 14, 2026" />
+            </Stat>
+            <Stat value="$7,296,348" desc="Of that, contributed by the candidate himself (no candidate loans reported)">
+              <Src href={FEC_RICKETTS} label="FEC, committee C00832436" asOf="Oct. 14, 2026" />
+            </Stat>
+          </div>
+        </div>
+      </div>
+
+      <h3 className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-1">Outside groups</h3>
+      <p className="text-xs text-gray-400 mb-3">
+        Third-party tally by DonorAlpha, compiled from FEC independent-expenditure reports. Not an official FEC total.
+      </p>
+      <div className="grid sm:grid-cols-3 gap-3 mb-3">
+        <Stat value="$70.5M" desc="Spent by 41 outside groups in the race (supporting and opposing)">
+          <Src href={DONORALPHA} label="DonorAlpha (third-party tally)" asOf="Nov. 3, 2026" />
+        </Stat>
+        <Stat value="$31.5M" desc="Spent opposing Dan Osborn">
+          <Src href={DONORALPHA} label="DonorAlpha (third-party tally)" asOf="Nov. 3, 2026" />
+        </Stat>
+        <Stat value="$23.8M" desc="Spent opposing Pete Ricketts">
+          <Src href={DONORALPHA} label="DonorAlpha (third-party tally)" asOf="Nov. 3, 2026" />
+        </Stat>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-3">
+        <Stat value="$15.9M" desc="Nebraska Values PAC, spent opposing Pete Ricketts. It is the race's largest outside spender, at $16.9M across all its spending in the race.">
+          <Src href={DONORALPHA} label="DonorAlpha (third-party tally)" asOf="Nov. 3, 2026" />
+        </Stat>
+        <Stat value="$13.5M" desc="Defend American Jobs, spent opposing Dan Osborn. Its main funder is the crypto-industry super PAC Fairshake.">
+          <Src href={DONORALPHA} label="DonorAlpha (third-party tally)" asOf="Nov. 3, 2026" />
+          <Src href={FEC_DAJ} label="FEC, Defend American Jobs receipts (Fairshake)" asOf="Nov. 3, 2026" />
+        </Stat>
+      </div>
+      <p className="text-[11px] text-gray-400 mt-4">
+        Candidate totals cover reports through Oct. 14, 2026; spending after that date is not included. Outside-group spending can change daily.
+      </p>
+    </section>
+  );
+}
+
 export default function OutsideMoney() {
   return (
     <div className="min-h-screen bg-[#f4f5f7]">
@@ -28,6 +123,9 @@ export default function OutsideMoney() {
             But his actual record shows what $28.9 million in outside money really buys.
           </p>
         </div>
+
+        {/* Who paid for this race? */}
+        <WhoPaid />
 
         {/* The contradiction */}
         <div className="bg-[#0a0e1a] rounded-2xl p-6 mb-8 text-white">
