@@ -68,6 +68,9 @@ function WhoPaid() {
             <Stat value="$14,546,959" desc="Total raised (receipts)">
               <Src href={FEC_RICKETTS} label="FEC, committee C00832436" asOf="Oct. 14, 2026" />
             </Stat>
+            <Stat value="$13,815,790" desc="Total spent (disbursements)">
+              <Src href={FEC_RICKETTS} label="FEC, committee C00832436" asOf="Oct. 14, 2026" />
+            </Stat>
             <Stat value="$7,296,348" desc="Of that, contributed by the candidate himself (no candidate loans reported)">
               <Src href={FEC_RICKETTS} label="FEC, committee C00832436" asOf="Oct. 14, 2026" />
             </Stat>
