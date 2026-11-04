@@ -2,6 +2,7 @@ import { HOME_CARD as SOCIALISM_CARD } from "./is-it-socialism";
 import { HOME_CARD as MONEY_GOES_CARD } from "./where-the-money-goes";
 import { HOME_CARD as SAME_RULES_CARD } from "./same-rules";
 import { HOME_CARD as RICKETTS_IRAN_CARD } from "./ricketts-iran";
+import { HOME_CARD as BALLOT_2026_CARD } from "./ballot-measures-2026";
 
 /**
  * Homepage archive and the Key Issues menu.
@@ -49,6 +50,7 @@ export const TOPIC_GROUPS = [
     id: "officials",
     label: "Legislature & officials",
     links: [
+      { href: "/ballot-measures-2026", label: "2026 ballot measures" },
       { href: "/ricketts-iran", label: "Ricketts on Iran" },
       { href: "/dan-osborn-immigration-ad", label: "Immigration ad (Osborn)" },
       { href: "/interim", label: "Interim studies" },
@@ -59,6 +61,12 @@ export const TOPIC_GROUPS = [
 ];
 
 export const LATEST_EXPLAINERS = [
+  {
+    href: BALLOT_2026_CARD.href,
+    kicker: "New · Election 2026 · Ballot measures",
+    title: BALLOT_2026_CARD.title,
+    blurb: BALLOT_2026_CARD.blurb,
+  },
   {
     href: SOCIALISM_CARD.href,
     kicker: "Part 1 of 3 · Mixed economy",
