@@ -63,7 +63,7 @@ export const TOPIC_GROUPS = [
 export const LATEST_EXPLAINERS = [
   {
     href: BALLOT_2026_CARD.href,
-    kicker: "New · Election 2026 · Ballot measures",
+    kicker: "Results · Ballot measures",
     title: BALLOT_2026_CARD.title,
     blurb: BALLOT_2026_CARD.blurb,
   },
