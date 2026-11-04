@@ -56,6 +56,13 @@ export const TOPIC_GROUPS = [
       { href: "/interim", label: "Interim studies" },
       { href: "/district-49", label: "District 49" },
       { href: "/issues", label: "Key issues overview" },
+      {
+        href: "/two-tax-systems",
+        kicker: "Federal · Taxes",
+        title: "Two Tax Systems",
+        blurb: "How the wealthy pay a 3.4% true rate. You don’t.",
+        tone: "red",
+      },
     ],
   },
 ];
@@ -118,19 +125,12 @@ export const HOME_SECTIONS = [
         blurb: "$28.9M in outside money, and what the record shows.",
         tone: "navy",
       },
-      {
-        href: "/two-tax-systems",
-        kicker: "Federal · Taxes",
-        title: "Two Tax Systems",
-        blurb: "How the wealthy pay a 3.4% true rate. You don’t.",
-        tone: "navy",
-      },
     ],
   },
   {
     id: "communities",
-    title: "Money, families & communities",
-    sub: "What policy changes mean at the store, the clinic, and the county.",
+    title: "Money, taxes & communities",
+    sub: "Who pays, and what changes at the store and in the county.",
     items: [
       {
         href: "/snap-nebraska",

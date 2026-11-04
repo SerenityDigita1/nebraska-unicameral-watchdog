@@ -383,7 +383,7 @@ function slugOf(href) {
 /** Photo if public/stories/<slug>.* exists, otherwise a typographic colored header. */
 function CardMedia({ href, kicker, tone = "navy", featured }) {
   const src = STORY_IMAGES[slugOf(href)];
-  const ratio = featured ? "aspect-[1.91/1]" : "aspect-[16/9]";
+  const ratio = featured ? "aspect-[2.2/1]" : "aspect-[2.6/1]";
   if (src) {
     return (
       <div className={`${ratio} bg-gray-200 overflow-hidden`}>
@@ -398,7 +398,7 @@ function CardMedia({ href, kicker, tone = "navy", featured }) {
       aria-hidden="true"
       className={`${ratio} ${CARD_TONES[tone] || CARD_TONES.navy} relative overflow-hidden flex items-end p-4`}
     >
-      <span className="absolute -right-2 -top-6 text-[110px] leading-none font-black text-white/[0.06] select-none">
+      <span className="absolute -right-2 -top-6 text-[90px] leading-none font-black text-white/[0.06] select-none">
         49
       </span>
       <span className="absolute left-0 top-0 h-1 w-16 bg-[#c8102e]" />
