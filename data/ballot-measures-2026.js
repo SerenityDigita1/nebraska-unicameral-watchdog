@@ -1,5 +1,5 @@
 export const PAGE = {
-  eyebrow: "Election 2026 · Ballot measures",
+  eyebrow: "Ballot measures",
   title: "Nebraska's 2026 Ballot Measures: Amendment 1, 440, 441 and 442",
   metaTitle: "Nebraska's 2026 Ballot Measures: Amendment 1, 440, 441 and 442",
   metaDescription:
