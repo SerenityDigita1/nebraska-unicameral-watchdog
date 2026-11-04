@@ -345,7 +345,7 @@ function NewsletterBlock() {
           <p className="text-xs font-bold tracking-widest text-[#c8102e] uppercase mb-2">Stay informed</p>
           <h2 className="text-white font-bold text-lg mb-1">Get the Watchdog newsletter</h2>
           <p className="text-white/50 text-sm leading-relaxed">
-            Before Nov. 3 and when the 110th session opens in Jan. 2027: what’s happening in Lincoln, in plain English.
+            After the Nov. 3 election and when the 110th session opens in Jan. 2027: what’s happening in Lincoln, in plain English.
           </p>
         </div>
         <NewsletterForm />
@@ -443,7 +443,7 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
             </p>
             <div className="flex flex-wrap gap-2 mt-5">
               <span className="text-xs text-white/80 border border-white/15 rounded-lg px-3 py-1.5">
-                Election: Nov. 3
+                Election: Nov. 3 (results unofficial)
               </span>
               <span className="text-xs text-white/80 border border-white/15 rounded-lg px-3 py-1.5">
                 Legislature: back Jan. 2027 (110th)
