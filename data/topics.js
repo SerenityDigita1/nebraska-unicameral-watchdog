@@ -56,13 +56,6 @@ export const TOPIC_GROUPS = [
       { href: "/interim", label: "Interim studies" },
       { href: "/district-49", label: "District 49" },
       { href: "/issues", label: "Key issues overview" },
-      {
-        href: "/two-tax-systems",
-        kicker: "Federal · Taxes",
-        title: "Two Tax Systems",
-        blurb: "How the wealthy pay a 3.4% true rate. You don’t.",
-        tone: "red",
-      },
     ],
   },
 ];
@@ -144,6 +137,13 @@ export const HOME_SECTIONS = [
         kicker: "Federal · Douglas County",
         title: "What They Stopped Watching",
         blurb: "27 Douglas County cases after a tracking program was cut.",
+        tone: "red",
+      },
+      {
+        href: "/two-tax-systems",
+        kicker: "Federal · Taxes",
+        title: "Two Tax Systems",
+        blurb: "How the wealthy pay a 3.4% true rate. You don’t.",
         tone: "red",
       },
     ],
