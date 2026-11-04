@@ -3,7 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { BillCardList } from "@/components/BillCard";
 import { PROPERTY_TAX_BILLS } from "@/data/unicameral-bills";
-import { LATEST_EXPLAINERS, TOPIC_GROUPS } from "@/data/topics";
+import { HOME_SECTIONS, TOPIC_GROUPS } from "@/data/topics";
+import STORY_IMAGES from "@/data/story-images.json";
 
 const BILLS = [
   {
@@ -369,16 +370,85 @@ const SOURCE_CARDS = [
   },
 ];
 
-function ExplainerCard({ href, kicker, title, blurb }) {
+const CARD_TONES = {
+  navy: "bg-[#0a0e1a]",
+  red: "bg-[#7a0a1c]",
+  slate: "bg-[#1f2937]",
+};
+
+function slugOf(href) {
+  return href.replace(/^\//, "").split(/[?#]/)[0];
+}
+
+/** Photo if public/stories/<slug>.* exists, otherwise a typographic colored header. */
+function CardMedia({ href, kicker, tone = "navy", featured }) {
+  const src = STORY_IMAGES[slugOf(href)];
+  const ratio = featured ? "aspect-[2.2/1]" : "aspect-[2.6/1]";
+  if (src) {
+    return (
+      <div className={`${ratio} bg-gray-200 overflow-hidden`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+      </div>
+    );
+  }
+  const topic = kicker.split("·")[0].trim();
+  return (
+    <div
+      aria-hidden="true"
+      className={`${ratio} ${CARD_TONES[tone] || CARD_TONES.navy} relative overflow-hidden flex items-end p-4`}
+    >
+      <span className="absolute -right-2 -top-6 text-[90px] leading-none font-black text-white/[0.06] select-none">
+        49
+      </span>
+      <span className="absolute left-0 top-0 h-1 w-16 bg-[#c8102e]" />
+      <span className={`relative font-bold tracking-widest uppercase text-white/80 ${featured ? "text-xs" : "text-[10px]"}`}>
+        {topic}
+      </span>
+    </div>
+  );
+}
+
+function ExplainerCard({ href, kicker, title, blurb, tone, featured = false }) {
   return (
     <Link
       href={href}
-      className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow block h-full"
+      className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c8102e] transition-shadow flex flex-col h-full"
     >
-      <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">{kicker}</p>
-      <h3 className="text-sm font-bold text-gray-900 mb-1">{title}</h3>
-      <p className="text-xs text-gray-500 leading-relaxed">{blurb}</p>
+      <CardMedia href={href} kicker={kicker} tone={tone} featured={featured} />
+      <div className="p-4 flex flex-col flex-1">
+        <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">{kicker}</p>
+        <h3 className={`${featured ? "text-lg" : "text-sm"} font-bold text-gray-900 mb-1 leading-snug group-hover:underline decoration-[#c8102e] underline-offset-2`}>
+          {title}
+        </h3>
+        <p className={`${featured ? "text-sm" : "text-xs"} text-gray-500 leading-relaxed flex-1`}>{blurb}</p>
+        <span className="mt-3 text-xs font-bold text-[#c8102e]">Read →</span>
+      </div>
     </Link>
+  );
+}
+
+function StorySection({ section }) {
+  const cols = section.items.length % 3 === 0 ? "md:grid-cols-3" : "md:grid-cols-2";
+  const featured = section.layout === "featured";
+  return (
+    <div className={section.title ? "mt-10" : "mt-3"} aria-labelledby={section.title ? `sec-${section.id}` : undefined}>
+      {section.title && (
+        <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-gray-200 pb-2">
+          <div>
+            <h2 id={`sec-${section.id}`} className="text-lg font-bold text-gray-900 tracking-tight">{section.title}</h2>
+            {section.sub && <p className="text-sm text-gray-500 mt-0.5">{section.sub}</p>}
+          </div>
+        </div>
+      )}
+      <ul className={`grid grid-cols-1 ${cols} gap-3`} role="list">
+        {section.items.map((item) => (
+          <li key={item.href}>
+            <ExplainerCard {...item} featured={featured} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -468,7 +538,7 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
 
         <main className="max-w-4xl mx-auto px-6 py-8">
           <section id="latest" className="mb-12 scroll-mt-20">
-            <SectionHeading title="Latest explainers" sub="Newest first. One lead story, then the same card for the rest." />
+            <SectionHeading title="Latest explainers" sub="Newest first, then grouped by series and topic." />
             <Link
               href="/property-tax-coupon"
               className="grid md:grid-cols-[1.35fr_1fr] bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-3 hover:shadow-md transition-shadow"
@@ -498,11 +568,9 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
                 </p>
               </div>
             </Link>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {LATEST_EXPLAINERS.map((item) => (
-                <ExplainerCard key={item.href} {...item} />
-              ))}
-            </div>
+            {HOME_SECTIONS.map((section) => (
+              <StorySection key={section.id} section={section} />
+            ))}
           </section>
 
           <section className="mb-12">

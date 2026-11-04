@@ -60,65 +60,95 @@ export const TOPIC_GROUPS = [
   },
 ];
 
-export const LATEST_EXPLAINERS = [
+/**
+ * Homepage story grid, grouped. Kicker format: "Topic · Detail" (no "New" tags —
+ * the Latest slot says what's new). Each section's card count should be a
+ * multiple of 3 (or the featured layout) so desktop rows have no orphan card.
+ * Photos: drop public/stories/<slug>.jpg — see public/stories/README.md.
+ */
+export const HOME_SECTIONS = [
   {
-    href: BALLOT_2026_CARD.href,
-    kicker: "Results · Ballot measures",
-    title: BALLOT_2026_CARD.title,
-    blurb: BALLOT_2026_CARD.blurb,
+    id: "latest",
+    title: null, // sits under the existing "Latest explainers" lead story
+    layout: "featured",
+    items: [
+      {
+        href: BALLOT_2026_CARD.href,
+        kicker: "Election 2026 · Ballot measures",
+        title: BALLOT_2026_CARD.title,
+        blurb: BALLOT_2026_CARD.blurb,
+        tone: "navy",
+      },
+      {
+        href: RICKETTS_IRAN_CARD.href,
+        kicker: "U.S. Senate · Record vs rhetoric",
+        title: RICKETTS_IRAN_CARD.title,
+        blurb: RICKETTS_IRAN_CARD.blurb,
+        tone: "red",
+      },
+    ],
   },
   {
-    href: SOCIALISM_CARD.href,
-    kicker: "Part 1 of 3 · Mixed economy",
-    title: SOCIALISM_CARD.title,
-    blurb: SOCIALISM_CARD.blurb,
+    id: "series",
+    title: "Three-part series: the mixed economy",
+    sub: "A three-part series. Read in order.",
+    layout: "series",
+    items: [
+      { href: SOCIALISM_CARD.href, kicker: "Part 1 of 3 · Mixed economy", title: SOCIALISM_CARD.title, blurb: SOCIALISM_CARD.blurb, tone: "slate" },
+      { href: MONEY_GOES_CARD.href, kicker: "Part 2 of 3 · Tax breaks", title: MONEY_GOES_CARD.title, blurb: MONEY_GOES_CARD.blurb, tone: "slate" },
+      { href: SAME_RULES_CARD.href, kicker: "Part 3 of 3 · Audits", title: SAME_RULES_CARD.title, blurb: SAME_RULES_CARD.blurb, tone: "slate" },
+    ],
   },
   {
-    href: MONEY_GOES_CARD.href,
-    kicker: "Part 2 of 3 · Tax breaks",
-    title: MONEY_GOES_CARD.title,
-    blurb: MONEY_GOES_CARD.blurb,
+    id: "senate",
+    title: "Election 2026 · U.S. Senate",
+    sub: "Ads and outside money, checked against the record.",
+    items: [
+      {
+        href: "/dan-osborn-immigration-ad",
+        kicker: "U.S. Senate · Ads vs record",
+        title: "If you saw the immigration ad",
+        blurb: "Osborn “amnesty” spots vs the Kellogg’s / ICE record.",
+        tone: "navy",
+      },
+      {
+        href: "/outside-money",
+        kicker: "U.S. Senate · Campaign money",
+        title: "Outside Money",
+        blurb: "$28.9M in outside money, and what the record shows.",
+        tone: "navy",
+      },
+    ],
   },
   {
-    href: SAME_RULES_CARD.href,
-    kicker: "Part 3 of 3 · Audits",
-    title: SAME_RULES_CARD.title,
-    blurb: SAME_RULES_CARD.blurb,
-  },
-  {
-    href: RICKETTS_IRAN_CARD.href,
-    kicker: "New · U.S. Senate · Record vs rhetoric",
-    title: RICKETTS_IRAN_CARD.title,
-    blurb: RICKETTS_IRAN_CARD.blurb,
-  },
-  {
-    href: "/dan-osborn-immigration-ad",
-    kicker: "Ads vs record · U.S. Senate",
-    title: "If you saw the immigration ad",
-    blurb: "Osborn “amnesty” spots vs the Kellogg’s / ICE record.",
-  },
-  {
-    href: "/outside-money",
-    kicker: "Campaign money · U.S. Senate · 2026",
-    title: "Outside Money",
-    blurb: "$28.9M in outside money, and what the record shows.",
-  },
-  {
-    href: "/two-tax-systems",
-    kicker: "Federal · Taxes",
-    title: "Two Tax Systems",
-    blurb: "How the wealthy pay a 3.4% true rate. You don’t.",
-  },
-  {
-    href: "/snap-nebraska",
-    kicker: "Nebraska · Food assistance",
-    title: "The soda ban is void. Did anyone tell your store?",
-    blurb: "A court struck it down in June. The rules on who qualifies changed too.",
-  },
-  {
-    href: "/what-they-stopped-watching",
-    kicker: "Federal · Douglas County",
-    title: "What They Stopped Watching",
-    blurb: "27 Douglas County cases after a tracking program was cut.",
+    id: "communities",
+    title: "Money, taxes & communities",
+    sub: "Who pays, and what changes at the store and in the county.",
+    items: [
+      {
+        href: "/snap-nebraska",
+        kicker: "Nebraska · Food assistance",
+        title: "The soda ban is void. Did anyone tell your store?",
+        blurb: "A court struck it down in June. The rules on who qualifies changed too.",
+        tone: "red",
+      },
+      {
+        href: "/what-they-stopped-watching",
+        kicker: "Federal · Douglas County",
+        title: "What They Stopped Watching",
+        blurb: "27 Douglas County cases after a tracking program was cut.",
+        tone: "red",
+      },
+      {
+        href: "/two-tax-systems",
+        kicker: "Federal · Taxes",
+        title: "Two Tax Systems",
+        blurb: "How the wealthy pay a 3.4% true rate. You don’t.",
+        tone: "red",
+      },
+    ],
   },
 ];
+
+/** Flat list kept for any other consumers. */
+export const LATEST_EXPLAINERS = HOME_SECTIONS.flatMap((s) => s.items);
