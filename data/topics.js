@@ -1,7 +1,6 @@
 import { HOME_CARD as SOCIALISM_CARD } from "./is-it-socialism";
 import { HOME_CARD as MONEY_GOES_CARD } from "./where-the-money-goes";
 import { HOME_CARD as SAME_RULES_CARD } from "./same-rules";
-import { HOME_CARD as RICKETTS_IRAN_CARD } from "./ricketts-iran";
 import { HOME_CARD as BALLOT_2026_CARD } from "./ballot-measures-2026";
 
 /**
@@ -60,65 +59,70 @@ export const TOPIC_GROUPS = [
   },
 ];
 
-export const LATEST_EXPLAINERS = [
+/**
+ * Homepage feature order as of 2026-11-06 (America/Chicago).
+ *
+ * supportedAsOf is the newest date we can point at. It is not a guessed
+ * news date. Prefer a date written in the article. If the article has no
+ * publication date, use the git date of the last content commit and do not
+ * print that git date on the page.
+ *
+ * Older evergreen explainers stay in TOPIC_GROUPS. They are not featured.
+ */
+export const HOMEPAGE_LEAD = {
+  href: BALLOT_2026_CARD.href,
+  supportedAsOf: "2026-11-04",
+  basis:
+    "content/ballot-measures-2026.md: Secretary of State unofficial results last updated Nov. 4, 2026, 5:58 AM CT. Election day Nov. 3, 2026 is in the same article.",
+  kicker: "Results · Ballot measures",
+  title: BALLOT_2026_CARD.title,
+  blurb: BALLOT_2026_CARD.blurb,
+  sourceLabel: "Secretary of State unofficial results, last updated Nov. 4, 2026, 5:58 AM CT",
+  sourceUrl: "https://electionresults.nebraska.gov/ResultsSW.aspx",
+  statuses: [
+    { label: "Amendment 1 · term limits", status: "Failing" },
+    { label: "440 and 441 · online sports betting", status: "Failing" },
+    { label: "442 · school sports", status: "Passing" },
+  ],
+  note: "Unofficial until the canvass. Both 440 and 441 had to pass.",
+};
+
+export const HOMEPAGE_FEATURED = [
   {
-    href: BALLOT_2026_CARD.href,
-    kicker: "Results · Ballot measures",
-    title: BALLOT_2026_CARD.title,
-    blurb: BALLOT_2026_CARD.blurb,
-  },
-  {
-    href: SOCIALISM_CARD.href,
-    kicker: "Part 1 of 3 · Mixed economy",
-    title: SOCIALISM_CARD.title,
-    blurb: SOCIALISM_CARD.blurb,
-  },
-  {
-    href: MONEY_GOES_CARD.href,
-    kicker: "Part 2 of 3 · Tax breaks",
-    title: MONEY_GOES_CARD.title,
-    blurb: MONEY_GOES_CARD.blurb,
+    href: "/outside-money",
+    supportedAsOf: "2026-11-03",
+    basis:
+      "app/outside-money/page.jsx: outside-group tally as of Nov. 3, 2026; candidate reports through Oct. 14, 2026. Page content commit 2026-11-03.",
+    kicker: "Campaign money · U.S. Senate · 2026",
+    title: "Who paid for this race?",
+    blurb:
+      "Candidate reports through Oct. 14, 2026. Outside-group tally as of Nov. 3, 2026 — a third-party tally, not an official FEC total.",
   },
   {
     href: SAME_RULES_CARD.href,
+    supportedAsOf: "2026-10-17",
+    basis:
+      "No publication date in the article. Git: page and content added 2026-10-17 (part 3).",
     kicker: "Part 3 of 3 · Audits",
     title: SAME_RULES_CARD.title,
     blurb: SAME_RULES_CARD.blurb,
   },
   {
-    href: RICKETTS_IRAN_CARD.href,
-    kicker: "New · U.S. Senate · Record vs rhetoric",
-    title: RICKETTS_IRAN_CARD.title,
-    blurb: RICKETTS_IRAN_CARD.blurb,
+    href: MONEY_GOES_CARD.href,
+    supportedAsOf: "2026-10-16",
+    basis:
+      "No publication date in the article. Git: page added 2026-10-16; series links touched 2026-10-17 when part 3 shipped.",
+    kicker: "Part 2 of 3 · Tax breaks",
+    title: MONEY_GOES_CARD.title,
+    blurb: MONEY_GOES_CARD.blurb,
   },
   {
-    href: "/dan-osborn-immigration-ad",
-    kicker: "Ads vs record · U.S. Senate",
-    title: "If you saw the immigration ad",
-    blurb: "Osborn “amnesty” spots vs the Kellogg’s / ICE record.",
-  },
-  {
-    href: "/outside-money",
-    kicker: "Campaign money · U.S. Senate · 2026",
-    title: "Outside Money",
-    blurb: "$28.9M in outside money, and what the record shows.",
-  },
-  {
-    href: "/two-tax-systems",
-    kicker: "Federal · Taxes",
-    title: "Two Tax Systems",
-    blurb: "How the wealthy pay a 3.4% true rate. You don’t.",
-  },
-  {
-    href: "/snap-nebraska",
-    kicker: "Nebraska · Food assistance",
-    title: "The soda ban is void. Did anyone tell your store?",
-    blurb: "A court struck it down in June. The rules on who qualifies changed too.",
-  },
-  {
-    href: "/what-they-stopped-watching",
-    kicker: "Federal · Douglas County",
-    title: "What They Stopped Watching",
-    blurb: "27 Douglas County cases after a tracking program was cut.",
+    href: SOCIALISM_CARD.href,
+    supportedAsOf: "2026-10-16",
+    basis:
+      "No publication date in the article. Git: page added 2026-10-16; content touched 2026-10-17 for the series link.",
+    kicker: "Part 1 of 3 · Mixed economy",
+    title: SOCIALISM_CARD.title,
+    blurb: SOCIALISM_CARD.blurb,
   },
 ];
