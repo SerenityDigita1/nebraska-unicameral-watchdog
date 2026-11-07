@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { BillCardList } from "@/components/BillCard";
 import { PROPERTY_TAX_BILLS } from "@/data/unicameral-bills";
-import { LATEST_EXPLAINERS, TOPIC_GROUPS } from "@/data/topics";
+import { HOMEPAGE_FEATURED, HOMEPAGE_LEAD, TOPIC_GROUPS } from "@/data/topics";
 
 const BILLS = [
   {
@@ -373,12 +373,52 @@ function ExplainerCard({ href, kicker, title, blurb }) {
   return (
     <Link
       href={href}
-      className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow block h-full"
+      className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 hover:shadow-md hover:border-[#c8102e]/20 transition-shadow block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]"
     >
       <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">{kicker}</p>
-      <h3 className="text-sm font-bold text-gray-900 mb-1">{title}</h3>
+      <h3 className="text-sm font-bold text-gray-900 mb-1 leading-snug">{title}</h3>
       <p className="text-xs text-gray-500 leading-relaxed">{blurb}</p>
     </Link>
+  );
+}
+
+function archiveListClass(count) {
+  if (count >= 8) return "lg:grid lg:grid-flow-col lg:grid-rows-4 lg:gap-x-2";
+  if (count >= 6) return "lg:grid lg:grid-flow-col lg:grid-rows-3 lg:gap-x-2";
+  return "";
+}
+
+function TopicArchive({ groups }) {
+  return (
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-3 sm:p-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 items-start">
+        {groups.map((group) => (
+          <section key={group.id} aria-labelledby={`topic-${group.id}`} className="min-w-0">
+            <h3 id={`topic-${group.id}`} className="flex items-baseline gap-2 px-2 mb-1">
+              <span className="text-[11px] font-bold tracking-widest text-[#c8102e] uppercase">
+                {group.label}
+              </span>
+              <span className="sr-only">, {group.links.length} explainers</span>
+              <span aria-hidden="true" className="text-[11px] font-semibold text-gray-400">
+                {group.links.length}
+              </span>
+            </h3>
+            <ul className={archiveListClass(group.links.length)}>
+              {group.links.map((item) => (
+                <li key={item.href} className="min-w-0">
+                  <Link
+                    href={item.href}
+                    className="flex items-center min-h-11 rounded-lg px-2 py-1.5 text-sm leading-snug text-gray-800 break-words hover:bg-[#c8102e]/5 hover:text-[#c8102e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -468,41 +508,62 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
 
         <main className="max-w-4xl mx-auto px-6 py-8">
           <section id="latest" className="mb-12 scroll-mt-20">
-            <SectionHeading title="Latest explainers" sub="Newest first. One lead story, then the same card for the rest." />
+            <SectionHeading
+              title="Latest"
+              sub="Nov. 3 results first, then the newest explainers. Older reporting stays in the archive, with every published page linked."
+            />
             <Link
-              href="/property-tax-coupon"
-              className="grid md:grid-cols-[1.35fr_1fr] bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-3 hover:shadow-md transition-shadow"
+              href={HOMEPAGE_LEAD.href}
+              className="grid md:grid-cols-[1.35fr_1fr] bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-3 hover:shadow-md hover:border-[#c8102e]/20 transition-shadow focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#c8102e]"
             >
-              <div className="p-5">
+              <div className="p-5 min-w-0">
                 <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-2">
-                  Unicameral · Ads vs record
+                  {HOMEPAGE_LEAD.kicker}
                 </p>
                 <h3 className="text-lg font-bold text-gray-900 mb-2 leading-snug">
-                  The coupon isn’t a cut: if you just saw the tax ad
+                  {HOMEPAGE_LEAD.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed mb-3">
-                  He says he cut property taxes. The Legislature passed a coupon. The levy went back up.
-                  Who already pays more, what LB 34 actually printed on the statement, and how he’d pay for the 2027 ask — in plain English.
+                  {HOMEPAGE_LEAD.blurb}
                 </p>
                 <span className="text-xs font-bold text-[#c8102e]">Read the explainer →</span>
               </div>
-              <div className="bg-[#0a0e1a] p-5">
-                <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-4">By the numbers · DOR</p>
-                <p className="text-3xl font-bold tracking-tight">$285 million</p>
-                <p className="text-xs text-white/60 mt-1 leading-relaxed">
-                  Up about $285 million to $5,587,369,523. 2025 statewide levy.
-                </p>
-                <p className="text-3xl font-bold tracking-tight mt-5">~30%</p>
-                <p className="text-xs text-white/60 mt-1 leading-relaxed">
-                  LB 34 credit on the school (non-bond) line. The state reimburses. Locals still levy.
-                </p>
+              <div className="bg-[#0a0e1a] p-5 min-w-0">
+                <p className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-3">Unofficial status</p>
+                <ul className="space-y-2">
+                  {HOMEPAGE_LEAD.statuses.map((item) => (
+                    <li key={item.label} className="flex items-baseline justify-between gap-3 text-sm">
+                      <span className="text-white/75 leading-snug">{item.label}</span>
+                      <span className="font-semibold shrink-0">{item.status}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-[11px] text-white/55 mt-3 leading-relaxed">{HOMEPAGE_LEAD.note}</p>
               </div>
             </Link>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {LATEST_EXPLAINERS.map((item) => (
+            <p className="text-[11px] text-gray-400 mt-2 mb-3 leading-relaxed">
+              Status from the{" "}
+              <a
+                href={HOMEPAGE_LEAD.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#c8102e] underline-offset-2 hover:underline rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]"
+              >
+                Secretary of State unofficial results
+              </a>
+              , last updated Nov. 4, 2026, 5:58 AM CT.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 items-start">
+              {HOMEPAGE_FEATURED.map((item) => (
                 <ExplainerCard key={item.href} {...item} />
               ))}
             </div>
+            <a
+              href="#archive"
+              className="inline-block mt-4 text-sm font-semibold text-[#c8102e] underline-offset-2 hover:underline rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]"
+            >
+              All explainers, by topic
+            </a>
           </section>
 
           <section className="mb-12">
@@ -510,6 +571,15 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
               title="In the chamber: bills behind the ads"
               sub="What the Unicameral passed or killed. Each card shows the stage it reached and the ad claim it’s tied to."
             />
+            <p className="text-sm text-gray-500 mb-4 -mt-2">
+              <Link
+                href="/property-tax-coupon"
+                className="font-semibold text-[#c8102e] underline-offset-2 hover:underline rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]"
+              >
+                The coupon isn’t a cut
+              </Link>
+              {" "}if you just saw the tax ad. The bills behind it are below.
+            </p>
             <BillCardList bills={PROPERTY_TAX_BILLS} columns />
           </section>
 
@@ -530,26 +600,9 @@ export default function NebraskaWatchdog({ defaultTab = "home" }) {
             </Link>
           </section>
 
-          <section className="mb-12">
+          <section id="archive" className="mb-12 scroll-mt-20">
             <SectionHeading title="All explainers, by topic" sub="The full archive, so no published page is left off the homepage." />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {TOPIC_GROUPS.map((group) => (
-                <div key={group.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-                  <h3 className="text-[10px] font-bold tracking-widest text-[#c8102e] uppercase mb-3">
-                    {group.label}
-                  </h3>
-                  <ul className="space-y-2">
-                    {group.links.map((item) => (
-                      <li key={item.href}>
-                        <Link href={item.href} className="text-sm text-gray-800 hover:text-[#c8102e] transition-colors">
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            <TopicArchive groups={TOPIC_GROUPS} />
           </section>
 
           <section className="mb-12">
